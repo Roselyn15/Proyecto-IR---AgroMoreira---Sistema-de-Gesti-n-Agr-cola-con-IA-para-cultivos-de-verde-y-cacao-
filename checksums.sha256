@@ -1,1 +1,81 @@
+#!/usr/bin/env bash
+#
+# generar_checksums.sh
+#
+# Genera el archivo checksums.sha256 con las huellas SHA-256 de todos los
+# archivos multimedia y documentos ubicados en:
+#   - 02_Evidencias/
+#   - 03_Modelado/
+#   - 05_MVP/
+#   - 06_Experimento/
+#
+# Debe ejecutarse desde la raíz del repositorio.
+#
+# Uso:
+#   chmod +x generar_checksums.sh
+#   ./generar_checksums.sh
+#
+# Para verificar posteriormente la integridad:
+#   sha256sum -c checksums.sha256
+#
 
+set -euo pipefail
+
+OUTPUT_FILE="checksums.sha256"
+
+DIRECTORIOS=(
+    "02_Evidencias"
+    "03_Modelado"
+    "05_MVP"
+    "06_Experimento"
+)
+
+EXTENSIONES=(
+    "*.pdf"
+    "*.png"
+    "*.jpg"
+    "*.jpeg"
+    "*.mp4"
+    "*.mp3"
+    "*.wav"
+)
+
+# Verificar que sha256sum esté disponible
+if ! command -v sha256sum >/dev/null 2>&1; then
+    echo "Error: 'sha256sum' no está instalado o no se encuentra en el PATH."
+    exit 1
+fi
+
+echo "Generando huellas SHA-256..."
+
+> "$OUTPUT_FILE"
+
+# Construir la expresión de búsqueda
+FIND_EXPR=()
+
+for ext in "${EXTENSIONES[@]}"; do
+    FIND_EXPR+=( -iname "$ext" -o )
+done
+
+# Eliminar el último -o
+unset 'FIND_EXPR[${#FIND_EXPR[@]}-1]'
+
+# Buscar archivos únicamente en los directorios existentes
+find "${DIRECTORIOS[@]}" \
+    -type f \
+    \( "${FIND_EXPR[@]}" \) \
+    -print0 2>/dev/null \
+| sort -z \
+| xargs -0 sha256sum > "$OUTPUT_FILE"
+
+TOTAL=$(wc -l < "$OUTPUT_FILE")
+
+echo
+echo "=========================================="
+echo "Checksums generados correctamente."
+echo "Archivo : $OUTPUT_FILE"
+echo "Total   : $TOTAL archivos"
+echo "=========================================="
+echo
+echo "Para verificar la integridad del repositorio:"
+echo "sha256sum -c $OUTPUT_FILE"
