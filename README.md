@@ -68,13 +68,13 @@ Agrícola Moreira administra lotes destinados a la producción de **cacao** y **
 ## Clonar el repositorio
 
 ```bash
-git clone https://github.com/USUARIO/AgriMoreira.git
+git clone https://github.com/Roselyn15/Proyecto-IR---AgroMoreira---Sistema-de-Gesti-n-Agr-cola-con-IA-para-cultivos-de-verde-y-cacao-.git
 ```
 
 ## Ingresar al proyecto
 
 ```bash
-cd AgriMoreira
+cd Proyecto-IR---AgroMoreira---Sistema-de-Gesti-n-Agr-cola-con-IA-para-cultivos-de-verde-y-cacao-
 ```
 
 ## Ejecutar el MVP
