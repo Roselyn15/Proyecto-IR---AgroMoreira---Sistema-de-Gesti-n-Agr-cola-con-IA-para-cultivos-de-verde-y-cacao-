@@ -1,1 +1,47 @@
 
+cff-version: 1.2.0
+message: "Si utilizas este software o conjunto de datos, por favor cítalo usando los metadatos de este archivo."
+type: software
+title: "AgriMoreira — Sistema de Gestión Agrícola con IA para cultivos de cacao y plátano verde"
+version: 1.0.0
+date-released: 2026-07-29
+repository-code: ""
+doi: ""  
+license: "MIT AND CC-BY-4.0"
+keywords:
+  - Ingeniería de Requerimientos
+  - Estudio empírico
+  - Modelos Grandes de Lenguaje
+  - Inteligencia Artificial Generativa
+  - Agroindustria
+authors:
+  - family-names: "Robinson Espinoza"
+    given-names: "Jeanpierre"
+    affiliation: "Universidad Técnica Estatal de Quevedo"
+    email: "jrobisone@uteq.edu.ec"
+    orcid: "https://orcid.org/0000-0000-0000-0000"   
+  - family-names: "Calle Delgado"
+    given-names: "Kamila Anabella"
+    affiliation: "Universidad Técnica Estatal de Quevedo"
+    email: "kcalled@uteq.edu.ec"  
+    orcid: "https://orcid.org/0000-0000-0000-0000"
+  - family-names: "Arteaga Álava"
+    given-names: "Danela Dayana"
+    affiliation: "Universidad Técnica Estatal de Quevedo"
+    email: "darteagaa@uteq.edu.ec"
+    orcid: "https://orcid.org/0000-0000-0000-0000"
+  - family-names: "Escudero Plaza"
+    given-names: "María del Rosario"
+    affiliation: "Universidad Técnica Estatal de Quevedo"
+    email: "mescuderop@uteq.edu.ec"
+    orcid: "https://orcid.org/0000-0000-0000-0000"
+  - family-names: "Sánchez Centeno"
+    given-names: "Roselyn Andreina"
+    affiliation: "Universidad Técnica Estatal de Quevedo"
+    email: "rsanchezc4@uteq.edu.ec"
+    orcid: "https://orcid.org/0000-0000-0000-0000"
+  - family-names: "Guerrero Ulloa"
+    given-names: "Gleiston Ciceron"
+    affiliation: "Universidad Técnica Estatal de Quevedo, Facultad de Ciencias de la Computación"
+    email: "gguerrero@uteq.edu.ec"
+    orcid: "https://orcid.org/0000-0000-0000-0000"
