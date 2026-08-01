@@ -1,4 +1,4 @@
-# AgriMoreira — Sistema de Gestión Agrícola con Inteligencia Artificial
+# AgroMoreira — Sistema de Gestión Agrícola con Inteligencia Artificial
 
 Sistema de Gestión Agrícola con Inteligencia Artificial desarrollado para **Agrícola Moreira**, orientado a la administración y monitoreo de cultivos de **cacao** y **plátano verde**.
 
