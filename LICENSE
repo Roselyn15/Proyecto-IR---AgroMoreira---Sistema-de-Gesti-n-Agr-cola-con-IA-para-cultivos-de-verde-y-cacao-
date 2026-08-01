@@ -1,24 +1,95 @@
+LICENCIAS DEL REPOSITORIO
+AgriMoreira — Sistema de Gestión Agrícola con Inteligencia Artificial
+Universidad Técnica Estatal de Quevedo (UTEQ)
+Proyecto Fin de Curso — Ingeniería de Requerimientos [20303]
+
+Este repositorio combina dos licencias distintas según el tipo de contenido, más una
+exclusión explícita para el material de la zona restringida. Antes de reutilizar cualquier
+archivo de este repositorio, identifique a cuál de las tres categorías siguientes pertenece.
+
+================================================================================
+1. CÓDIGO FUENTE DEL MVP — LICENCIA MIT
+================================================================================
+Alcance: todo el contenido de la carpeta 05_MVP/ (código fuente, scripts de
+configuración, archivos de build y documentación técnica del prototipo).
+
+MIT License
+
+Copyright (c) 2026 Equipo AgriMoreira — Universidad Técnica Estatal de Quevedo
+(Robinson Espinoza Jeanpierre, Calle Delgado Kamila Anabella, Arteaga Álava Danela
+Dayana, Escudero Plaza María del Rosario, Sánchez Centeno Roselyn Andreina)
+
+Por la presente se concede permiso, libre de cargos, a toda persona que obtenga una
+copia de este software y de los archivos de documentación asociados (el "Software"),
+para utilizar el Software sin restricción, incluyendo sin limitación los derechos a
+usar, copiar, modificar, fusionar, publicar, distribuir, sublicenciar y/o vender copias
+del Software, y a permitir a las personas a las que se les proporcione el Software a
+hacer lo mismo, sujeto a las siguientes condiciones:
+
+El aviso de copyright anterior y este aviso de permiso se incluirán en todas las copias
+o partes sustanciales del Software.
+
+EL SOFTWARE SE PROPORCIONA "TAL CUAL", SIN GARANTÍA DE NINGÚN TIPO, EXPRESA O
+IMPLÍCITA, INCLUYENDO PERO NO LIMITADO A GARANTÍAS DE COMERCIALIZACIÓN, IDONEIDAD
+PARA UN PROPÓSITO PARTICULAR Y NO INFRACCIÓN. EN NINGÚN CASO LOS AUTORES O
+TITULARES DEL COPYRIGHT SERÁN RESPONSABLES POR NINGUNA RECLAMACIÓN, DAÑOS U OTRAS
+RESPONSABILIDADES, YA SEA EN UNA ACCIÓN DE CONTRATO, AGRAVIO O CUALQUIER OTRO
+MOTIVO, QUE SURJA DE, FUERA DE O EN CONEXIÓN CON EL SOFTWARE O SU USO U OTRO TIPO
+DE ACCIONES EN EL SOFTWARE.
+
+================================================================================
+2. DOCUMENTACIÓN, ERS, EVIDENCIAS PÚBLICAS, MODELADO, TRAZABILIDAD, PROTOCOLO
+   EXPERIMENTAL Y MATERIAL DE PUBLICACIÓN — LICENCIA CC BY 4.0
+================================================================================
+Alcance: todo el contenido del repositorio que NO esté cubierto por la sección 1
+(MIT) ni excluido por la sección 3 (zona restringida). Incluye entre otros:
+01_ERS/, 02_Evidencias/ (excepto 00_Restringido/), 03_Modelado/, 04_Trazabilidad/,
+06_Experimento/, 07_Publicacion/, y el conjunto de datos anonimizado depositado
+en Zenodo.
+
 Creative Commons Attribution 4.0 International (CC BY 4.0)
 
 Copyright (c) 2026 Equipo AgriMoreira — Universidad Técnica Estatal de Quevedo
 
-Este repositorio, excepto el código fuente del MVP cuando se indique lo contrario, está licenciado bajo la licencia Creative Commons Attribution 4.0 International (CC BY 4.0).
-
 Usted es libre de:
-
-- Compartir: copiar y redistribuir el material en cualquier medio o formato.
-- Adaptar: remezclar, transformar y construir a partir del material para cualquier propósito, incluso comercial.
+  - Compartir: copiar y redistribuir el material en cualquier medio o formato.
+  - Adaptar: remezclar, transformar y construir a partir del material para
+    cualquier propósito, incluso comercial.
 
 Bajo los siguientes términos:
+  - Atribución: Debe otorgar el crédito correspondiente, proporcionar un enlace
+    a la licencia e indicar si se realizaron cambios. Puede hacerlo de cualquier
+    manera razonable, pero no de una forma que sugiera que el licenciante lo
+    respalda a usted o al uso que haga del material.
 
-- Atribución: Debe otorgar el crédito correspondiente, proporcionar un enlace a la licencia e indicar si se realizaron cambios. Puede hacerlo de cualquier manera razonable, pero no de una forma que sugiera que el licenciante lo respalda a usted o al uso que haga del material.
+No hay restricciones adicionales: No puede aplicar términos legales ni medidas
+tecnológicas que restrinjan legalmente a otros a hacer cualquier uso permitido
+por la licencia.
 
-No hay restricciones adicionales:
-No puede aplicar términos legales ni medidas tecnológicas que restrinjan legalmente a otros a hacer cualquier uso permitido por la licencia.
+Texto legal completo: https://creativecommons.org/licenses/by/4.0/legalcode
 
-Para consultar el texto legal completo de la licencia, visite:
+Cita sugerida: consulte el archivo CITATION.cff en la raíz del repositorio.
 
-https://creativecommons.org/licenses/by/4.0/
+================================================================================
+3. EXCLUSIÓN — ZONA RESTRINGIDA (NO LICENCIADA)
+================================================================================
+Alcance: 02_Evidencias/00_Restringido/ y cualquier otro archivo que contenga
+datos personales identificables (consentimientos originales con cédula y firma,
+videos y audios sin anonimizar, actas con firma visible, documentos originales
+de la organización cliente sin anonimizar, y la tabla de correspondencia entre
+códigos de participante y personas reales).
 
-Cita sugerida:
-Consulte el archivo CITATION.cff ubicado en la raíz del repositorio para obtener la referencia bibliográfica recomendada.
+El contenido de esta zona:
+  - NO se licencia bajo MIT ni bajo CC BY 4.0.
+  - NO se redistribuye ni forma parte del depósito abierto en Zenodo/OSF.
+  - Permanece cifrado (AES-256) y bajo custodia exclusiva del equipo y del
+    docente responsable, conforme al Plan de Gestión de Datos del paquete
+    ético del proyecto y a la Ley Orgánica de Protección de Datos Personales
+    del Ecuador.
+  - Se conserva un máximo de 24 meses desde la finalización del proyecto y
+    luego se elimina de forma segura, con acta firmada.
+
+================================================================================
+Para dudas sobre qué licencia aplica a un archivo específico, consulte primero
+la ubicación del archivo dentro del árbol de carpetas descrito en el README.md.
+================================================================================
