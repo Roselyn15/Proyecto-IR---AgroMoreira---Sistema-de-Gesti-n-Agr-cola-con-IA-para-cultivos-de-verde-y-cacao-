@@ -1,0 +1,255 @@
+TRANSCRIPCION DE ENTREVISTA
+
+Codigo del participante: ENTR-05
+Rol: Trabajador
+Fecha: 2026-06-25
+Tecnica: Entrevista semiestructurada
+Proyecto: Sistema de Gestion Agricola con Inteligencia Artificial para Cultivos de Verde y Cacao (SGA)
+
+Introduccion
+
+Entrevistador:
+Buenas noches. Somos estudiantes de Ingenieria de Software de la UTEQ y estamos desarrollando un proyecto academico para comprender como se gestiona actualmente la finca y documentar sus necesidades. El objetivo es proponer un sistema que ayude a mejorar sus procesos mediante el uso de Inteligencia Artificial.
+
+Participante:
+De acuerdo.
+
+Seccion 1. Datos etnograficos
+
+Entrevistador:
+¿Cual es su rol dentro de la finca?
+
+Participante:
+Trabajo como trabajador de la finca. Me encargo del control de insumos, del manejo de los productos que ingresan y salen y del control del personal.
+
+Entrevistador:
+¿Cuantos años lleva trabajando en la agricultura?
+
+Participante:
+Mas de 15 años.
+
+Entrevistador:
+¿Cual es su formacion academica?
+
+Participante:
+Soy ingeniero ambiental, tengo un diplomado en fitosanitario y una maestria en educacion basica.
+
+Seccion 2. Procesos actuales de gestion
+
+Entrevistador:
+¿Como registra actualmente los cultivos?
+
+Participante:
+Utilizo un cuaderno.
+
+Entrevistador:
+¿Que informacion registra?
+
+Participante:
+La inversion en abonos, fungicidas, personal de trabajo, limpieza, mantenimiento y podas.
+
+Entrevistador:
+¿Que informacion consulta con mayor frecuencia?
+
+Participante:
+La produccion y los productos que deben aplicarse para mejorar el cultivo.
+
+Entrevistador:
+¿Que informacion considera que deberia registrarse?
+
+Participante:
+Las capacitaciones recibidas.
+
+Entrevistador:
+¿Como identifica las parcelas?
+
+Participante:
+Por lotes.
+
+Entrevistador:
+¿Como controla las aplicaciones de productos?
+
+Participante:
+Principalmente mediante registros manuales.
+
+Entrevistador:
+¿Cuales son las principales plagas o enfermedades?
+
+Participante:
+En cacao la monilia y en verde la sigatoka.
+
+Entrevistador:
+¿Que informacion necesita cuando detecta un problema?
+
+Participante:
+Saber que insecticida o abono aplicar.
+
+Entrevistador:
+¿Que aspecto monitorea constantemente?
+
+Participante:
+La maleza.
+
+Seccion 3. Produccion e inventario
+
+Entrevistador:
+¿Como registra la produccion?
+
+Participante:
+En un cuaderno.
+
+Entrevistador:
+¿Como controla la produccion?
+
+Participante:
+Llevo un registro semanal de los quintales obtenidos y vendidos.
+
+Entrevistador:
+¿Como controla el inventario?
+
+Participante:
+Todo se controla manualmente.
+
+Entrevistador:
+¿Cuando reabastece los insumos?
+
+Participante:
+Segun la temporada y las necesidades del cultivo.
+
+Entrevistador:
+¿Que informacion revisa con mayor frecuencia?
+
+Participante:
+Los nutrientes disponibles y el estado de los insumos.
+
+Entrevistador:
+¿Como organiza las tareas del personal?
+
+Participante:
+Asignando actividades segun las necesidades de la cosecha.
+
+Seccion 4. Dificultades y necesidades
+
+Entrevistador:
+¿Cual es el principal problema?
+
+Participante:
+El control de la monilia y de la maleza.
+
+Entrevistador:
+¿Que actividad consume mas tiempo?
+
+Participante:
+El control de maleza.
+
+Entrevistador:
+¿Ha perdido informacion importante?
+
+Participante:
+En ocasiones ha faltado informacion sobre insumos, lo que dificulta tomar decisiones.
+
+Entrevistador:
+¿Que necesita recordar siempre?
+
+Participante:
+Las aplicaciones de abonos y quemantes para mantener un control adecuado.
+
+Entrevistador:
+¿Que procesos necesitan mayor control?
+
+Participante:
+Las podas del cacao y del verde.
+
+Seccion 5. Expectativas
+
+Entrevistador:
+¿Que procesos le gustaria automatizar?
+
+Participante:
+La fumigacion con drones, el riego y el control de productos.
+
+Entrevistador:
+¿Que recordatorios le gustaria recibir?
+
+Participante:
+Recordatorios sobre fumigacion, fertilizacion y proximas cosechas.
+
+Entrevistador:
+¿Que informacion le gustaria consultar rapidamente?
+
+Participante:
+El control de fungicidas.
+
+Entrevistador:
+¿Que reportes considera mas importantes?
+
+Participante:
+Produccion por parcela, costos, perdidas por plagas y rendimiento del cultivo.
+
+Seccion 6. Inteligencia Artificial
+
+Entrevistador:
+¿Que opina de la Inteligencia Artificial?
+
+Participante:
+Puede facilitar el trabajo, aunque considera importante mantener el pensamiento critico.
+
+Entrevistador:
+¿Utiliza herramientas tecnologicas?
+
+Participante:
+Si. Utilizo Google Maps y otras herramientas de apoyo.
+
+Entrevistador:
+¿Ha recibido recomendaciones automaticas?
+
+Participante:
+Si. Principalmente mediante invitaciones y avisos para capacitaciones.
+
+Entrevistador:
+¿Confiaria en un sistema que detecte enfermedades automaticamente?
+
+Participante:
+Si. Serviria como una alerta para verificar la informacion en el cultivo.
+
+Entrevistador:
+¿Como prefiere registrar los cultivos?
+
+Participante:
+Por lote.
+
+Entrevistador:
+¿Como prefiere identificar las parcelas?
+
+Participante:
+Por numero.
+
+Entrevistador:
+¿Que informacion de sanidad vegetal considera mas importante?
+
+Participante:
+Los productos aplicados durante la fumigacion.
+
+Entrevistador:
+¿Que informacion de produccion considera mas importante?
+
+Participante:
+La cantidad cosechada por parcela.
+
+Entrevistador:
+¿Como prefiere gestionar el inventario?
+
+Participante:
+Recibir reportes de inventario y controlar las entradas y salidas.
+
+Entrevistador:
+¿Como le gustaria recibir apoyo para tomar decisiones?
+
+Participante:
+Mediante reportes automaticos.
+
+Entrevistador:
+Muchas gracias por su colaboracion.
+
+Participante:
+Gracias a ustedes.
