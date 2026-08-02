@@ -18,6 +18,34 @@
 \maketitle
 \setcounter{section}{1}
 
+% Seccion 2: Descripcion general
+\section{Descripción general}
+\label{sec:descripcion-general}
+
+% Subseccion 2.1: Perspectiva del producto y limite del sistema
+\subsection{Perspectiva del producto y límite del sistema}
+\label{sec:perspectiva-producto}
+
+El Sistema de Gestión Agrícola con Inteligencia Artificial para Cultivos de Verde y Cacao (SGA) es una aplicación orientada a centralizar el registro y la consulta de la información generada por las actividades agrícolas de la finca, sustituyendo el bloc de datos y la bitácora en papel que describe el administrador (EV-01 [03:34]). El sistema administra la información correspondiente a parcelas, cultivos, trabajadores, labores, cosechas e inventario de insumos, e incorpora un módulo de Inteligencia Artificial que analiza los registros históricos para generar alertas y recomendaciones relacionadas con el manejo de los cultivos.
+
+La finca donde se levantó la evidencia de campo mantiene un policultivo de palma, verde y cacao (EV-01 [03:18]). El administrador señala que la labor que más le interesaría automatizar es la cosecha de palma africana (EV-01 [07:28]); no obstante, el alcance de este proyecto se limita a los cultivos de verde y cacao. Esta delimitación es una decisión de alcance del proyecto: la gestión de palma queda fuera del sistema en la presente versión.
+
+El límite del sistema separa lo que el SGA administra internamente de las entidades externas con las que intercambia información. El módulo de Inteligencia Artificial se representa dentro de ese límite, ya que la Sección 5 no evidencia que dependa de ningún servicio de terceros.
+
+% Subseccion 2.1.1: Diagrama de contexto
+\subsubsection{Diagrama de contexto}
+\label{sec:diagrama-contexto-texto}
+
+La Figura~\ref{fig:diagrama-contexto} muestra el diagrama de contexto del SGA. Hacia el sistema, el Administrador registra parcelas, trabajadores, cultivos, actividades, inventario y cosechas; el sistema le devuelve reportes, alertas, recomendaciones de IA y estadísticas. El Jornalero recibe del sistema las tareas, la parcela asignada y las actividades, y registra hacia el sistema las labores realizadas, la cosecha y las incidencias. El Centro de acopio se incorpora como entidad externa adicional respecto del diagrama de la Entrega 1B: el peso y el comprobante que entrega respaldan el registro de cada cosecha (EV-01 [04:32]). Las otras dos entidades candidatas evaluadas, proveedor de insumos (EV-01 [05:50]) y contador externo (EV-01 [06:23], [06:37]), no muestran intercambio de datos con el sistema y no se incorporan.
+
+\clearpage
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\textwidth,height=0.4\textheight,keepaspectratio]{diagrama_contexto.png}
+\caption{Diagrama de contexto del SGA}
+\label{fig:diagrama-contexto}
+\end{figure}
+
 % Seccion 3: Requisitos especificos completos
 \section{Requisitos específicos completos}
 \label{sec:requisitos-especificos}
