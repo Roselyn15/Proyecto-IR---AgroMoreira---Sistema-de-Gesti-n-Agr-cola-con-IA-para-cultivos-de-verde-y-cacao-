@@ -1,0 +1,79 @@
+TRANSCRIPCION DE ENTREVISTA
+
+Codigo del participante: ENTR-04
+Rol: Trabajador
+Fecha: 2026-06-24
+Tecnica: Entrevista semiestructurada
+Proyecto: Sistema de Gestion Agricola con Inteligencia Artificial para Cultivos de Verde y Cacao (SGA)
+
+Entrevistador:
+Buenas noches. Somos estudiantes de Ingenieria de Software de la UTEQ y estamos realizando una investigacion para conocer como se gestionan actualmente las actividades de la finca. La informacion recopilada sera utilizada unicamente con fines academicos.
+
+Participante:
+De acuerdo.
+
+Entrevistador:
+¿Cual es su rol dentro de la finca?
+
+Participante:
+Trabajo como trabajador en la finca y realizo las labores asignadas diariamente.
+
+Entrevistador:
+¿Que actividades realiza con mayor frecuencia?
+
+Participante:
+Siembra, limpieza, fertilizacion, fumigacion y cosecha de los cultivos.
+
+Entrevistador:
+¿Como recibe las tareas que debe realizar?
+
+Participante:
+El administrador organiza y asigna las actividades cada dia.
+
+Entrevistador:
+¿Como registran el trabajo realizado?
+
+Participante:
+Generalmente se informa al administrador y se lleva un registro en cuadernos.
+
+Entrevistador:
+¿Que dificultades encuentra durante su trabajo?
+
+Participante:
+A veces es dificil recordar las fechas de fumigacion y fertilizacion, y no siempre se tiene la informacion organizada.
+
+Entrevistador:
+¿Que informacion considera importante registrar?
+
+Participante:
+Las actividades realizadas, las fechas de aplicacion de productos y la produccion obtenida.
+
+Entrevistador:
+¿Que mejoraria en el manejo de la finca?
+
+Participante:
+Un sistema que permita registrar toda la informacion y consultar rapidamente el estado de los cultivos.
+
+Entrevistador:
+¿Le gustaria recibir recordatorios sobre las actividades programadas?
+
+Participante:
+Si. Seria util recibir alertas sobre fumigaciones, fertilizaciones y cosechas.
+
+Entrevistador:
+¿Ha utilizado alguna aplicacion para apoyar su trabajo?
+
+Participante:
+Utilizo aplicaciones de mensajeria y otras herramientas basicas en el celular.
+
+Entrevistador:
+¿Estaria dispuesto a utilizar un sistema con inteligencia artificial que genere recomendaciones?
+
+Participante:
+Si, siempre que sea facil de usar y la informacion sea confiable.
+
+Entrevistador:
+Muchas gracias por su colaboracion.
+
+Participante:
+Gracias a ustedes.
