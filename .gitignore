@@ -1,1 +1,48 @@
-
+# === Sistema operativo ===
+.DS_Store
+Thumbs.db
+desktop.ini
+# === Editores ===
+.vscode/
+.idea/
+*.swp
+*~
+# === LaTeX (01_ERS/) ===
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+*.bbl
+*.blg
+# === Python (scripts de análisis, MVP) ===
+__pycache__/
+*.pyc
+.venv/
+venv/
+env/
+*.egg-info/
+# === R (scripts de análisis) ===
+.Rhistory
+.RData
+.Rproj.user/
+# === Node / MVP web ===
+node_modules/
+dist/
+build/
+.env
+.env.local
+# === Seguridad ===
+*password*.txt
+*contrasena*.txt
+.env.secrets
+*.pem
+*.key
+# === Originales sin cifrar de la zona restringida ===
+02_Evidencias/00_Restringido/_tmp_sin_cifrar/
+# === Archivos temporales generales ===
+*.tmp
+*.bak
+~$*
