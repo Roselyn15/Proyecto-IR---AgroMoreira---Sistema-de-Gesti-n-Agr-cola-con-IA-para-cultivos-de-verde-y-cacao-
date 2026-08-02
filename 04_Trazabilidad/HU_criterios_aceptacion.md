@@ -292,5 +292,4 @@ Escenario: Desactivación de una cuenta
 
 ### Trazabilidad con la matriz extendida
 Estos 12 pares HU/CA corresponden exactamente a las columnas `ID-HU` e `ID-CA` ya presentes en
-`04_Trazabilidad/matriz_trazabilidad.csv` (filas TR-01 a TR-XX según el RF). No se requieren
-cambios en la matriz: los IDs ya coinciden.
+`04_Trazabilidad/matriz_trazabilidad.csv` (filas TR-01 a TR-XX según el RF). 
