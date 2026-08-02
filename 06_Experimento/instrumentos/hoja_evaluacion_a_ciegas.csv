@@ -1,0 +1,7 @@
+codigo_conjunto,id_rf,evaluador,dimension_completitud,dimension_ambiguedad,dimension_verificabilidad,dimension_correccion_fuente,dimension_consistencia_interna
+A,RF-LLM-01,E1,,,,,
+A,RF-LLM-01,E2,,,,,
+A,RF-LLM-01,E3,,,,,
+B,RF-HUM-01,E1,,,,,
+B,RF-HUM-01,E2,,,,,
+B,RF-HUM-01,E3,,,,,
