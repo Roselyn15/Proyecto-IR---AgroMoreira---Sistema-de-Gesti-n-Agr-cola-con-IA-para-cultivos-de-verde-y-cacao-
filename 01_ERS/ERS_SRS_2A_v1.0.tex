@@ -1389,6 +1389,103 @@ Prioridad & Media \\
 \bigskip
 \noindent RNF-15, correspondiente a la explicabilidad de las alertas y recomendaciones del módulo de IA, se documenta íntegramente en la Sección~\ref{sec:explicabilidad-ia}, ficha de la Tabla~\ref{tab:RNF-15}.
 
+\subsection{Requisito de explicabilidad del componente de IA o AA}
+\label{sec:explicabilidad-ia}
+
+El módulo de Inteligencia Artificial del SGA genera alertas y recomendaciones que inciden en decisiones sobre el manejo de los cultivos. Por tratarse de un componente de IA, el sistema incorpora un requisito de explicabilidad, entendida como la capacidad del sistema de proporcionar información comprensible sobre cómo y por qué llegó a una salida determinada~\cite{chazette2020}. El marco de referencia utilizado es el modelo de explicabilidad de Chazette, Brunotte y Speith~\cite{chazette2021,chazette2022}.
+
+La evidencia central proviene de EV-01 [09:02] y [09:10]: el administrador condiciona su confianza en el sistema a la posibilidad de verificar la información antes de actuar, y reconoce explícitamente que la Inteligencia Artificial tiene margen de error. De esta evidencia se derivan cuatro rasgos de la necesidad de explicación: el usuario exige poder \textbf{verificar} la salida antes de actuar; debe comunicarse la \textbf{incertidumbre} asociada, no solo el resultado; el tipo de explicación requerido es \textbf{causal y por evidencia}, referida a los datos en que se basó la alerta para poder contrastarla en campo; y el momento de la explicación debe ser \textbf{simultáneo a la alerta}, no posterior. El perfil del jornalero, que no utiliza aplicaciones (EV-02 [02:33]), exige explicaciones de menor densidad que las del administrador. Este requisito se enlaza con la restricción R-05 de la Entrega 2 (1B): las recomendaciones de la IA apoyan la decisión y no sustituyen el criterio del usuario.
+
+% Subseccion 3.3.1: Decisiones automaticas del modulo de IA
+\subsubsection{Decisiones automáticas del módulo de IA}
+\label{sec:decisiones-ia}
+
+\begin{center}
+\begin{longtable}{|p{1.6cm}|p{5.5cm}|p{2.3cm}|p{4.3cm}|}
+\hline
+\textbf{ID} & \textbf{Decisión automática} & \textbf{RF asociado} & \textbf{Nivel de autonomía} \\
+\hline
+\endfirsthead
+\hline
+\textbf{ID} & \textbf{Decisión automática} & \textbf{RF asociado} & \textbf{Nivel de autonomía} \\
+\hline
+\endhead
+\hline
+\endfoot
+\hline
+\endlastfoot
+D-01 & Generación de alerta temprana de posible enfermedad en una parcela & RF-26 & Sugerencia; requiere confirmación humana (R-05) \\
+\hline
+D-02 & Generación de recomendación de manejo del cultivo & RF-15 & Sugerencia; requiere confirmación humana (R-05) \\
+\hline
+D-03 & Cálculo del nivel de confianza asociado a una alerta o recomendación & RF-26, RF-15 & Automático; informativo, no accionable por sí solo \\
+\hline
+\end{longtable}
+\label{tab:decisiones-ia}
+\end{center}
+
+% Subseccion 3.3.2: Necesidades de explicacion por tipo de usuario
+\subsubsection{Necesidades de explicación por tipo de usuario}
+\label{sec:necesidades-explicacion}
+
+\begin{center}
+\begin{longtable}{|p{2cm}|p{2.3cm}|p{5.3cm}|p{3.6cm}|}
+\hline
+\textbf{Decisión} & \textbf{Usuario afectado} & \textbf{Tipo de explicación requerida} & \textbf{Momento} \\
+\hline
+\endfirsthead
+\hline
+\textbf{Decisión} & \textbf{Usuario afectado} & \textbf{Tipo de explicación requerida} & \textbf{Momento} \\
+\hline
+\endhead
+\hline
+\endfoot
+\hline
+\endlastfoot
+D-01 & Administrador & Causal y por evidencia: datos históricos y patrón que motivaron la alerta, con nivel de incertidumbre explícito & Simultáneo a la alerta --- EV-01 [09:02] \\
+\hline
+D-02 & Administrador & Causal y por evidencia, con nivel de incertidumbre explícito & Simultáneo a la recomendación --- EV-01 [09:10] \\
+\hline
+D-01, D-02 (tarea derivada) & Jornalero & Instructiva, de baja densidad: qué tarea ejecutar y en qué parcela, sin el detalle causal del modelo & Al recibir la tarea asignada, RF-09 --- EV-02 [02:33] \\
+\hline
+\end{longtable}
+\label{tab:necesidades-explicacion}
+\end{center}
+
+% Subseccion 3.3.3: Ficha del requisito de explicabilidad
+\subsubsection{Ficha del requisito de explicabilidad}
+\label{sec:ficha-explicabilidad}
+
+\bigskip
+\noindent\textbf{RNF-15. Explicabilidad de las alertas y recomendaciones del módulo de IA}
+\label{tab:RNF-15}
+
+\begin{center}
+\begin{longtable}{|p{4.2cm}|p{10cm}|}
+\hline
+Identificador & RNF-15 \\
+\hline
+Nombre & Explicabilidad de las alertas y recomendaciones del módulo de IA \\
+\hline
+Característica ISO/IEC 25010:2023 & Interacción de usuario \\
+\hline
+Subcaracterística & Autodescriptividad \\
+\hline
+Descripción & El sistema deberá presentar, junto con cada alerta o recomendación generada por el módulo de IA, una explicación de los datos y el patrón que la originaron, junto con el nivel de incertidumbre asociado, para permitir que el administrador la verifique antes de actuar sobre ella. \\
+\hline
+Métrica & Proporción de alertas y recomendaciones que incluyen explicación causal y nivel de incertidumbre en su presentación; tiempo adicional de presentación de la explicación; extensión de la explicación; comprensión reportada por el usuario \\
+\hline
+Valor objetivo & 100~\% de las alertas y recomendaciones incluyen explicación causal y nivel de incertidumbre; tiempo de presentación $\leq$ 1,0 s adicional respecto a la alerta; extensión máxima de 3 líneas de texto; comprensión reportada $\geq$ 4 sobre 5 en escala Likert. \\
+\hline
+Método de medición & Verificación sobre una muestra de 20 alertas o recomendaciones generadas, y encuesta de comprensión en escala Likert de 5 puntos aplicada al administrador tras presentarle 10 alertas. \\
+\hline
+Origen & EV-01 [09:02], [09:10]; Chazette y Schneider (2020)~\cite{chazette2020}; Chazette, Brunotte y Speith (2021, 2022)~\cite{chazette2021,chazette2022}; R-05. \\
+\hline
+Prioridad & Alta \\
+\hline
+\end{longtable}
+\end{center}
+
 % Bibliografia
 \bibliographystyle{ieeetr}
 \bibliography{referencias}
