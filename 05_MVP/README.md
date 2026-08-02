@@ -1,2 +1,16 @@
-# MVP — AgriMoreira SGA ## Cómo ejecutarlo No requiere instalación. Descarga index.html y ábrelo directamente en cualquier navegador (Chrome, Firefox, Edge). ## Cuentas de prueba - Administrador: r.moreira / admin123 - Trabajador agrícola: a.cedeno / campo123 ## Cobertura de RF "Debe tener" - RF-01 Control de acceso por rol - RF-02 Gestión de parcelas - RF-03 Gestión de cultivos - RF-04 Registro de actividades de campo - RF-05 Registro de cosecha - RF-06 Gestión de inventario con alertas - RF-07/08/09/10 Planificación y asignación de tareas - RF-14 Gestión de usuarios ## Video de demostración video_demo.mp4 (≤ 3 minutos)
+# MVP — AgriMoreira SGA ## 
+Cómo ejecutarlo No requiere instalación.
+Descarga index.html y ábrelo directamente en cualquier navegador (Chrome, Firefox, Edge). 
+## Cuentas de prueba 
+- Administrador: r.moreira / admin123
+-  - Trabajador agrícola: a.cedeno / campo123
+# Cobertura de RF "Debe tener" -
+-   RF-01 Control de acceso por rol
+- RF-02 Gestión de parcelas
+- RF-03 Gestión de cultivos
+- RF-04 Registro de actividades de campo
+- RF-05 Registro de cosecha
+- RF-06 Gestión de inventario con alertas
+- RF-07/08/09/10 Planificación y asignación de tareas
+- RF-14 Gestión de usuarios ## Video de demostración video_demo.mp4 (≤ 3 minutos)
 
