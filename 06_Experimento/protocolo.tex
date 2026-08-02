@@ -1,0 +1,367 @@
+% ============================================================================
+% PROTOCOLO EXPERIMENTAL - ENFOQUE 1: CALIDAD DE RF HUMANOS VS LLM
+% Sistema AgriMoreira - Sistema de Gestion Agricola con IA
+% Proyecto Fin de Curso - Ingenieria de Requerimientos [20303]
+% Universidad Tecnica Estatal de Quevedo (UTEQ)
+% Integrante responsable: Escudero Plaza Maria del Rosario
+% Base de contenido: Aporte_Jeanpierre_v2 (titulo y resumen del manuscrito)
+% Version 1.0
+% ============================================================================
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-tabla]{babel}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{xcolor}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue,
+    citecolor=blue
+}
+
+\title{\textbf{Protocolo Experimental}\\[0.5em]
+\large Comparacion de la calidad de requisitos funcionales elicitados por
+analistas humanos frente a los generados por un modelo de lenguaje (LLM) en un
+sistema agricola con IA\\[0.5em]
+\large (Enfoque 1)}
+\author{Escudero Plaza Maria del Rosario\\[0.3em]
+\small Universidad Tecnica Estatal de Quevedo (UTEQ)\\
+\small Proyecto Fin de Curso - Ingenieria de Requerimientos [20303]}
+\date{Version 1.0 \textbullet\ Semestre 2026-2027}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+El presente protocolo define el componente empirico del sistema
+\textbf{AgriMoreira}, un sistema de gestion agricola con inteligencia artificial
+para el apoyo a la toma de decisiones en cultivos de cacao y platanero verde.
+El estudio sigue el \textbf{Enfoque 1} de la guia: comparar la calidad de los
+requisitos funcionales (RF) elicitados por el equipo de analistas humanos con
+los generados por un modelo de lenguaje de gran escala (LLM) a partir del mismo
+material fuente (transcripcion anonimizada de una entrevista de campo). Se
+aplica un diseno cuasi-experimental apareado: ambos conjuntos de RF (humano y
+LLM), de un minimo de 25 requisitos cada uno, se evaluan a ciegas por
+evaluadores expertos independientes en cinco dimensiones de calidad
+(completitud, ausencia de ambiguedad, verificabilidad, correccion respecto de
+la fuente y consistencia interna). El acuerdo inter-evaluador se mide con los
+coeficientes kappa de Cohen y de Fleiss, y las puntuaciones medias se comparan
+con prueba t apareada o Wilcoxon segun normalidad, con tamano del efecto y
+calculo de potencia estadistica previa. El protocolo se registra de forma
+previa en el Open Science Framework (OSF) \cite{nosek2018}.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+% ============================================================================
+\section{Informacion general del proyecto}
+% ============================================================================
+
+\begin{center}
+\begin{tabular}{>{\raggedright\arraybackslash}p{5cm} p{9cm}}
+\toprule
+\textbf{Elemento} & \textbf{Descripcion} \\
+\midrule
+Nombre del sistema & AgriMoreira: Sistema de Gestion Agricola con IA para
+cultivos de verde y cacao \\
+Dominio & Agroindustria (produccion de cacao y platanero verde, Manabi,
+Ecuador) \\
+Organizacion cliente & Agricola Moreira (seudonimo declarado en el protocolo de
+anonimizacion) \\
+Enfoque empirico & Enfoque 1: Calidad de RF humanos vs.\ LLM \\
+Asignatura & Ingenieria de Requerimientos [20303] \\
+Integrante responsable & Escudero Plaza Maria del Rosario \\
+Docente supervisor & Mgs. Gleiston Ciceron Guerrero Ulloa \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+% ============================================================================
+\section{Preguntas de investigacion (formato PICOC)}
+% ============================================================================
+
+Las preguntas de investigacion se formulan siguiendo el marco PICOC
+(poblacion, intervencion, comparacion, resultado, contexto)
+\cite{kitchenham2007}.
+
+\subsection{Preguntas de investigacion}
+
+\begin{enumerate}
+    \item \textbf{RQ1.} \emph{?`En que dimensiones de calidad los requisitos
+    funcionales (RF) elicitados por el equipo humano difieren de los generados
+    por un LLM a partir del mismo material fuente?}
+
+    \item \textbf{RQ2.} \emph{?`Cual es el nivel de acuerdo inter-evaluador
+    (kappa de Cohen y de Fleiss) entre los evaluadores expertos al puntuar
+    ambos conjuntos de RF?}
+
+    \item \textbf{RQ3.} \emph{?`Cual es la magnitud del efecto (Cohen d o
+    Cliff delta) de la diferencia de calidad entre RF humanos y LLM en cada
+    dimension?}
+\end{enumerate}
+
+\subsection{Aplicacion del marco PICOC}
+
+\begin{center}
+\begin{tabular}{>{\raggedright\arraybackslash}p{3cm} p{12cm}}
+\toprule
+\textbf{Componente} & \textbf{Descripcion} \\
+\midrule
+Poblacion (P) & Conjunto de requisitos funcionales del sistema AgriMoreira
+(>= 25 RF humanos del ERS y >= 25 RF generados por LLM a partir del mismo
+material fuente). \\
+Intervencion (I) & Evaluacion a ciegas de los RF con una rubrica de cinco
+dimensiones (completitud, ausencia de ambiguedad, verificabilidad, correccion
+respecto de la fuente y consistencia interna), puntuando 1--5. \\
+Comparacion (C) & Conjunto de RF producidos por LLM (Conjunto A) frente al
+conjunto de RF elicitados por el equipo humano (Conjunto B). \\
+Resultado (O) & Puntuacion media de calidad por dimension, acuerdo
+inter-evaluador (kappa de Cohen y de Fleiss), tamano del efecto (d de Cohen o
+delta de Cliff). \\
+Contexto (C) & Desarrollo de un sistema real de gestion agricola con IA en un
+dominio agroindustrial ecuatoriano, periodo 2026-2027. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+% ============================================================================
+\section{Hipotesis}
+% ============================================================================
+
+Al tratarse de una comparacion cuantitativa, se formulan hipotesis nulas y
+alternativas para cada dimension de calidad \(j \in \{1, \ldots, 5\}\):
+
+\begin{center}
+\begin{tabular}{p{13cm}}
+\hline
+\(H_{0j}\): No existe diferencia estadisticamente significativa entre la
+puntuacion media de calidad de los RF humanos (Conjunto B) y la de los RF
+generados por LLM (Conjunto A) en la dimension \(j\). \\
+\hline
+\(H_{1j}\): Existe una diferencia estadisticamente significativa entre ambas
+puntuaciones medias en la dimension \(j\). \\
+\hline
+\end{tabular}
+\end{center}
+
+Nivel de significancia fijado en \(\alpha = 0{,}05\).
+
+% ============================================================================
+\section{Variables del estudio}
+% ============================================================================
+
+\subsection{Variables independientes}
+\begin{itemize}
+    \item Origen del conjunto de requisitos: Conjunto A (LLM) vs.\ Conjunto B
+    (equipo humano).
+\end{itemize}
+
+\subsection{Variables dependientes}
+\begin{itemize}
+    \item Puntuacion de calidad de cada RF en cada dimension (escala 1--5):
+    completitud, ausencia de ambiguedad, verificabilidad, correccion respecto
+    de la fuente y consistencia interna.
+    \item Acuerdo inter-evaluador: kappa de Cohen \cite{cohen1960} entre pares
+    de evaluadores y kappa de Fleiss \cite{fleiss1971} para el conjunto
+    completo.
+\end{itemize}
+
+\subsection{Variables de control}
+\begin{itemize}
+    \item Material fuente unico: la misma transcripcion anonimizada de
+    entrevista para ambos conjuntos.
+    \item Rubrica de evaluacion identica para ambos conjuntos y todos los
+    evaluadores.
+    \item Evaluadores independientes y ciegos (no saben cual conjunto es cual).
+    \item Parametros del LLM fijos: modelo, temperatura, top-p y semilla
+    registrados en \texttt{06\_Experimento/prompts\_llm/}.
+\end{itemize}
+
+% ============================================================================
+\section{Diseño del estudio}
+% ============================================================================
+
+Cuasi-experimento apareado \cite{wohlin2012}:
+
+\begin{enumerate}
+    \item Seleccion del material fuente unico: la transcripcion completa de la
+    entrevista al administrador (Entr-01, evidencia EV-01 en la matriz de
+    trazabilidad, archivo \texttt{02\_Evidencias/Transcripciones/}), anonimizada.
+    \item Ejecucion del LLM con la consigna exacta: \emph{``A partir del
+    siguiente material fuente, redacta requisitos funcionales del sistema
+    descrito, con los ocho atributos de la plantilla del silabo''}. Se registra
+    la consigna completa, el modelo, la temperatura, el top-p, la semilla y la
+    fecha y hora de la consulta.
+    \item Conjunto A (RF generados por el LLM) y Conjunto B (RF elicitados por
+    el equipo humano, tomados del ERS). Cada conjunto debe tener un minimo de
+    25 requisitos individuales para permitir el analisis estadistico apareado
+    \cite{montgomery2022}.
+    \item Evaluacion a ciegas: tres o mas evaluadores expertos independientes
+    (cinco es el numero recomendado) puntuan cada RF de 1 a 5 en las cinco
+    dimensiones, sin saber cual conjunto es humano y cual es LLM.
+\end{enumerate}
+
+% ============================================================================
+\section{Participantes (evaluadores expertos) y reclutamiento}
+% ============================================================================
+
+\begin{itemize}
+    \item \textbf{Evaluadores expertos:} un minimo de 3 y un maximo de 5
+    personas expertas independientes (por ejemplo, tres estudiantes de otro
+    paralelo o tres docentes del area de Ingenieria de Requerimientos).
+    \item \textbf{Criterios de inclusion:} conocimientos de ingenieria de
+    requisitos y/o de especificacion de software; no haber participado en la
+    elicitacion de los RF del equipo.
+    \item \textbf{Criterios de exclusion:} miembros del equipo de desarrollo de
+    AgriMoreira y personas que hayan redactado alguno de los conjuntos de RF.
+    \item \textbf{Proceso de consentimiento:} consentimiento informado firmado,
+    conforme a la Ley Organica de Proteccion de Datos Personales del Ecuador
+    \cite{lopdp2021}; autorizacion explicita para el uso de datos anonimizados
+    en publicaciones cientificas revisadas por pares y para el deposito del
+    conjunto de datos anonimizado en Zenodo con licencia CC BY 4.0.
+\end{itemize}
+
+% ============================================================================
+\section{Instrumentos}
+% ============================================================================
+
+Los instrumentos completos se encuentran en la carpeta
+\texttt{06\_Experimento/instrumentos/} y los prompts en
+\texttt{06\_Experimento/prompts\_llm/}:
+
+\begin{enumerate}
+    \item \textbf{Material fuente unico}: transcripcion anonimizada de la
+    entrevista al administrador (Entr-01, EV-01), sin nombres propios.
+    \item \textbf{Consigna exacta del LLM} con modelo, temperatura, top-p,
+    semilla, fecha y hora de la consulta (archivo Markdown por experimento).
+    \item \textbf{Rubrica de evaluacion experta}: cada RF se puntua de 1 a 5 en
+    cinco dimensiones (completitud, ausencia de ambiguedad, verificabilidad,
+    correccion respecto de la fuente y consistencia interna).
+    \item \textbf{Hoja de evaluacion a ciegas}: plantilla para que los
+    evaluadores registren sus puntuaciones por RF y por dimension.
+    \item \textbf{Plantilla de consentimiento actualizado}: disponible en la
+    carpeta etica del repositorio (\texttt{08\_Etica/}).
+\end{enumerate}
+
+% ============================================================================
+\section{Plan de analisis estadistico}
+% ============================================================================
+
+\subsection{Analisis descriptivo}
+Se calculan la media, la desviacion estandar y las distribuciones de
+frecuencias de las puntuaciones por conjunto (A y B), por dimension y por
+evaluador.
+
+\subsection{Pruebas de hipotesis}
+\begin{enumerate}
+    \item Prueba de normalidad de \textbf{Shapiro-Wilk} sobre las diferencias
+    apareadas.
+    \item Si los datos son normales: prueba \textbf{t de Student para muestras
+    apareadas}.
+    \item Si no son normales: prueba \textbf{de Wilcoxon} para muestras
+    apareadas.
+    \item Tamano del efecto: coeficiente \textbf{d de Cohen} (datos normales)
+    o \textbf{delta de Cliff} (datos no normales).
+    \item Correccion por comparaciones multiples (por ejemplo, Bonferroni)
+    cuando se compare mas de una dimension simultaneamente.
+\end{enumerate}
+
+\subsection{Acuerdo inter-evaluador}
+\begin{itemize}
+    \item kappa de Cohen \cite{cohen1960} para la concordancia entre cada par
+    de evaluadores.
+    \item kappa de Fleiss \cite{fleiss1971} para la concordancia del conjunto
+    completo de evaluadores.
+\end{itemize}
+
+\subsection{Calculo de potencia previo}
+Potencia estadistica fijada en \(1-\beta = 0{,}80\), \(\alpha = 0{,}05\), tamano
+de efecto medio de Cohen \(d = 0{,}5\), conforme a la lista de verificacion de
+encuestas de Molleri, Petersen y Mendes \cite{molleri2020}. El calculo se
+realiza antes de la ejecucion del experimento.
+
+\subsection{Reproducibilidad}
+Todos los calculos se ejecutan con los scripts de Python versionados en
+\texttt{06\_Experimento/scripts\_analisis/} a partir de los datos crudos en
+\texttt{06\_Experimento/resultados/}. Ninguna tabla ni figura del manuscrito se
+produce manualmente.
+
+% ============================================================================
+\section{Consideraciones eticas}
+% ============================================================================
+
+\begin{itemize}
+    \item Los evaluadores y participantes firman consentimiento informado antes
+    de cualquier recoleccion de datos.
+    \item No se publican datos identificables: la firma, la cedula, el rostro y
+    la voz permanecen en zona restringida.
+    \item El proyecto es de riesgo minimo operativo (Categoria C del paquete
+    etico).
+    \item La adenda de la segunda ronda se encuentra en
+    \texttt{08\_Etica/Adenda\_Segunda\_Ronda.pdf} y tiene fecha anterior al
+    primer consentimiento de la segunda ronda.
+\end{itemize}
+
+% ============================================================================
+\section{Registro previo (preregistro)}
+% ============================================================================
+
+El protocolo se registra en el Open Science Framework (\url{https://osf.io})
+con fecha anterior a la ejecucion del experimento, siguiendo la revolucion del
+preregistro documentada por \cite{nosek2018}. El comprobante de registro con
+URL persistente se almacena como \texttt{06\_Experimento/osf\_registration.pdf}.
+
+% ============================================================================
+\section{Cronograma}
+% ============================================================================
+
+\begin{center}
+\begin{tabular}{l l}
+\toprule
+\textbf{Actividad} & \textbf{Semana} \\
+\midrule
+Registro del protocolo en OSF & Semana 11 \\
+Ejecucion del LLM (Conjunto A) y conformacion de los conjuntos & Semana 12 \\
+Evaluacion a ciegas por los evaluadores expertos & Semana 13 \\
+Analisis estadistico y figuras & Semana 14 \\
+Redaccion de resultados del manuscrito & Semana 15--16 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+% ============================================================================
+\section{Amenazas a la validez}
+% ============================================================================
+
+\begin{description}
+    \item[Validez interna:] se controla que ambos conjuntos se evaluen con la
+    misma rubrica y los mismos evaluadores a ciegas. Limitacion: la seleccion
+    del material fuente unico puede influir en la calidad de los RF de ambos
+    conjuntos.
+    \item[Validez externa:] el estudio se limita a un sistema agroindustrial
+    ecuatoriano y a un solo material fuente; los resultados no son
+    generalizables sin estudios de replicacion.
+    \item[Validez de constructo:] la calidad de requisitos se operacionaliza en
+    cinco dimensiones validadas en la literatura
+    \cite{montgomery2022}; se triangula con el acuerdo inter-evaluador.
+    \item[Validez de conclusion:] se reportan el estadistico, los grados de
+    libertad, el valor \(p\) y el tamano del efecto en cada afirmacion
+    cuantitativa.
+\end{description}
+
+\bibliographystyle{unsrt}
+\bibliography{referencias}
+
+\end{document}
