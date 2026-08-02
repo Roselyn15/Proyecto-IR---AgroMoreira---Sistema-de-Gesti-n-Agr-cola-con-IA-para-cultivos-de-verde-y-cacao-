@@ -1,0 +1,121 @@
+TRANSCRIPCION DE ENTREVISTA
+
+Codigo del participante: ENTR-06
+Rol: Tecnico
+Fecha: 2026-06-26
+Tecnica: Entrevista semiestructurada
+Proyecto: Sistema de Gestion Agricola con Inteligencia Artificial para Cultivos de Verde y Cacao (SGA)
+
+Entrevistador:
+Buenas noches. Somos estudiantes de Ingenieria de Software de la UTEQ y estamos realizando una investigacion para conocer como se gestionan actualmente las actividades de la finca. La informacion recopilada sera utilizada unicamente con fines academicos.
+
+Participante:
+De acuerdo.
+
+Entrevistador:
+¿Cual es su rol dentro de la finca?
+
+Participante:
+Trabajo como tecnico en la finca desde hace aproximadamente cuatro años.
+
+Entrevistador:
+¿Como registra actualmente la informacion de los cultivos?
+
+Participante:
+Principalmente en cuadernos y mediante reportes que se entregan al encargado.
+
+Entrevistador:
+¿Que informacion registra con mayor frecuencia?
+
+Participante:
+Las actividades realizadas, las fumigaciones, las cosechas y el estado de las parcelas.
+
+Entrevistador:
+¿Que informacion considera que deberia registrarse y actualmente no se registra?
+
+Participante:
+Las observaciones sobre plagas y el rendimiento de algunas parcelas.
+
+Entrevistador:
+¿Como identifican las parcelas dentro de la finca?
+
+Participante:
+Por numeros y por su ubicacion.
+
+Entrevistador:
+¿Como controlan las fumigaciones y fertilizaciones?
+
+Participante:
+Se registran en cuadernos y el encargado realiza la supervision.
+
+Entrevistador:
+¿Cuales son las plagas mas frecuentes?
+
+Participante:
+En verde es comun la sigatoka y en cacao la monilia.
+
+Entrevistador:
+¿Que informacion necesita consultar rapidamente cuando detecta un problema?
+
+Participante:
+El tipo de plaga, el tratamiento aplicado y las fechas de control.
+
+Entrevistador:
+¿Como registran la produccion?
+
+Participante:
+Se anotan las cantidades cosechadas por cada parcela.
+
+Entrevistador:
+¿Como controlan el inventario de insumos?
+
+Participante:
+Mediante listas y revisiones periodicas del encargado.
+
+Entrevistador:
+¿Cual es el principal problema que enfrenta la finca?
+
+Participante:
+El control oportuno de plagas y enfermedades.
+
+Entrevistador:
+¿Que procesos considera que deberian automatizarse?
+
+Participante:
+Los registros de produccion y las alertas de fumigacion.
+
+Entrevistador:
+¿Que tipo de recordatorios le gustaria recibir?
+
+Participante:
+Recordatorios sobre fumigaciones, fertilizaciones y proximas cosechas.
+
+Entrevistador:
+¿Que reportes considera mas importantes?
+
+Participante:
+Produccion por parcela, costos y perdidas ocasionadas por plagas.
+
+Entrevistador:
+¿Conoce la inteligencia artificial?
+
+Participante:
+Si. Considero que puede analizar informacion y generar recomendaciones automaticamente.
+
+Entrevistador:
+¿Confiaria en recomendaciones generadas por un sistema inteligente?
+
+Participante:
+Si, siempre que la informacion sea clara y confiable.
+
+Entrevistador:
+¿Como le gustaria recibir las recomendaciones del sistema?
+
+Participante:
+Mediante alertas automaticas y recomendaciones basadas en los datos registrados.
+
+Entrevistador:
+Muchas gracias por su colaboracion.
+
+Participante:
+Gracias a ustedes.
