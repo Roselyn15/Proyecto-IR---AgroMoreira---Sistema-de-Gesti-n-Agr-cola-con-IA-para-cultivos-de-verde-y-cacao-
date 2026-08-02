@@ -1486,6 +1486,443 @@ Prioridad & Alta \\
 \end{longtable}
 \end{center}
 
+\subsection{Historias de usuario}
+\label{sec:historias-usuario}
+
+Esta sección presenta las historias de usuario en formato Connextra para cada requisito funcional de prioridad Debe tener, con su verificación según los criterios INVEST y al menos un escenario de aceptación en notación Gherkin. Los roles utilizados son Administrador y Jornalero, conforme al perfil evidenciado en las entrevistas EV-01 y EV-02. No se redactan historias de usuario para los requisitos de prioridad Debería tener, Podría tener o No tendrá, conforme al alcance definido para este bloque. El identificador de cada historia coincide con el del requisito funcional del que deriva.
+
+\bigskip
+\noindent\textbf{HU-01 \textperiodcentered\ deriva de RF-01}
+
+\smallskip
+\noindent Como usuario del sistema (administrador o jornalero), quiero iniciar sesión con mi usuario y contraseña, para acceder únicamente a las funciones correspondientes a mi rol, conforme a la restricción de seguridad R-02.
+
+\smallskip
+\noindent\textit{Verificación INVEST}
+\begin{itemize}
+\item \textbf{Independiente}: no depende de otra historia de usuario para implementarse.
+\item \textbf{Negociable}: el mecanismo de recuperación de contraseña puede definirse en diseño.
+\item \textbf{Valiosa}: sin ella ningún otro módulo puede diferenciar administrador de jornalero; origen normativo (R-02), sin evidencia de entrevista posible.
+\item \textbf{Estimable}: alcance acotado a autenticación y redirección por rol.
+\item \textbf{Pequeña}: cabe en una iteración.
+\item \textbf{Verificable}: cumple si el sistema autentica y concede acceso según el rol en $\leq$ 2,0 s (RF-01).
+\end{itemize}
+
+\smallskip
+\noindent\textit{Escenarios de aceptación (Gherkin)}
+
+\noindent CA-01.1
+\begin{itemize}
+\item[] \textbf{Dado} que el usuario está registrado en el sistema
+\item[] \textbf{Cuando} ingresa un usuario y una contraseña válidos
+\item[] \textbf{Entonces} el sistema concede acceso a las funciones correspondientes a su rol
+\end{itemize}
+
+\bigskip
+\noindent\textbf{HU-02 \textperiodcentered\ deriva de RF-02}
+
+\smallskip
+\noindent Como administrador, quiero registrar y consultar las parcelas de la finca, para contar con un registro estructurado que complemente la identificación visual que utiliza actualmente.
+
+\smallskip
+\noindent\textit{Verificación INVEST}
+\begin{itemize}
+\item \textbf{Independiente}: no depende de otra historia de usuario.
+\item \textbf{Negociable}: los campos exactos de ubicación pueden ajustarse en diseño.
+\item \textbf{Valiosa}: complementa con un registro estructurado la identificación visual que el administrador ya domina (EV-01 [04:02]).
+\item \textbf{Estimable}: alcance acotado a un CRUD de parcelas.
+\item \textbf{Pequeña}: cabe en una iteración.
+\item \textbf{Verificable}: cumple si la consulta de una parcela responde en $\leq$ 2,0 s con 500 parcelas cargadas (RF-02).
+\end{itemize}
+
+\smallskip
+\noindent\textit{Escenarios de aceptación (Gherkin)}
+
+\noindent CA-02.1
+\begin{itemize}
+\item[] \textbf{Dado} que el administrador inició sesión
+\item[] \textbf{Cuando} registra una parcela con nombre, ubicación, área y estado
+\item[] \textbf{Entonces} la parcela queda disponible para su consulta y para asociarle cultivos
+\end{itemize}
+
+\bigskip
+\noindent\textbf{HU-03 \textperiodcentered\ deriva de RF-03}
+
+\smallskip
+\noindent Como administrador, quiero registrar los cultivos de verde y cacao de cada parcela, para registrar en el sistema los cultivos correspondientes a la distribución real de la finca entre palma, verde y cacao.
+
+\smallskip
+\noindent\textit{Verificación INVEST}
+\begin{itemize}
+\item \textbf{Independiente}: depende únicamente de que exista una parcela (RF-02), no de otra historia de su mismo nivel.
+\item \textbf{Negociable}: la lista de variedades puede ampliarse en diseño.
+\item \textbf{Valiosa}: sin esto no se puede diferenciar verde de cacao en ningún reporte posterior (EV-01 [03:18]).
+\item \textbf{Estimable}: alcance acotado a un CRUD de cultivos asociados a parcela.
+\item \textbf{Pequeña}: cabe en una iteración.
+\item \textbf{Verificable}: cumple si el cultivo queda disponible para consulta asociado a su parcela en $\leq$ 2,0 s (RF-03).
+\end{itemize}
+
+\smallskip
+\noindent\textit{Escenarios de aceptación (Gherkin)}
+
+\noindent CA-03.1
+\begin{itemize}
+\item[] \textbf{Dado} que existe al menos una parcela registrada
+\item[] \textbf{Cuando} el administrador registra un cultivo de tipo verde o cacao para esa parcela
+\item[] \textbf{Entonces} el cultivo queda asociado correctamente a la parcela
+\end{itemize}
+
+\bigskip
+\noindent\textbf{HU-04 \textperiodcentered\ deriva de RF-04}
+
+\smallskip
+\noindent Como jornalero, quiero registrar las labores que realizo cada día, para dejar un registro de las actividades ejecutadas, además de la comunicación verbal que mantengo con el administrador.
+
+\smallskip
+\noindent\textit{Verificación INVEST}
+\begin{itemize}
+\item \textbf{Independiente}: depende de que el trabajador tenga una cuenta registrada (RF-14), no de otra historia de su mismo nivel.
+\item \textbf{Negociable}: el catálogo exacto de tipos de actividad puede ajustarse en diseño.
+\item \textbf{Valiosa}: añade un registro consultable a la comunicación verbal que hoy predomina (EV-02 [00:54]).
+\item \textbf{Estimable}: alcance acotado a un formulario de registro.
+\item \textbf{Pequeña}: cabe en una iteración.
+\item \textbf{Verificable}: cumple si el 100~\% de las actividades quedan disponibles para consulta del administrador en máximo 1 minuto (RF-04).
+\end{itemize}
+
+\smallskip
+\noindent\textit{Escenarios de aceptación (Gherkin)}
+
+\noindent CA-04.1
+\begin{itemize}
+\item[] \textbf{Dado} que el jornalero inició sesión
+\item[] \textbf{Cuando} registra una actividad indicando fecha, tipo y parcela
+\item[] \textbf{Entonces} la actividad queda disponible para consulta del administrador
+\end{itemize}
+
+\bigskip
+\noindent\textbf{HU-05 \textperiodcentered\ deriva de RF-05}
+
+\smallskip
+\noindent Como jornalero, quiero registrar la cantidad cosechada en la unidad que corresponde a cada cultivo, para mantener en el sistema la misma unidad de medida que utilizo actualmente según se trate de plátano o cacao.
+
+\smallskip
+\noindent\textit{Verificación INVEST}
+\begin{itemize}
+\item \textbf{Independiente}: depende de que exista un cultivo registrado (RF-03), no de otra historia de su mismo nivel.
+\item \textbf{Negociable}: la lista de unidades puede ampliarse en diseño (RNF-14).
+\item \textbf{Valiosa}: es la base de todo reporte de producción posterior (EV-02 [02:08]).
+\item \textbf{Estimable}: alcance acotado a un formulario de registro de cosecha.
+\item \textbf{Pequeña}: cabe en una iteración.
+\item \textbf{Verificable}: cumple si el registro se incorpora al historial de producción en $\leq$ 2,0 s (RF-05).
+\end{itemize}
+
+\smallskip
+\noindent\textit{Escenarios de aceptación (Gherkin)}
+
+\noindent CA-05.1
+\begin{itemize}
+\item[] \textbf{Dado} que existe un cultivo previamente registrado
+\item[] \textbf{Cuando} el jornalero registra una cosecha con cultivo, parcela, cantidad, unidad y fecha
+\item[] \textbf{Entonces} la producción queda registrada y disponible en el historial
+\end{itemize}
+
+\bigskip
+\noindent\textbf{HU-06 \textperiodcentered\ deriva de RF-06}
+
+\smallskip
+\noindent Como administrador, quiero registrar y consultar el inventario de insumos y herramientas, para dejar de operar sin un inventario real.
+
+\smallskip
+\noindent\textit{Verificación INVEST}
+\begin{itemize}
+\item \textbf{Independiente}: no depende de otra historia de usuario.
+\item \textbf{Negociable}: los tipos de insumo pueden ampliarse en diseño.
+\item \textbf{Valiosa}: resuelve la ausencia de inventario reconocida por el propio administrador (EV-01 [06:14]).
+\item \textbf{Estimable}: alcance acotado a un CRUD de insumos.
+\item \textbf{Pequeña}: cabe en una iteración.
+\item \textbf{Verificable}: cumple si el inventario refleja la actualización en $\leq$ 2,0 s (RF-06).
+\end{itemize}
+
+\smallskip
+\noindent\textit{Escenarios de aceptación (Gherkin)}
+
+\noindent CA-06.1
+\begin{itemize}
+\item[] \textbf{Dado} que el administrador inició sesión
+\item[] \textbf{Cuando} registra o actualiza un insumo con nombre, tipo, cantidad y unidad
+\item[] \textbf{Entonces} el inventario queda actualizado con la información registrada
+\end{itemize}
+
+\bigskip
+\noindent\textbf{HU-07 \textperiodcentered\ deriva de RF-07}
+
+\smallskip
+\noindent Como administrador, quiero consultar la producción registrada en un período específico, para saber si la diferencia entre un mes y otro es más alta o más baja.
+
+\smallskip
+\noindent\textit{Verificación INVEST}
+\begin{itemize}
+\item \textbf{Independiente}: depende de que existan registros de cosecha (RF-05), no de otra historia de su mismo nivel.
+\item \textbf{Negociable}: los filtros adicionales pueden ampliarse en diseño.
+\item \textbf{Valiosa}: apoya la comparación de rendimiento entre periodos (EV-01 [04:47]).
+\item \textbf{Estimable}: alcance acotado a una consulta filtrada por fecha.
+\item \textbf{Pequeña}: cabe en una iteración.
+\item \textbf{Verificable}: cumple si la consulta responde en $\leq$ 2,0 s con 500 registros (RF-07).
+\end{itemize}
+
+\smallskip
+\noindent\textit{Escenarios de aceptación (Gherkin)}
+
+\noindent CA-07.1
+\begin{itemize}
+\item[] \textbf{Dado} que existen registros de producción almacenados
+\item[] \textbf{Cuando} el administrador selecciona un período de consulta
+\item[] \textbf{Entonces} el sistema presenta únicamente la producción de ese período
+\end{itemize}
+
+\bigskip
+\noindent\textbf{HU-08 \textperiodcentered\ deriva de RF-08}
+
+\smallskip
+\noindent Como administrador, quiero planificar las actividades agrícolas con anticipación, para mantener la práctica de organizar el trabajo con una semana de adelanto.
+
+\smallskip
+\noindent\textit{Verificación INVEST}
+\begin{itemize}
+\item \textbf{Independiente}: depende de que existan parcelas (RF-02), no de otra historia de su mismo nivel.
+\item \textbf{Negociable}: el horizonte de planificación puede ajustarse en diseño.
+\item \textbf{Valiosa}: digitaliza una práctica de planificación que ya existe pero es informal (EV-01 [06:51]).
+\item \textbf{Estimable}: alcance acotado a un formulario de planificación.
+\item \textbf{Pequeña}: cabe en una iteración.
+\item \textbf{Verificable}: cumple si la actividad planificada queda disponible para asignación en $\leq$ 2,0 s (RF-08).
+\end{itemize}
+
+\smallskip
+\noindent\textit{Escenarios de aceptación (Gherkin)}
+
+\noindent CA-08.1
+\begin{itemize}
+\item[] \textbf{Dado} que existen parcelas registradas
+\item[] \textbf{Cuando} el administrador registra una actividad con tarea, fecha programada y parcela
+\item[] \textbf{Entonces} la actividad queda disponible para su posterior asignación
+\end{itemize}
+
+\bigskip
+\noindent\textbf{HU-09 \textperiodcentered\ deriva de RF-09}
+
+\smallskip
+\noindent Como administrador, quiero asignar tareas específicas a cada trabajador, para dejar un registro formal de la planificación y dirección del trabajo que realizo directamente con cada uno.
+
+\smallskip
+\noindent\textit{Verificación INVEST}
+\begin{itemize}
+\item \textbf{Independiente}: depende de RF-14 y RF-08, no de otra historia de su mismo nivel.
+\item \textbf{Negociable}: el nivel de detalle de la tarea puede ajustarse en diseño.
+\item \textbf{Valiosa}: deja registro formal de la coordinación que hoy realiza directamente el administrador (EV-02 [01:01]).
+\item \textbf{Estimable}: alcance acotado a una asignación trabajador-tarea-parcela-fecha.
+\item \textbf{Pequeña}: cabe en una iteración.
+\item \textbf{Verificable}: cumple si el 100~\% de las tareas asignadas quedan disponibles para el trabajador en $\leq$ 2,0 s (RF-09).
+\end{itemize}
+
+\smallskip
+\noindent\textit{Escenarios de aceptación (Gherkin)}
+
+\noindent CA-09.1
+\begin{itemize}
+\item[] \textbf{Dado} que existen trabajadores y actividades registradas
+\item[] \textbf{Cuando} el administrador asigna una actividad a un trabajador con parcela y fecha
+\item[] \textbf{Entonces} la tarea queda asignada y disponible para consulta del trabajador
+\end{itemize}
+
+\bigskip
+\noindent\textbf{HU-10 \textperiodcentered\ deriva de RF-10}
+
+\smallskip
+\noindent Como administrador, quiero consultar el estado de las tareas asignadas, para contar con un registro consultable del seguimiento que realizo actualmente de forma directa con cada trabajador.
+
+\smallskip
+\noindent\textit{Verificación INVEST}
+\begin{itemize}
+\item \textbf{Independiente}: depende de RF-09, no de otra historia de su mismo nivel.
+\item \textbf{Negociable}: los estados intermedios pueden ampliarse en diseño.
+\item \textbf{Valiosa}: deja un registro consultable del seguimiento que hoy realiza el administrador de forma directa (EV-01 [07:11]).
+\item \textbf{Estimable}: alcance acotado a una consulta de estado.
+\item \textbf{Pequeña}: cabe en una iteración.
+\item \textbf{Verificable}: cumple si el estado se refleja correctamente en $\leq$ 2,0 s desde el cambio (RF-10).
+\end{itemize}
+
+\smallskip
+\noindent\textit{Escenarios de aceptación (Gherkin)}
+
+\noindent CA-10.1
+\begin{itemize}
+\item[] \textbf{Dado} que existen tareas previamente asignadas
+\item[] \textbf{Cuando} el administrador consulta el módulo de seguimiento
+\item[] \textbf{Entonces} el sistema muestra el estado actualizado de cada tarea asignada
+\end{itemize}
+
+\bigskip
+\noindent\textbf{HU-11 \textperiodcentered\ deriva de RF-11}
+
+\smallskip
+\noindent Como administrador, quiero generar reportes de producción por cultivo, parcela o período, para analizar el rendimiento de la finca sin calcularlo manualmente.
+
+\smallskip
+\noindent\textit{Verificación INVEST}
+\begin{itemize}
+\item \textbf{Independiente}: depende de que existan registros de producción, no de otra historia de su mismo nivel.
+\item \textbf{Negociable}: el formato de exportación puede ajustarse en diseño.
+\item \textbf{Valiosa}: responde al tipo de reporte que el administrador identificó como necesario (EV-01 [08:10]).
+\item \textbf{Estimable}: alcance acotado a un generador de reportes con filtros.
+\item \textbf{Pequeña}: cabe en una iteración.
+\item \textbf{Verificable}: cumple si el reporte se genera en $\leq$ 3,0 s con 500 registros (RF-11).
+\end{itemize}
+
+\smallskip
+\noindent\textit{Escenarios de aceptación (Gherkin)}
+
+\noindent CA-11.1
+\begin{itemize}
+\item[] \textbf{Dado} que existen registros de producción almacenados
+\item[] \textbf{Cuando} el administrador selecciona los filtros de cultivo, parcela o período
+\item[] \textbf{Entonces} el sistema genera el reporte correspondiente disponible para consulta o descarga
+\end{itemize}
+
+\bigskip
+\noindent\textbf{HU-14 \textperiodcentered\ deriva de RF-14}
+
+\smallskip
+\noindent Como administrador, quiero registrar y administrar las cuentas de los usuarios del sistema con su rol correspondiente, para administrar el acceso del equipo de siete personas conforme al rol de cada una.
+
+\smallskip
+\noindent\textit{Verificación INVEST}
+\begin{itemize}
+\item \textbf{Independiente}: no depende de otra historia de usuario.
+\item \textbf{Negociable}: los campos adicionales del perfil pueden ampliarse en diseño.
+\item \textbf{Valiosa}: sostiene el control de acceso diferenciado del que depende todo el sistema (EV-01 [02:35]; R-02).
+\item \textbf{Estimable}: alcance acotado a un CRUD de usuarios y roles.
+\item \textbf{Pequeña}: cabe en una iteración.
+\item \textbf{Verificable}: cumple si el cambio de rol o estado se refleja en los permisos en $\leq$ 2,0 s (RF-14).
+\end{itemize}
+
+\smallskip
+\noindent\textit{Escenarios de aceptación (Gherkin)}
+
+\noindent CA-14.1
+\begin{itemize}
+\item[] \textbf{Dado} que el administrador inició sesión
+\item[] \textbf{Cuando} registra un usuario con su rol correspondiente
+\item[] \textbf{Entonces} la cuenta queda disponible con los permisos de ese rol
+\end{itemize}
+
+\bigskip
+\noindent\textbf{HU-19 \textperiodcentered\ deriva de RF-19}
+
+\smallskip
+\noindent Como administrador, quiero un reporte de las pérdidas de producción por plagas y enfermedades, para tener la información que considero la más importante de analizar.
+
+\smallskip
+\noindent\textit{Verificación INVEST}
+\begin{itemize}
+\item \textbf{Independiente}: depende de que existan registros de enfermedad (RF-16), no de otra historia de su mismo nivel.
+\item \textbf{Negociable}: el desglose exacto (por cultivo, por parcela) puede ajustarse en diseño.
+\item \textbf{Valiosa}: responde al reporte que el propio administrador señaló como el más importante (EV-01 [08:17]).
+\item \textbf{Estimable}: alcance acotado a un reporte con filtros.
+\item \textbf{Pequeña}: cabe en una iteración.
+\item \textbf{Verificable}: cumple si el reporte se genera en $\leq$ 3,0 s con 500 registros (RF-19).
+\end{itemize}
+
+\smallskip
+\noindent\textit{Escenarios de aceptación (Gherkin)}
+
+\noindent CA-19.1
+\begin{itemize}
+\item[] \textbf{Dado} que existen registros de enfermedad con pérdida estimada
+\item[] \textbf{Cuando} el administrador solicita el reporte de pérdidas por plagas
+\item[] \textbf{Entonces} el sistema presenta la pérdida estimada por plaga, cultivo y parcela
+\end{itemize}
+
+\bigskip
+\noindent\textbf{HU-24 \textperiodcentered\ deriva de RF-24}
+
+\smallskip
+\noindent Como administrador, quiero consultar el historial de labores y cosechas filtrado por trabajador y fecha, para no volver a perder el control de los datos como ocurrió cuando no se llevaba bitácora de las fundas semanales.
+
+\smallskip
+\noindent\textit{Verificación INVEST}
+\begin{itemize}
+\item \textbf{Independiente}: depende de que existan registros de RF-04 y RF-05, no de otra historia de su mismo nivel.
+\item \textbf{Negociable}: los filtros adicionales pueden ampliarse en diseño.
+\item \textbf{Valiosa}: previene la desviación de datos ya ocurrida una vez (EV-01 [02:04], [02:17]).
+\item \textbf{Estimable}: alcance acotado a una consulta filtrada.
+\item \textbf{Pequeña}: cabe en una iteración.
+\item \textbf{Verificable}: cumple si la consulta con 500 registros responde en $\leq$ 2,0 s (RF-24).
+\end{itemize}
+
+\smallskip
+\noindent\textit{Escenarios de aceptación (Gherkin)}
+
+\noindent CA-24.1
+\begin{itemize}
+\item[] \textbf{Dado} que existen labores y cosechas registradas
+\item[] \textbf{Cuando} el administrador filtra el historial por trabajador y rango de fechas
+\item[] \textbf{Entonces} el sistema presenta únicamente los registros que cumplen ese filtro
+\end{itemize}
+
+\bigskip
+\noindent\textbf{HU-25 \textperiodcentered\ deriva de RF-25}
+
+\smallskip
+\noindent Como administrador, quiero recibir alertas automáticas cuando algo requiera atención inmediata, para tomar decisiones sin tener que revisar todo el sistema manualmente.
+
+\smallskip
+\noindent\textit{Verificación INVEST}
+\begin{itemize}
+\item \textbf{Independiente}: depende de RF-06 y RF-16 como origen de la alerta, no de otra historia de su mismo nivel.
+\item \textbf{Negociable}: el canal de notificación puede definirse en diseño.
+\item \textbf{Valiosa}: es la forma de apoyo a la decisión que el administrador priorizó explícitamente (EV-01 [10:33]).
+\item \textbf{Estimable}: alcance acotado a un motor de alertas sobre condiciones ya definidas.
+\item \textbf{Pequeña}: cabe en una iteración.
+\item \textbf{Verificable}: cumple si el 100~\% de las enfermedades de gravedad alta generan alerta en $\leq$ 5,0 s (RF-25).
+\end{itemize}
+
+\smallskip
+\noindent\textit{Escenarios de aceptación (Gherkin)}
+
+\noindent CA-25.1
+\begin{itemize}
+\item[] \textbf{Dado} que se registra una enfermedad con nivel de gravedad alto
+\item[] \textbf{Cuando} el sistema procesa el registro
+\item[] \textbf{Entonces} genera una alerta visible al administrador en menos de 5 segundos
+\end{itemize}
+
+\bigskip
+\noindent\textbf{HU-26 \textperiodcentered\ deriva de RF-26}
+
+\smallskip
+\noindent Como administrador, quiero que el sistema me avise automáticamente cuando una parcela muestre señales de enfermedad antes de que yo lo note visualmente, para intervenir a tiempo.
+
+\smallskip
+\noindent\textit{Verificación INVEST}
+\begin{itemize}
+\item \textbf{Independiente}: depende de que existan registros históricos suficientes, no de otra historia de su mismo nivel.
+\item \textbf{Negociable}: el algoritmo específico de detección puede definirse en diseño técnico.
+\item \textbf{Valiosa}: es la funcionalidad de IA con la que el administrador se mostró explícitamente de acuerdo (EV-01 [09:02]).
+\item \textbf{Estimable}: alcance acotado a la generación de una alerta temprana con nivel de confianza.
+\item \textbf{Pequeña}: cabe en una iteración, asumiendo el modelo de IA como componente ya disponible.
+\item \textbf{Verificable}: cumple si el módulo alcanza una exactitud mínima del 70~\% sobre el conjunto de validación (RF-26).
+\end{itemize}
+
+\smallskip
+\noindent\textit{Escenarios de aceptación (Gherkin)}
+
+\noindent CA-26.1
+\begin{itemize}
+\item[] \textbf{Dado} que existen registros históricos suficientes de una parcela
+\item[] \textbf{Cuando} el módulo de IA detecta un patrón asociado a una posible enfermedad
+\item[] \textbf{Entonces} el sistema genera una alerta temprana con el nivel de confianza del modelo
+\end{itemize}
+
 % Bibliografia
 \bibliographystyle{ieeetr}
 \bibliography{referencias}
