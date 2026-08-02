@@ -10,6 +10,7 @@ Este proyecto fue desarrollado como parte del **Proyecto Integrador de la asigna
 
 - [Resumen del dominio](#resumen-del-dominio)
 - [Equipo de desarrollo](#equipo-de-desarrollo)
+- [Enlaces del proyecto](#enlaces-del-proyecto)
 - [Documentación del proyecto](#documentación-del-proyecto)
 - [Reproducción del proyecto](#reproducción-del-proyecto)
 - [Estructura del repositorio](#estructura-del-repositorio)
@@ -49,6 +50,17 @@ Agrícola Moreira administra lotes destinados a la producción de **cacao** y **
 
 ---
 
+# Enlaces del proyecto
+
+| Recurso | Enlace |
+|---|---|
+| ERS/SRS completo (PDF) | [01_ERS/ERS_SRS_2A_v1.0.pdf](./01_ERS/ERS_SRS_2A_v1.0.pdf) |
+| MVP (código fuente) | [05_MVP/](./05_MVP/) |
+| Registro previo del protocolo experimental (OSF) | [osf.io/7cvhy](https://osf.io/7cvhy) |
+| Conjunto de datos (Zenodo) | *Pendiente de depósito — se publicará con la Entrega 4 (2B), siguiendo los principios FAIR* |
+
+---
+
 # Documentación del proyecto
 
 | Documento | Ubicación |
@@ -79,13 +91,15 @@ cd Proyecto-IR---AgroMoreira---Sistema-de-Gesti-n-Agr-cola-con-IA-para-cultivos-
 
 ## Ejecutar el MVP
 
-Diríjase a la carpeta:
+Diríjase a la carpeta: 05.MVP/ y siga las instrucciones descritas en el archivo `README.md` correspondiente para ejecutar la aplicación. El MVP no requiere instalación: se abre directamente en cualquier navegador.
 
-```
-05_MVP/
-```
+## Reproducir el análisis experimental
 
-y siga las instrucciones descritas en el archivo `README.md` correspondiente para ejecutar la aplicación.
+1. Ubíquese en la carpeta `06_Experimento/`.
+2. Instale las dependencias indicadas en `06_Experimento/scripts_analisis/` (Python o R, según corresponda).
+3. Los datos crudos recolectados están en `06_Experimento/resultados/`.
+4. Ejecute los scripts de `06_Experimento/scripts_analisis/` en orden — reproducen exactamente las tablas y figuras reportadas en el manuscrito a partir de los datos crudos.
+5. El protocolo completo (preguntas de investigación, proposiciones del estudio, plan de análisis) está en `06_Experimento/protocolo.pdf`, registrado previamente en OSF: https://osf.io/7cvhy
 
 ---
 
@@ -126,21 +140,12 @@ AgriMoreira/
 
 # Citación
 
-La forma recomendada de citar este repositorio se encuentra en el archivo:
-
-```
-CITATION.cff
-```
-
+La forma recomendada de citar este repositorio se encuentra en el archivo:  CITATION.cff 
 ---
 
 # Integridad del repositorio
-
 Las huellas digitales SHA-256 de los archivos multimedia y documentos se encuentran en:
-
-```
 checksums.sha256
-```
 
 Para verificar la integridad del repositorio, ejecute:
 
