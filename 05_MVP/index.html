@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AgroMoreira · SGA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green-900:#12281e; --green-800:#1F4D3A; --green-700:#2c6349; --green-600:#3d7d5c;
+  --bronze:#A6631B; --bronze-light:#c98a3f;
+  --cream:#F7F4EE; --surface:#FFFFFF; --ink:#23291F; --ink-soft:#5b6155; --ink-faint:#8a8f80;
+  --line:#E4DFD2; --danger:#B4472A; --danger-bg:#FBEDE7; --danger-line:#f0c9ba;
+  --warn:#B08A2E; --warn-bg:#FBF3DE; --warn-line:#eddca4;
+  --ok:#3c5237; --ok-bg:#EFF4EC; --ok-line:#d9e5d2;
+  --info:#2c5f8a; --info-bg:#e9f1f8; --info-line:#c7dcec;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{font-family:'Inter',sans-serif; background:var(--cream); color:var(--ink); min-height:100vh;}
+h1,h2,h3{font-family:'Fraunces',serif; margin:0;}
+code.mono{font-family:'IBM Plex Mono',monospace;}
+a{color:inherit;}
+
+.app{display:flex; min-height:100vh;}
+.sidebar{width:248px; flex:none; min-height:100vh; background:linear-gradient(180deg,var(--green-900) 0%, var(--green-800) 60%, var(--green-700) 100%); color:#EFE9D9; display:flex; flex-direction:column; padding:22px 16px; position:sticky; top:0; height:100vh;}
+.side-wordmark{display:flex; align-items:center; gap:9px; font-family:'Fraunces',serif; font-weight:600; font-size:17px; padding:4px 8px 22px;}
+.side-nav{list-style:none; margin:0; padding:0; flex:1; display:flex; flex-direction:column; gap:2px;}
+.side-nav a{display:flex; align-items:center; gap:11px; padding:10px 12px; border-radius:8px; color:#cdd8c8; text-decoration:none; font-size:13.5px; font-weight:500; border-left:3px solid transparent; cursor:pointer;}
+.side-nav a.active{background:rgba(255,255,255,.09); color:#fff; border-left-color:var(--bronze-light);}
+.side-nav a .badge-dot{margin-left:auto; width:7px; height:7px; border-radius:50%; background:var(--bronze-light);}
+.side-nav .locked{padding:10px 12px;font-size:11.5px;color:#93a08d;display:flex;gap:8px;align-items:flex-start;}
+.side-user{display:flex; align-items:center; gap:10px; padding:12px; margin-top:10px; border-top:1px solid rgba(255,255,255,.14); padding-top:16px; cursor:pointer;}
+.side-avatar{width:34px; height:34px; border-radius:50%; background:var(--bronze); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:13px; flex:none;}
+.side-user div b{display:block; font-size:13px; color:#fff;}
+.side-user div span{font-size:11.5px; color:#a9b7a3;}
+
+.main{flex:1; min-width:0; display:flex; flex-direction:column;}
+.topbar{display:flex; align-items:center; justify-content:space-between; gap:20px; padding:20px 32px; border-bottom:1px solid var(--line); background:var(--cream); position:sticky; top:0; z-index:5;}
+.topbar .eyebrow{font-size:11.5px; letter-spacing:.09em; text-transform:uppercase; color:var(--bronze); font-weight:700; margin-bottom:5px;}
+.topbar h1{font-size:24px; font-weight:700;}
+.topbar .sub{font-size:13px; color:var(--ink-soft); margin-top:4px;}
+.content{padding:28px 32px 60px; flex:1;}
+
+.card{background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:22px;}
+.card + .card{margin-top:20px;}
+.card-head{display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; gap:12px;}
+.card-head h2{font-size:16.5px; font-weight:600;}
+.card-head .muted{font-size:12.5px; color:var(--ink-faint);}
+
+.btn{display:inline-flex; align-items:center; gap:7px; padding:9px 15px; border-radius:8px; font-size:13.5px; font-weight:600; border:1.5px solid transparent; cursor:pointer; text-decoration:none; font-family:'Inter',sans-serif; background:none;}
+.btn-primary{background:var(--green-800); color:#fff;}
+.btn-primary:hover{background:var(--green-700);}
+.btn-outline{background:var(--surface); border-color:var(--line); color:var(--ink);}
+.btn-outline:hover{border-color:var(--green-800);}
+.btn-danger-outline{background:var(--surface); border-color:var(--danger-line); color:var(--danger);}
+.btn-sm{padding:6px 11px; font-size:12.5px; border-radius:7px;}
+.btn-block{width:100%; justify-content:center;}
+
+.badge{display:inline-flex; align-items:center; gap:5px; font-size:11.5px; font-weight:600; padding:3px 9px; border-radius:20px; white-space:nowrap;}
+.badge-ok{background:var(--ok-bg); color:var(--ok); border:1px solid var(--ok-line);}
+.badge-warn{background:var(--warn-bg); color:var(--warn); border:1px solid var(--warn-line);}
+.badge-danger{background:var(--danger-bg); color:var(--danger); border:1px solid var(--danger-line);}
+.badge-info{background:var(--info-bg); color:var(--info); border:1px solid var(--info-line);}
+.badge-neutral{background:#efece2; color:var(--ink-soft); border:1px solid var(--line);}
+
+table{width:100%; border-collapse:collapse; font-size:13.5px;}
+thead th{text-align:left; font-size:11px; letter-spacing:.05em; text-transform:uppercase; color:var(--ink-faint); font-weight:700; padding:0 12px 10px; border-bottom:1.5px solid var(--line);}
+tbody td{padding:13px 12px; border-bottom:1px solid var(--line); vertical-align:middle;}
+tbody tr:last-child td{border-bottom:none;}
+tbody tr:hover{background:#faf9f4;}
+
+.field{margin-bottom:16px;}
+.field label{display:block; font-size:12.5px; font-weight:600; color:var(--ink); margin-bottom:6px;}
+.field .hint{font-size:11px; color:var(--ink-faint); margin-top:5px;}
+.field input, .field select, .field textarea{width:100%; padding:10px 12px; border-radius:8px; border:1.5px solid var(--line); background:var(--surface); font-family:'Inter',sans-serif; font-size:13.5px; color:var(--ink); outline:none;}
+.field input:focus, .field select:focus, .field textarea:focus{border-color:var(--green-800); box-shadow:0 0 0 3px rgba(31,77,58,.12);}
+.field-row{display:flex; gap:14px;}
+.field-row .field{flex:1;}
+.seg{display:flex; gap:8px; flex-wrap:wrap;}
+.seg button{padding:8px 14px; border-radius:8px; border:1.5px solid var(--line); background:var(--surface); font-size:13px; font-weight:600; color:var(--ink-soft); cursor:pointer;}
+.seg button.active{background:var(--green-800); border-color:var(--green-800); color:#fff;}
+.avatar-sm{width:26px; height:26px; border-radius:50%; background:var(--green-700); color:#fff; display:inline-flex; align-items:center; justify-content:center; font-size:10.5px; font-weight:700;}
+.progress{height:7px; border-radius:5px; background:#eee9db; overflow:hidden;}
+.progress > div{height:100%; border-radius:5px;}
+.foot-note{margin-top:26px; font-size:11.5px; color:var(--ink-faint); text-align:left;}
+.foot-note code{font-family:'IBM Plex Mono',monospace; font-size:10.5px; background:#efe9da; color:#6b6656; padding:2px 6px; border-radius:4px;}
+.two-col{display:flex; gap:20px; align-items:flex-start; flex-wrap:wrap;}
+.toast{position:fixed; bottom:24px; right:24px; background:var(--green-800); color:#fff; padding:12px 18px; border-radius:8px; font-size:13.5px; font-weight:600; box-shadow:0 8px 24px rgba(0,0,0,.2); opacity:0; transform:translateY(8px); transition:.25s ease; pointer-events:none; z-index:50;}
+.toast.show{opacity:1; transform:translateY(0);}
+.kanban{display:grid; grid-template-columns:repeat(4,1fr); gap:16px;}
+.kcol{background:#efece2; border-radius:10px; padding:12px;}
+.kcol h3{font-size:12.5px; text-transform:uppercase; letter-spacing:.04em; color:var(--ink-soft); margin-bottom:10px; display:flex; justify-content:space-between;}
+.kcard{background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:10px 12px; margin-bottom:8px; font-size:13px;}
+.kcard b{display:block; margin-bottom:2px;}
+.kcard .meta{font-size:11.5px; color:var(--ink-faint); margin-top:4px; display:flex; justify-content:space-between; align-items:center;}
+
+/* ---------- Login ---------- */
+.login-wrap{display:flex; width:100%; min-height:100vh;}
+.brand{position:relative; flex:1 1 46%; background:linear-gradient(165deg,var(--green-900) 0%, var(--green-800) 55%, var(--green-700) 100%); color:#EFE9D9; padding:56px; display:flex; flex-direction:column; justify-content:space-between; min-width:360px;}
+.wordmark{display:flex; align-items:center; gap:10px; font-family:'Fraunces',serif; font-weight:600; font-size:22px;}
+.tagline{margin-top:60px; max-width:420px; font-family:'Fraunces',serif; font-style:italic; font-weight:500; font-size:30px; line-height:1.32; color:#F4EFDE;}
+.tagline b{font-style:normal; color:var(--bronze-light); font-weight:600;}
+.stat-row{display:flex; gap:34px; margin-bottom:28px;}
+.stat b{display:block; font-family:'Fraunces',serif; font-size:26px; font-weight:600; color:#fff;}
+.stat span{display:block; font-size:12px; color:#C9D6C4; margin-top:2px;}
+.panel{flex:1 1 54%; display:flex; align-items:center; justify-content:center; padding:40px 32px;}
+.login-card{width:100%; max-width:380px;}
+.login-card .eyebrow{font-size:12px; letter-spacing:.09em; text-transform:uppercase; color:var(--bronze); font-weight:600; margin-bottom:10px;}
+.login-card h1{font-family:'Fraunces',serif; font-weight:700; font-size:30px; margin:0 0 8px;}
+.login-card p.sub{color:var(--ink-soft); font-size:14.5px; margin:0 0 32px; line-height:1.5;}
+.error-box{display:flex; gap:10px; align-items:flex-start; background:#FBEDE7; border:1px solid #f0c9ba; color:var(--danger); padding:12px 14px; border-radius:8px; font-size:13px; margin-bottom:20px; line-height:1.45;}
+.role-note{display:flex; gap:10px; align-items:center; background:#EFF4EC; border:1px solid #d9e5d2; border-radius:8px; padding:10px 12px; font-size:12.5px; color:#3c5237; margin-top:20px;}
+.demo-users{margin-top:14px; font-size:12px; color:var(--ink-faint); line-height:1.7;}
+.demo-users code{background:#efe9da; padding:1px 6px; border-radius:4px;}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div id="toast" class="toast"></div>
+
+<script>
+/* ===================== DATA LAYER ===================== */
+const DB_KEY = 'agromoreira_mvp_db_v1';
+
+function seedDB(){
+  return {
+    users: [
+      {id:'u1', name:'Raúl Moreira', username:'r.moreira', password:'admin123', role:'Administrador', status:'Activo'},
+      {id:'u2', name:'Andrés Cedeño', username:'a.cedeno', password:'campo123', role:'Trabajador agrícola', status:'Activo'},
+      {id:'u3', name:'José Quinde', username:'j.quinde', password:'campo123', role:'Trabajador agrícola', status:'Activo'},
+      {id:'u4', name:'Mario Suárez', username:'m.suarez', password:'campo123', role:'Trabajador agrícola', status:'Activo'},
+      {id:'u5', name:'Luis Macías', username:'l.macias', password:'campo123', role:'Trabajador agrícola', status:'Inactivo'}
+    ],
+    plots: [
+      {id:'p1', code:'Trama A1', location:'Sector norte', area:2.4, status:'Activo', crop:'Cacao'},
+      {id:'p2', code:'Trama B1', location:'Sector este', area:3.1, status:'Activo', crop:'Plátano'},
+      {id:'p3', code:'Trama B2', location:'Sector este', area:2.8, status:'Activo', crop:'Plátano'},
+      {id:'p4', code:'Trama C1', location:'Sector sur', area:1.9, status:'Descanso', crop:'—'},
+      {id:'p5', code:'Trama C2', location:'Sector sur', area:2.2, status:'Activo', crop:'Cacao'},
+      {id:'p6', code:'Trama D1', location:'Sector oeste', area:3.6, status:'Activo', crop:'Palma'}
+    ],
+    crops: [
+      {id:'c1', type:'Cacao', variety:'CCN-51', plot:'Trama A1', date:'2024-03-10', status:'Producción'},
+      {id:'c2', type:'Plátano', variety:'Dominico', plot:'Trama B1', date:'2023-11-02', status:'Producción'},
+      {id:'c3', type:'Plátano', variety:'Barraganete', plot:'Trama B2', date:'2024-01-15', status:'Crecimiento'},
+      {id:'c4', type:'Cacao', variety:'Nacional', plot:'Trama C2', date:'2022-06-20', status:'Producción'},
+      {id:'c5', type:'Palma', variety:'Palma africana', plot:'Trama D1', date:'2021-05-01', status:'Producción'}
+    ],
+    activities: [
+      {id:'a1', type:'Deshierbe', plot:'Trama B1', date:'2026-07-28', time:'07:40', worker:'Andrés Cedeño', status:'Hecho', notes:''},
+      {id:'a2', type:'Fertilización', plot:'Trama A1', date:'2026-07-28', time:'09:15', worker:'Andrés Cedeño', status:'Hecho', notes:''},
+      {id:'a3', type:'Control de plagas (fungicida)', plot:'Trama C2', date:'2026-07-28', time:'11:00', worker:'Andrés Cedeño', status:'En progreso', notes:''}
+    ],
+    harvests: [
+      {id:'h1', crop:'Plátano', plot:'Trama B1', date:'2026-07-28', qty:38, unit:'Racimos', worker:'Andrés Cedeño', notes:''},
+      {id:'h2', crop:'Cacao', plot:'Trama C1', date:'2026-07-26', qty:12, unit:'Sacos', worker:'José Quinde', notes:''},
+      {id:'h3', crop:'Palma', plot:'Trama D1', date:'2026-07-24', qty:2.4, unit:'Toneladas', worker:'Mario Suárez', notes:''}
+    ],
+    inventory: [
+      {id:'i1', name:'Fungicida sistémico', category:'Fungicida', qty:4, max:30, unit:'sacos', threshold:10},
+      {id:'i2', name:'Fertilizante NPK', category:'Fertilizante', qty:7, max:25, unit:'sacos', threshold:10},
+      {id:'i3', name:'Herbicida selectivo', category:'Herbicida', qty:18, max:20, unit:'litros', threshold:5},
+      {id:'i4', name:'Cal agrícola', category:'Corrector de suelo', qty:30, max:30, unit:'sacos', threshold:5},
+      {id:'i5', name:'Machetes', category:'Herramienta', qty:9, max:10, unit:'unidades', threshold:2}
+    ],
+    tasks: [
+      {id:'t1', title:'Aplicar fungicida — moniliasis', plot:'Trama C1', worker:'José Quinde', due:'Hoy', status:'Pendiente'},
+      {id:'t2', title:'Control de malas hierbas', plot:'Trama B1', worker:'Andrés Cedeño', due:'Hoy', status:'Pendiente'},
+      {id:'t3', title:'Cosecha de racimos maduros', plot:'Trama D1', worker:'Mario Suárez', due:'Mañana', status:'Pendiente'},
+      {id:'t4', title:'Fertilización programada', plot:'Trama A1', worker:'Carlos Zambrano', due:'', status:'En progreso'},
+      {id:'t5', title:'Inspección de Sigatoka', plot:'Trama B2', worker:'Luis Macías', due:'', status:'En progreso'},
+      {id:'t6', title:'Poda fitosanitaria', plot:'Trama B1', worker:'Pedro Luar', due:'', status:'Bloqueado'},
+      {id:'t7', title:'Cosecha en racimos', plot:'Trama A1', worker:'Andrés Cedeño', due:'Ayer', status:'Completado'},
+      {id:'t8', title:'Cosecha de sacos', plot:'Trama C1', worker:'José Quinde', due:'Ayer', status:'Completado'},
+      {id:'t9', title:'Entrega semanal de insumos', plot:'General', worker:'Raúl Moreira', due:'Lun', status:'Completado'}
+    ],
+    currentUserId: null
+  };
+}
+
+function loadDB(){
+  try{
+    const raw = localStorage.getItem(DB_KEY);
+    if(!raw) { const s = seedDB(); saveDB(s); return s; }
+    return JSON.parse(raw);
+  }catch(e){ const s = seedDB(); saveDB(s); return s; }
+}
+function saveDB(db){ localStorage.setItem(DB_KEY, JSON.stringify(db)); }
+function uid(prefix){ return prefix + Math.random().toString(36).slice(2,9); }
+
+let DB = loadDB();
+
+function showToast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), 2200);
+}
+
+/* ===================== ROUTER ===================== */
+const routes = {
+  '#/login': renderLogin,
+  '#/dashboard': renderDashboard,
+  '#/plots': renderPlots,
+  '#/crops': renderCrops,
+  '#/activities': renderActivities,
+  '#/harvest': renderHarvest,
+  '#/inventory': renderInventory,
+  '#/tasks': renderTasks,
+  '#/reports': renderReports,
+  '#/users': renderUsers
+};
+
+function currentUser(){ return DB.users.find(u=>u.id===DB.currentUserId) || null; }
+
+function navigate(){
+  const hash = location.hash || '#/login';
+  const user = currentUser();
+  if(hash !== '#/login' && !user){ location.hash = '#/login'; return; }
+  if(user && user.role === 'Trabajador agrícola'){
+    const allowed = ['#/activities'];
+    if(hash !== '#/login' && !allowed.includes(hash)){ location.hash = '#/activities'; return; }
+  }
+  const fn = routes[hash] || renderLogin;
+  fn();
+}
+window.addEventListener('hashchange', navigate);
+
+/* ===================== SHELL (sidebar + topbar) ===================== */
+const NAV_ITEMS = [
+  {href:'#/dashboard', label:'Panel general', roles:['Administrador']},
+  {href:'#/plots', label:'Parcelas', roles:['Administrador']},
+  {href:'#/crops', label:'Cultivos', roles:['Administrador']},
+  {href:'#/activities', label:'Actividades', roles:['Administrador','Trabajador agrícola']},
+  {href:'#/harvest', label:'Cosecha', roles:['Administrador']},
+  {href:'#/inventory', label:'Inventario', roles:['Administrador']},
+  {href:'#/tasks', label:'Tareas', roles:['Administrador']},
+  {href:'#/reports', label:'Informes', roles:['Administrador']},
+  {href:'#/users', label:'Usuarios', roles:['Administrador']}
+];
+
+function shell(innerHTML, activeHref){
+  const user = currentUser();
+  const items = NAV_ITEMS.filter(i=>i.roles.includes(user.role));
+  const hidden = NAV_ITEMS.length - items.length;
+  const initials = user.name.split(' ').map(p=>p[0]).slice(0,2).join('');
+  return `
+  <div class="app">
+    <div class="sidebar">
+      <div class="side-wordmark">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2C7 4 3 8 3 14c0 3.5 2.5 7 9 8 0-7 1-13 6-18-6 1-10 5-11 11" stroke="#F4EFDE" stroke-width="1.4" fill="none"/></svg>
+        AgroMoreira · SGA
+      </div>
+      <ul class="side-nav">
+        ${items.map(i=>`<li><a class="${i.href===activeHref?'active':''}" href="${i.href}">${i.label}</a></li>`).join('')}
+        ${hidden>0?`<li class="locked"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg><span>Otros módulos están restringidos para tu puesto (RF-01).</span></li>`:''}
+      </ul>
+      <a class="side-user" href="#" onclick="logout(); return false;">
+        <div class="side-avatar">${initials}</div>
+        <div><b>${user.name}</b><span>${user.role} · Salir</span></div>
+      </a>
+    </div>
+    <div class="main">${innerHTML}</div>
+  </div>`;
+}
+
+function topbar(eyebrow, title, sub){
+  return `
+  <div class="topbar">
+    <div>
+      <div class="eyebrow">${eyebrow}</div>
+      <h1>${title}</h1>
+      <div class="sub">${sub}</div>
+    </div>
+  </div>`;
+}
+
+function logout(){ DB.currentUserId = null; saveDB(DB); location.hash = '#/login'; }
+function mount(html){ document.getElementById('app').innerHTML = html; }
+
+/* ===================== LOGIN ===================== */
+let loginError = false;
+function renderLogin(){
+  mount(`
+  <div class="login-wrap">
+    <div class="brand">
+      <div>
+        <div class="wordmark">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2C7 4 3 8 3 14c0 3.5 2.5 7 9 8 0-7 1-13 6-18-6 1-10 5-11 11" stroke="#F4EFDE" stroke-width="1.4" fill="none"/></svg>
+          AgroMoreira · SGA
+        </div>
+        <p class="tagline">Cada parcela, cada cosecha, <b>una vista.</b><br>Gestiona la producción de plátano y cacao con datos, no con memoria.</p>
+      </div>
+      <div>
+        <div class="stat-row">
+          <div class="stat"><b>16 ha</b><span>Tierras cultivadas</span></div>
+          <div class="stat"><b>3</b><span>Cultivos activos</span></div>
+          <div class="stat"><b>7</b><span>Trabajadores de campo</span></div>
+        </div>
+        <div style="font-size:12px;color:#9db29b;border-top:1px solid rgba(255,255,255,.14);padding-top:16px;">Prototipo MVP con fines académicos · UTEQ, Ingeniería de Requisitos ISR-401</div>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="login-card">
+        <div class="eyebrow">MU-01 · Iniciar sesión</div>
+        <h1>Bienvenido de nuevo</h1>
+        <p class="sub">Inicia sesión con la cuenta que tu administrador ha creado para ti.</p>
+        ${loginError?`<div class="error-box"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#B4472A" stroke-width="2"/><path d="M12 8v5" stroke="#B4472A" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="16" r="1" fill="#B4472A"/></svg><div><b>Usuario o contraseña incorrectos.</b> Verifica tus credenciales.</div></div>`:''}
+        <form id="loginForm">
+          <div class="field"><label>Nombre de usuario</label><input id="loginUser" type="text" placeholder="r.moreira"></div>
+          <div class="field"><label>Contraseña</label><input id="loginPass" type="password" placeholder="••••••••"></div>
+          <button class="btn btn-primary btn-block" type="submit">Iniciar sesión</button>
+        </form>
+        <div class="role-note">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z" stroke="#3c5237" stroke-width="1.6"/></svg>
+          <div>El acceso se concede según el rol: <b>Administrador</b> o <b>Trabajador agrícola</b>. Cada pantalla solo muestra las acciones permitidas.</div>
+        </div>
+        <div class="demo-users">
+          Cuentas de prueba:<br>
+          Admin → <code>r.moreira</code> / <code>admin123</code><br>
+          Campo → <code>a.cedeno</code> / <code>campo123</code>
+        </div>
+      </div>
+    </div>
+  </div>`);
+  document.getElementById('loginForm').addEventListener('submit', e=>{
+    e.preventDefault();
+    const u = document.getElementById('loginUser').value.trim();
+    const p = document.getElementById('loginPass').value;
+    const found = DB.users.find(x=>x.username===u && x.password===p && x.status==='Activo');
+    if(found){ DB.currentUserId = found.id; saveDB(DB); loginError=false; location.hash = found.role==='Administrador'?'#/dashboard':'#/activities'; }
+    else { loginError = true; renderLogin(); }
+  });
+}
+/* ===================== DASHBOARD ===================== */
+function renderDashboard(){
+  const totalArea = DB.plots.reduce((s,p)=>s+p.area,0).toFixed(1);
+  const activeCrops = DB.crops.filter(c=>c.status==='Producción').length;
+  const workers = DB.users.filter(u=>u.role==='Trabajador agrícola' && u.status==='Activo').length;
+  const lowStock = DB.inventory.filter(i=>i.qty/i.max < 0.34);
+  const pendingTasks = DB.tasks.filter(t=>t.status==='Pendiente').length;
+  mount(shell(`
+    ${topbar('MU-00 · Panel general','Panel general','Vista rápida del estado de la finca AgriMoreira.')}
+    <div class="content">
+      <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:20px;">
+        <div class="card"><div class="muted" style="color:var(--ink-faint);font-size:12.5px;">Área cultivada</div><h2 style="font-size:26px;margin-top:6px;">${totalArea} ha</h2></div>
+        <div class="card"><div class="muted" style="color:var(--ink-faint);font-size:12.5px;">Cultivos en producción</div><h2 style="font-size:26px;margin-top:6px;">${activeCrops}</h2></div>
+        <div class="card"><div class="muted" style="color:var(--ink-faint);font-size:12.5px;">Trabajadores activos</div><h2 style="font-size:26px;margin-top:6px;">${workers}</h2></div>
+        <div class="card"><div class="muted" style="color:var(--ink-faint);font-size:12.5px;">Tareas pendientes</div><h2 style="font-size:26px;margin-top:6px;">${pendingTasks}</h2></div>
+      </div>
+      <div class="card">
+        <div class="card-head"><h2>Alertas de inventario</h2><div class="muted">Stock por debajo del 34%</div></div>
+        ${lowStock.length===0?'<p style="color:var(--ink-soft);font-size:13.5px;">Sin alertas por ahora.</p>':`
+        <table><thead><tr><th>Insumo</th><th>Disponible</th><th>Estado</th></tr></thead><tbody>
+        ${lowStock.map(i=>`<tr><td>${i.name}</td><td>${i.qty}/${i.max} ${i.unit}</td><td><span class="badge badge-danger">Crítico</span></td></tr>`).join('')}
+        </tbody></table>`}
+      </div>
+    </div>
+  `, '#/dashboard'));
+}
+
+/* ===================== PARCELAS ===================== */
+function renderPlots(){
+  mount(shell(`
+    ${topbar('MU-02 · Parcelas','Parcelas','Registra y gestiona las parcelas que conforman la finca.')}
+    <div class="content two-col">
+      <div class="card" style="flex:1;">
+        <div class="card-head"><div><h2>Todas las parcelas</h2><div class="muted">${DB.plots.length} parcelas · ${DB.plots.reduce((s,p)=>s+p.area,0).toFixed(1)} ha total</div></div></div>
+        <table><thead><tr><th>Parcela</th><th>Ubicación</th><th>Área</th><th>Estado</th><th>Cultivo</th><th></th></tr></thead>
+        <tbody>${DB.plots.map(p=>`<tr><td><b>${p.code}</b></td><td>${p.location}</td><td>${p.area} ha</td><td><span class="badge ${p.status==='Activo'?'badge-ok':'badge-warn'}">${p.status}</span></td><td>${p.crop}</td><td><button class="btn btn-outline btn-sm" onclick="deletePlot('${p.id}')">Eliminar</button></td></tr>`).join('')}</tbody></table>
+      </div>
+      <div class="card" style="width:340px; flex:none;">
+        <div class="card-head"><h2>Nueva parcela</h2></div>
+        <form id="plotForm">
+          <div class="field"><label>Código</label><input id="pf_code" placeholder="ej. E1" required></div>
+          <div class="field"><label>Ubicación / sector</label><input id="pf_loc" placeholder="ej. Sector norte" required></div>
+          <div class="field-row">
+            <div class="field"><label>Área (ha)</label><input id="pf_area" type="number" step="0.1" value="2.0" required></div>
+            <div class="field"><label>Estado</label><select id="pf_status"><option>Activo</option><option>Descanso</option><option>Inactivo</option></select></div>
+          </div>
+          <button class="btn btn-primary btn-block" type="submit">Guardar parcela</button>
+        </form>
+      </div>
+    </div>
+  `, '#/plots'));
+  document.getElementById('plotForm').addEventListener('submit', e=>{
+    e.preventDefault();
+    DB.plots.push({id:uid('p'), code:document.getElementById('pf_code').value, location:document.getElementById('pf_loc').value, area:parseFloat(document.getElementById('pf_area').value), status:document.getElementById('pf_status').value, crop:'—'});
+    saveDB(DB); showToast('Parcela guardada'); renderPlots();
+  });
+}
+function deletePlot(id){ DB.plots = DB.plots.filter(p=>p.id!==id); saveDB(DB); showToast('Parcela eliminada'); renderPlots(); }
+
+/* ===================== CULTIVOS ===================== */
+function renderCrops(){
+  const plotOptions = DB.plots.map(p=>`<option>${p.code}</option>`).join('');
+  mount(shell(`
+    ${topbar('MU-03 · Cultivos','Cultivos','Registra los cultivos de plátano, cacao y palma asignados a cada parcela.')}
+    <div class="content two-col">
+      <div class="card" style="flex:1;">
+        <div class="card-head"><div><h2>Todos los cultivos</h2><div class="muted">${DB.crops.length} cultivos</div></div></div>
+        <table><thead><tr><th>Cultivo</th><th>Variedad</th><th>Parcela</th><th>Siembra</th><th>Estado</th><th></th></tr></thead>
+        <tbody>${DB.crops.map(c=>`<tr><td><b>${c.type}</b></td><td>${c.variety}</td><td>${c.plot}</td><td><code class="mono">${c.date}</code></td><td><span class="badge ${c.status==='Producción'?'badge-ok':'badge-info'}">${c.status}</span></td><td><button class="btn btn-outline btn-sm" onclick="deleteCrop('${c.id}')">Eliminar</button></td></tr>`).join('')}</tbody></table>
+      </div>
+      <div class="card" style="width:340px; flex:none;">
+        <div class="card-head"><h2>Nuevo cultivo</h2></div>
+        <form id="cropForm">
+          <div class="field"><label>Tipo de cultivo</label><select id="cf_type"><option>Plátano</option><option>Cacao</option><option>Palma</option><option>Otro</option></select></div>
+          <div class="field"><label>Variedad</label><input id="cf_variety" placeholder="ej. Dominico" required></div>
+          <div class="field"><label>Parcela</label><select id="cf_plot">${plotOptions}</select></div>
+          <div class="field-row">
+            <div class="field"><label>Fecha de siembra</label><input id="cf_date" type="date" value="2026-07-28"></div>
+            <div class="field"><label>Estado</label><select id="cf_status"><option>Crecimiento</option><option>Producción</option><option>Descanso</option></select></div>
+          </div>
+          <button class="btn btn-primary btn-block" type="submit">Guardar cultivo</button>
+        </form>
+      </div>
+    </div>
+  `, '#/crops'));
+  document.getElementById('cropForm').addEventListener('submit', e=>{
+    e.preventDefault();
+    DB.crops.push({id:uid('c'), type:document.getElementById('cf_type').value, variety:document.getElementById('cf_variety').value, plot:document.getElementById('cf_plot').value, date:document.getElementById('cf_date').value, status:document.getElementById('cf_status').value});
+    saveDB(DB); showToast('Cultivo guardado'); renderCrops();
+  });
+}
+function deleteCrop(id){ DB.crops = DB.crops.filter(c=>c.id!==id); saveDB(DB); showToast('Cultivo eliminado'); renderCrops(); }
+
+/* ===================== ACTIVIDADES ===================== */
+let activityType = 'Plantación';
+function renderActivities(){
+  const user = currentUser();
+  const plotOptions = DB.plots.map(p=>`<option>${p.code}</option>`).join('');
+  const myActs = DB.activities.filter(a=> user.role==='Administrador' ? true : a.worker===user.name);
+  mount(shell(`
+    ${topbar('MU-04 · Actividades','Actividad de campo — Registro','Registra el trabajo realizado hoy para que el administrador pueda darle seguimiento.')}
+    <div class="content two-col">
+      <div class="card" style="width:380px; flex:none;">
+        <div class="card-head"><h2>Registrar nueva actividad</h2></div>
+        <div class="field">
+          <label>Tipo de actividad</label>
+          <div class="seg" id="actTypeSeg">
+            ${['Plantación','Fertilización','Pulverización','Poda','Cosecha'].map(t=>`<button type="button" class="${t===activityType?'active':''}" onclick="setActType('${t}')">${t}</button>`).join('')}
+          </div>
+        </div>
+        <div class="field"><label>Parcela</label><select id="af_plot">${plotOptions}</select></div>
+        <div class="field"><label>Fecha</label><input id="af_date" type="date" value="2026-07-28"></div>
+        <div class="field"><label>Notas</label><textarea id="af_notes" rows="3" placeholder="Algo que reportar al administrador..."></textarea></div>
+        <button class="btn btn-primary btn-block" onclick="saveActivity()">Guardar actividad</button>
+      </div>
+      <div class="card" style="flex:1;">
+        <div class="card-head"><div><h2>Mis actividades</h2><div class="muted">${myActs.length} registradas</div></div></div>
+        <table><thead><tr><th>Hora</th><th>Actividad</th><th>Parcela</th><th>Estado</th><th></th></tr></thead>
+        <tbody>${myActs.map(a=>`<tr><td><code class="mono">${a.time}</code></td><td>${a.type}</td><td>${a.plot}</td><td><span class="badge ${a.status==='Hecho'?'badge-ok':'badge-info'}">${a.status}</span></td><td>${a.status!=='Hecho'?`<button class="btn btn-outline btn-sm" onclick="completeActivity('${a.id}')">Marcar hecho</button>`:''}</td></tr>`).join('')}</tbody></table>
+      </div>
+    </div>
+    <p class="foot-note" style="padding:0 32px;">Trazado a <code>RF-04</code> · Caso de uso <code>UC-04</code> · Sesión: ${user.name}</p>
+  `, '#/activities'));
+}
+function setActType(t){ activityType = t; renderActivities(); }
+function saveActivity(){
+  const user = currentUser();
+  const now = new Date();
+  const time = now.getHours().toString().padStart(2,'0')+':'+now.getMinutes().toString().padStart(2,'0');
+  DB.activities.push({id:uid('a'), type:activityType, plot:document.getElementById('af_plot').value, date:document.getElementById('af_date').value, time, worker:user.name, status:'En progreso', notes:document.getElementById('af_notes').value});
+  saveDB(DB); showToast('Actividad guardada'); renderActivities();
+}
+function completeActivity(id){ const a=DB.activities.find(x=>x.id===id); if(a) a.status='Hecho'; saveDB(DB); showToast('Actividad marcada como hecha'); renderActivities(); }
+
+/* ===================== COSECHA ===================== */
+function renderHarvest(){
+  const plotOptions = DB.plots.map(p=>`<option>${p.code}</option>`).join('');
+  const cropOptions = [...new Set(DB.crops.map(c=>c.type))].map(t=>`<option>${t}</option>`).join('');
+  mount(shell(`
+    ${topbar('MU-05 · Cosecha','Cosecha y producción','Registra la cosecha de hoy y consulta la producción por periodo.')}
+    <div class="content two-col">
+      <div class="card" style="width:380px; flex:none;">
+        <div class="card-head"><h2>Registrar cosecha</h2></div>
+        <div class="field"><label>Cultivo</label><select id="hf_crop">${cropOptions}</select></div>
+        <div class="field"><label>Parcela</label><select id="hf_plot">${plotOptions}</select></div>
+        <div class="field-row">
+          <div class="field"><label>Cantidad</label><input id="hf_qty" type="number" step="0.1" value="10"></div>
+          <div class="field"><label>Unidad</label><select id="hf_unit"><option>Racimos</option><option>Sacos</option><option>Toneladas</option></select></div>
+        </div>
+        <div class="field"><label>Fecha</label><input id="hf_date" type="date" value="2026-07-28"></div>
+        <div class="field"><label>Observaciones</label><textarea id="hf_notes" rows="2" placeholder="Calidad, pérdidas..."></textarea></div>
+        <button class="btn btn-primary btn-block" onclick="saveHarvest()">Guardar cosecha</button>
+      </div>
+      <div class="card" style="flex:1;">
+        <div class="card-head"><div><h2>Cosechas recientes</h2><div class="muted">${DB.harvests.length} registros</div></div></div>
+        <table><thead><tr><th>Fecha</th><th>Cultivo</th><th>Parcela</th><th>Cantidad</th><th>Registrado por</th></tr></thead>
+        <tbody>${DB.harvests.slice().reverse().map(h=>`<tr><td><code class="mono">${h.date}</code></td><td>${h.crop}</td><td>${h.plot}</td><td><b>${h.qty} ${h.unit}</b></td><td>${h.worker}</td></tr>`).join('')}</tbody></table>
+      </div>
+    </div>
+  `, '#/harvest'));
+}
+function saveHarvest(){
+  const user = currentUser();
+  DB.harvests.push({id:uid('h'), crop:document.getElementById('hf_crop').value, plot:document.getElementById('hf_plot').value, qty:parseFloat(document.getElementById('hf_qty').value), unit:document.getElementById('hf_unit').value, date:document.getElementById('hf_date').value, worker:user.name, notes:document.getElementById('hf_notes').value});
+  saveDB(DB); showToast('Cosecha guardada'); renderHarvest();
+}
+
+/* ===================== INVENTARIO ===================== */
+function renderInventory(){
+  const critical = DB.inventory.filter(i=>i.qty/i.max < 0.34);
+  mount(shell(`
+    ${topbar('MU-06 · Inventario','Inventario de insumos','Da seguimiento a fertilizantes, fungicidas, herbicidas y herramientas.')}
+    <div class="content two-col">
+      <div class="card" style="flex:1;">
+        <div class="card-head"><div><h2>Material actual</h2><div class="muted">${DB.inventory.length} artículos · ${critical.length} por debajo del umbral</div></div></div>
+        <table><thead><tr><th>Insumo</th><th>Disponible</th><th>Estado</th><th></th></tr></thead>
+        <tbody>${DB.inventory.map(i=>{
+          const pct = Math.round(i.qty/i.max*100);
+          const state = pct < 20 ? 'Crítica' : pct < 50 ? 'Bajo' : 'Suficiente';
+          const cls = pct < 20 ? 'badge-danger' : pct < 50 ? 'badge-warn' : 'badge-ok';
+          return `<tr><td><b>${i.name}</b><div style="font-size:11.5px;color:var(--ink-faint);">${i.category}</div></td><td>${i.qty}/${i.max} ${i.unit}<div class="progress" style="margin-top:6px;width:120px;"><div style="width:${pct}%;background:${pct<20?'var(--danger)':pct<50?'var(--warn)':'var(--ok)'};"></div></div></td><td><span class="badge ${cls}">${state}</span></td><td><button class="btn btn-outline btn-sm" onclick="restock('${i.id}')">+10</button></td></tr>`;
+        }).join('')}</tbody></table>
+      </div>
+      <div class="card" style="width:340px; flex:none;">
+        <div class="card-head"><h2>Nuevo artículo</h2></div>
+        <div class="field"><label>Nombre</label><input id="if_name" placeholder="ej. Fungicida sistémico"></div>
+        <div class="field"><label>Categoría</label><input id="if_cat" placeholder="ej. Fungicida"></div>
+        <div class="field-row">
+          <div class="field"><label>Cantidad</label><input id="if_qty" type="number" value="10"></div>
+          <div class="field"><label>Máximo</label><input id="if_max" type="number" value="30"></div>
+        </div>
+        <div class="field"><label>Unidad</label><input id="if_unit" placeholder="sacos, litros..."></div>
+        <button class="btn btn-primary btn-block" onclick="addInventory()">Agregar artículo</button>
+      </div>
+    </div>
+  `, '#/inventory'));
+}
+function restock(id){ const i=DB.inventory.find(x=>x.id===id); if(i){ i.qty = Math.min(i.max, i.qty+10); } saveDB(DB); showToast('Stock actualizado'); renderInventory(); }
+function addInventory(){
+  DB.inventory.push({id:uid('i'), name:document.getElementById('if_name').value, category:document.getElementById('if_cat').value, qty:parseFloat(document.getElementById('if_qty').value), max:parseFloat(document.getElementById('if_max').value), unit:document.getElementById('if_unit').value, threshold:5});
+  saveDB(DB); showToast('Artículo agregado'); renderInventory();
+}
+
+/* ===================== TAREAS (Kanban) ===================== */
+function renderTasks(){
+  const cols = ['Pendiente','En progreso','Bloqueado','Completado'];
+  const plotOptions = DB.plots.map(p=>`<option>${p.code}</option>`).join('');
+  const workerOptions = DB.users.filter(u=>u.role==='Trabajador agrícola').map(u=>`<option>${u.name}</option>`).join('');
+  mount(shell(`
+    ${topbar('MU-07 · Tareas','Planificación y asignación de tareas','Planifica, asigna y da seguimiento al trabajo de campo.')}
+    <div class="content">
+      <div class="card" style="margin-bottom:20px;">
+        <div class="card-head"><h2>Asignar una tarea</h2></div>
+        <div style="display:flex; gap:14px; flex-wrap:wrap; align-items:flex-end;">
+          <div class="field" style="flex:2; min-width:200px; margin-bottom:0;"><label>Tarea</label><input id="tf_title" placeholder="ej. Aplicar fungicida"></div>
+          <div class="field" style="flex:1; min-width:140px; margin-bottom:0;"><label>Parcela</label><select id="tf_plot">${plotOptions}</select></div>
+          <div class="field" style="flex:1; min-width:160px; margin-bottom:0;"><label>Trabajador</label><select id="tf_worker">${workerOptions}</select></div>
+          <button class="btn btn-primary" onclick="addTask()">Asignar tarea</button>
+        </div>
+      </div>
+      <div class="kanban">
+        ${cols.map(col=>{
+          const items = DB.tasks.filter(t=>t.status===col);
+          return `<div class="kcol"><h3>${col}<span>${items.length}</span></h3>
+            ${items.map(t=>`<div class="kcard"><b>${t.title}</b>${t.plot}<div class="meta"><span>${t.worker}</span><select onchange="moveTask('${t.id}', this.value)" style="font-size:11px;border:1px solid var(--line);border-radius:5px;">${cols.map(c=>`<option ${c===col?'selected':''}>${c}</option>`).join('')}</select></div></div>`).join('')}
+          </div>`;
+        }).join('')}
+      </div>
+    </div>
+  `, '#/tasks'));
+}
+function addTask(){
+  const title = document.getElementById('tf_title').value;
+  if(!title) return;
+  DB.tasks.push({id:uid('t'), title, plot:document.getElementById('tf_plot').value, worker:document.getElementById('tf_worker').value, due:'', status:'Pendiente'});
+  saveDB(DB); showToast('Tarea asignada'); renderTasks();
+}
+function moveTask(id, status){ const t=DB.tasks.find(x=>x.id===id); if(t) t.status=status; saveDB(DB); showToast('Tarea actualizada'); renderTasks(); }
+
+/* ===================== INFORMES ===================== */
+function renderReports(){
+  const byPlot = {};
+  DB.harvests.forEach(h=>{ byPlot[h.plot] = (byPlot[h.plot]||0) + h.qty; });
+  const rows = Object.entries(byPlot).sort((a,b)=>b[1]-a[1]);
+  const totalQty = DB.harvests.reduce((s,h)=>s+h.qty,0);
+  mount(shell(`
+    ${topbar('MU-08 · Informes','Informes de producción','Analiza las tendencias de producción por cultivo y parcela.')}
+    <div class="content">
+      <div class="card">
+        <div class="card-head"><div><h2>Producción total registrada</h2><div class="muted">Suma de todas las cosechas guardadas</div></div></div>
+        <h2 style="font-size:32px;">${totalQty.toFixed(1)} unidades</h2>
+      </div>
+      <div class="card">
+        <div class="card-head"><h2>Producción por parcela</h2></div>
+        <table><thead><tr><th>Parcela</th><th>Total cosechado</th></tr></thead>
+        <tbody>${rows.map(([plot,qty])=>`<tr><td>${plot}</td><td><b>${qty.toFixed(1)}</b></td></tr>`).join('')}</tbody></table>
+      </div>
+    </div>
+  `, '#/reports'));
+}
+
+/* ===================== USUARIOS ===================== */
+function renderUsers(){
+  mount(shell(`
+    ${topbar('MU-09 · Usuarios','Gestión de usuarios','Crea y gestiona cuentas para administradores y trabajadores de campo.')}
+    <div class="content two-col">
+      <div class="card" style="flex:1;">
+        <div class="card-head"><div><h2>Cuentas de usuario</h2><div class="muted">${DB.users.length} cuentas</div></div></div>
+        <table><thead><tr><th>Nombre</th><th>Función</th><th>Estado</th><th></th></tr></thead>
+        <tbody>${DB.users.map(u=>`<tr><td><b>${u.name}</b><div style="font-size:11.5px;color:var(--ink-faint);">${u.username}</div></td><td><span class="badge badge-neutral">${u.role}</span></td><td><span class="badge ${u.status==='Activo'?'badge-ok':'badge-danger'}">${u.status}</span></td><td><button class="btn btn-outline btn-sm" onclick="toggleUser('${u.id}')">${u.status==='Activo'?'Desactivar':'Reactivar'}</button></td></tr>`).join('')}</tbody></table>
+      </div>
+      <div class="card" style="width:340px; flex:none;">
+        <div class="card-head"><h2>Nuevo usuario</h2></div>
+        <div class="field"><label>Nombre completo</label><input id="uf_name" placeholder="ej. Pedro Luar"></div>
+        <div class="field"><label>Nombre de usuario</label><input id="uf_username" placeholder="p.luar"></div>
+        <div class="field"><label>Función</label><select id="uf_role"><option>Trabajador agrícola</option><option>Administrador</option></select></div>
+        <div class="field"><label>Contraseña temporal</label><input id="uf_pass" type="text" value="temporal123"></div>
+        <button class="btn btn-primary btn-block" onclick="addUser()">Crear cuenta</button>
+      </div>
+    </div>
+    <p class="foot-note" style="padding:0 32px;">Trazado a <code>RF-14</code> · Caso de uso <code>UC-14</code> · La desactivación mantiene registros históricos.</p>
+  `, '#/users'));
+}
+function toggleUser(id){ const u=DB.users.find(x=>x.id===id); if(u) u.status = u.status==='Activo'?'Inactivo':'Activo'; saveDB(DB); showToast('Estado actualizado'); renderUsers(); }
+function addUser(){
+  DB.users.push({id:uid('u'), name:document.getElementById('uf_name').value, username:document.getElementById('uf_username').value, password:document.getElementById('uf_pass').value, role:document.getElementById('uf_role').value, status:'Activo'});
+  saveDB(DB); showToast('Cuenta creada'); renderUsers();
+}
+
+/* ===================== INIT ===================== */
+navigate();
+</script>
+</body>
+</html>
