@@ -1,0 +1,179 @@
+<mxfile host="Electron" agent="Claude">
+  <diagram name="General Use Case Diagram" id="uc-general">
+    <mxGraphModel dx="1471" dy="894" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="boundary" parent="1" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fontStyle=1;fontSize=14;fillColor=none;strokeColor=light-dark(#6c8ebf, #ffffff);" value="Agricultural Management System with AI for Plantain and Cacao Crops" vertex="1">
+          <mxGeometry height="910" width="1230" x="135" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="actorUser" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;html=1;outlineConnect=0;" value="User" vertex="1">
+          <mxGeometry height="60" width="30" x="30" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="actorAdmin" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;html=1;outlineConnect=0;" value="Administrator" vertex="1">
+          <mxGeometry height="60" width="30" x="30" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="actorWorker" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;html=1;outlineConnect=0;" value="Farmworker" vertex="1">
+          <mxGeometry height="60" width="30" x="30" y="660" as="geometry" />
+        </mxCell>
+        <mxCell id="actorAI" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;html=1;outlineConnect=0;" value="AI (Artificial Intelligence)" vertex="1">
+          <mxGeometry height="60" width="30" x="1430" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="uc01" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;strokeColor=light-dark(#6C8EBF,#FFFFFF);" value="UC-01&#xa;Log In" vertex="1">
+          <mxGeometry height="60" width="150" x="220" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="uc02" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontColor=#333333;strokeColor=default;" value="UC-02&#xa;Manage Plots" vertex="1">
+          <mxGeometry height="60" width="150" x="220" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="wpY1fhIiZemmf124pfWj-6" edge="1" parent="1" source="actorAdmin" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.444;entryY=0.981;entryDx=0;entryDy=0;entryPerimeter=0;" target="uc15">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="45" y="420" />
+              <mxPoint x="480" y="420" />
+              <mxPoint x="480" y="340" />
+              <mxPoint x="709.86" y="340" />
+            </Array>
+            <mxPoint x="479.9999999999998" y="378.79" as="sourcePoint" />
+            <mxPoint x="796.3603896932204" y="300.0032034355932" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uc06" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;strokeColor=default;" value="UC-06&#xa;Manage Input Inventory" vertex="1">
+          <mxGeometry height="60" width="150" x="250" y="350" as="geometry" />
+        </mxCell>
+        <mxCell id="uc08" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;strokeColor=default;" value="UC-08&#xa;Plan Agricultural Activity" vertex="1">
+          <mxGeometry height="60" width="150" x="230" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="uc09" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;strokeColor=default;" value="UC-09&#xa;Assign Task" vertex="1">
+          <mxGeometry height="60" width="150" x="230" y="530" as="geometry" />
+        </mxCell>
+        <mxCell id="uc10" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;strokeColor=default;" value="UC-10&#xa;Track Task Completion" vertex="1">
+          <mxGeometry height="60" width="150" x="220" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="uc04" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;strokeColor=default;" value="UC-04&#xa;Register Agricultural Activity" vertex="1">
+          <mxGeometry height="60" width="150" x="215" y="780" as="geometry" />
+        </mxCell>
+        <mxCell id="uc05" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;strokeColor=light-dark(#82B366,#FFFFFF);" value="UC-05&#xa;Register Harvest" vertex="1">
+          <mxGeometry height="60" width="150" x="220" y="870" as="geometry" />
+        </mxCell>
+        <mxCell id="uc07" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;strokeColor=light-dark(#6C8EBF,#FFFFFF);" value="UC-07&#xa;Consult Production by Period" vertex="1">
+          <mxGeometry height="60" width="160" x="440" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="uc12" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;strokeColor=default;" value="UC-12&#xa;Identify Plot Productivity" vertex="1">
+          <mxGeometry height="60" width="160" x="510" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="uc13" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;strokeColor=default;" value="UC-13&#xa;Generate Agricultural Statistics" vertex="1">
+          <mxGeometry height="60" width="160" x="450" y="430" as="geometry" />
+        </mxCell>
+        <mxCell id="uc14" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;strokeColor=default;" value="UC-14&#xa;Manage Users" vertex="1">
+          <mxGeometry height="60" width="160" x="420" y="550" as="geometry" />
+        </mxCell>
+        <mxCell id="uc20" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;strokeColor=default;" value="UC-20&#xa;Consult Assigned Tasks" vertex="1">
+          <mxGeometry height="60" width="160" x="210" y="700" as="geometry" />
+        </mxCell>
+        <mxCell id="uc16" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;strokeColor=default;" value="UC-16&#xa;Register Crop Disease" vertex="1">
+          <mxGeometry height="60" width="160" x="420" y="640" as="geometry" />
+        </mxCell>
+        <mxCell id="uc15" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;strokeColor=default;" value="UC-15&#xa;Consult AI Recommendations" vertex="1">
+          <mxGeometry height="60" width="180" x="630" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="uc17" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;strokeColor=default;" value="Generate Crop&#xa;Recommendations" vertex="1">
+          <mxGeometry height="60" width="170" x="910" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="uc18" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;strokeColor=default;" value="Analyze Crop Data" vertex="1">
+          <mxGeometry height="60" width="140" x="1190" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="uc19" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;strokeColor=default;" value="Generate Alert" vertex="1">
+          <mxGeometry height="60" width="160" x="740" y="640" as="geometry" />
+        </mxCell>
+        <mxCell id="a1" edge="1" parent="1" source="actorUser" style="endArrow=none;html=1;" target="uc01">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a2" edge="1" parent="1" source="actorAdmin" style="endArrow=none;html=1;" target="uc02">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a3" edge="1" parent="1" source="actorAdmin" style="endArrow=none;html=1;" target="uc03">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a4" edge="1" parent="1" source="actorAdmin" style="endArrow=none;html=1;" target="uc06">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a5" edge="1" parent="1" source="actorAdmin" style="endArrow=none;html=1;" target="uc08">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a6" edge="1" parent="1" source="actorAdmin" style="endArrow=none;html=1;" target="uc09">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a7" edge="1" parent="1" source="actorAdmin" style="endArrow=none;html=1;" target="uc10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a8" edge="1" parent="1" source="actorAdmin" style="endArrow=none;html=1;" target="uc07">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a10" edge="1" parent="1" source="actorAdmin" style="endArrow=none;html=1;" target="uc12">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="460" y="390" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="a11" edge="1" parent="1" source="actorAdmin" style="endArrow=none;html=1;" target="uc13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a12" edge="1" parent="1" source="actorAdmin" style="endArrow=none;html=1;" target="uc14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a14" edge="1" parent="1" source="actorAdmin" style="endArrow=none;html=1;" target="uc16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a15" edge="1" parent="1" source="actorWorker" style="endArrow=none;html=1;" target="uc04">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a16" edge="1" parent="1" source="actorWorker" style="endArrow=none;html=1;" target="uc05">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a17" edge="1" parent="1" source="actorWorker" style="endArrow=none;html=1;" target="uc20">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a18" edge="1" parent="1" source="actorWorker" style="endArrow=none;html=1;" target="uc16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a19" edge="1" parent="1" source="actorAI" style="endArrow=none;html=1;" target="uc17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a20" edge="1" parent="1" source="actorAI" style="endArrow=none;html=1;" target="uc18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a21" edge="1" parent="1" source="actorAI" style="endArrow=none;html=1;" target="uc19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="inc1" edge="1" parent="1" source="uc15" style="endArrow=open;endFill=0;dashed=1;html=1;fontSize=11;strokeColor=default;" target="uc17" value="&amp;lt;&lt;font style=&quot;font-size: 13px;&quot;&gt;include&lt;/font&gt;&amp;gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="inc2" edge="1" parent="1" source="uc17" style="endArrow=open;endFill=0;dashed=1;html=1;fontSize=11;strokeColor=default;" target="uc18" value="&amp;lt;&lt;font style=&quot;font-size: 12px;&quot;&gt;include&lt;/font&gt;&amp;gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ext1" edge="1" parent="1" source="uc16" style="endArrow=open;endFill=0;dashed=1;html=1;fontSize=11;strokeColor=default;" target="uc19" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;&amp;lt;extend&amp;gt;&lt;/font&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="wpY1fhIiZemmf124pfWj-4" edge="1" parent="1" source="actorAdmin" style="endArrow=none;html=1;" target="uc03" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="60" y="367" as="sourcePoint" />
+            <mxPoint x="449" y="294" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uc03" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;strokeColor=default;" value="UC-03&#xa;Manage Crops" vertex="1">
+          <mxGeometry height="60" width="150" x="230" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="wpY1fhIiZemmf124pfWj-5" edge="1" parent="1" source="actorAdmin" style="endArrow=none;html=1;" target="uc11" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="60" y="368" as="sourcePoint" />
+            <mxPoint x="696" y="290" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uc11" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;strokeColor=default;" value="UC-11&#xa;Generate Production Reports" vertex="1">
+          <mxGeometry height="60" width="160" x="460" y="270" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,136 @@
+<mxfile host="Electron" agent="Claude">
+  <diagram name="Refined Class Diagram" id="class-refined">
+    <mxGraphModel dx="1084" dy="659" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1300" pageHeight="1300" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="User" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=6;spacingTop=4;spacingRight=4;fontSize=11;fillColor=none;strokeColor=light-dark(#6C8EBF,#FFFFFF);" value="&lt;div style=&quot;text-align:center;font-weight:bold;&quot;&gt;User&lt;/div&gt;&lt;div style=&quot;text-align:center;font-style:italic;&quot;&gt;«abstract»&lt;/div&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;div&gt;- id: int&lt;/div&gt;&lt;div&gt;- name: String&lt;/div&gt;&lt;div&gt;- email: String&lt;/div&gt;&lt;div&gt;- phone: String&lt;/div&gt;&lt;div&gt;- passwordHash: String&lt;/div&gt;&lt;div&gt;- role: RoleType&lt;/div&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;div&gt;+ login(user, pass): boolean&lt;/div&gt;&lt;div&gt;+ logout(): void&lt;/div&gt;" vertex="1">
+          <mxGeometry height="186" width="150" x="500" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="Administrator" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=6;spacingTop=4;spacingRight=4;fontSize=11;fillColor=none;strokeColor=light-dark(#6C8EBF,#FFFFFF);" value="&lt;div style=&quot;text-align:center;font-weight:bold;&quot;&gt;Administrator&lt;/div&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;div&gt;(inherits User attributes)&lt;/div&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;div&gt;+ managePlot(plot): void&lt;/div&gt;&lt;div&gt;+ manageCrop(crop): void&lt;/div&gt;&lt;div&gt;+ manageInventoryItem(item): void&lt;/div&gt;&lt;div&gt;+ manageUser(user): void&lt;/div&gt;&lt;div&gt;+ planActivity(labor): void&lt;/div&gt;&lt;div&gt;+ assignTask(labor, worker): void&lt;/div&gt;&lt;div&gt;+ generateReport(filters): Report&lt;/div&gt;&lt;div&gt;+ consultAIRecommendations(): List&amp;lt;AIRecommendation&amp;gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="186" width="260" x="180" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="Farmworker" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=6;spacingTop=4;spacingRight=4;fontSize=11;fillColor=none;strokeColor=default;" value="&lt;div style=&quot;text-align:center;font-weight:bold;&quot;&gt;Farmworker&lt;/div&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;div&gt;(inherits User attributes)&lt;/div&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;div&gt;+ registerActivity(labor): void&lt;/div&gt;&lt;div&gt;+ registerHarvest(harvest): void&lt;/div&gt;&lt;div&gt;+ reportDisease(disease): void&lt;/div&gt;&lt;div&gt;+ consultAssignedTasks(): List&amp;lt;Labor&amp;gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="122" width="210" x="760" y="286" as="geometry" />
+        </mxCell>
+        <mxCell id="Plot" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=6;spacingTop=4;spacingRight=4;fontSize=11;fillColor=none;strokeColor=light-dark(#D79B00,#FFFFFF);" value="&lt;div style=&quot;text-align:center;font-weight:bold;&quot;&gt;Plot&lt;/div&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;div&gt;- id: int&lt;/div&gt;&lt;div&gt;- name: String&lt;/div&gt;&lt;div&gt;- location: String&lt;/div&gt;&lt;div&gt;- area: decimal&lt;/div&gt;&lt;div&gt;- status: PlotStatus&lt;/div&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;div&gt;+ addCrop(crop): void&lt;/div&gt;&lt;div&gt;+ updateStatus(status): void&lt;/div&gt;" vertex="1">
+          <mxGeometry height="154" width="150" x="40" y="560" as="geometry" />
+        </mxCell>
+        <mxCell id="Crop" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=6;spacingTop=4;spacingRight=4;fontSize=11;fillColor=none;strokeColor=light-dark(#D79B00,#FFFFFF);" value="&lt;div style=&quot;text-align:center;font-weight:bold;&quot;&gt;Crop&lt;/div&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;div&gt;- id: int&lt;/div&gt;&lt;div&gt;- cropType: CropType&lt;/div&gt;&lt;div&gt;- variety: String&lt;/div&gt;&lt;div&gt;- plantingDate: Date&lt;/div&gt;&lt;div&gt;- status: CropStatus&lt;/div&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;div&gt;+ registerHarvest(harvest): void&lt;/div&gt;&lt;div&gt;+ registerDisease(disease): void&lt;/div&gt;" vertex="1">
+          <mxGeometry height="154" width="170" x="30" y="800" as="geometry" />
+        </mxCell>
+        <mxCell id="Harvest" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=6;spacingTop=4;spacingRight=4;fontSize=11;fillColor=none;strokeColor=light-dark(#D79B00,#FFFFFF);" value="&lt;div style=&quot;text-align:center;font-weight:bold;&quot;&gt;Harvest&lt;/div&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;div&gt;- id: int&lt;/div&gt;&lt;div&gt;- date: Date&lt;/div&gt;&lt;div&gt;- quantity: decimal&lt;/div&gt;&lt;div&gt;- unit: UnitType&lt;/div&gt;&lt;div&gt;- observation: String&lt;/div&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;div&gt;+ calculateTotal(): decimal&lt;/div&gt;" vertex="1">
+          <mxGeometry height="138" width="140" x="45" y="1048" as="geometry" />
+        </mxCell>
+        <mxCell id="Labor" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=6;spacingTop=4;spacingRight=4;fontSize=11;fillColor=none;strokeColor=light-dark(#D6B656,#FFFFFF);" value="&lt;div style=&quot;text-align:center;font-weight:bold;&quot;&gt;Labor&lt;/div&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;div&gt;- id: int&lt;/div&gt;&lt;div&gt;- date: Date&lt;/div&gt;&lt;div&gt;- description: String&lt;/div&gt;&lt;div&gt;- activityType: ActivityType&lt;/div&gt;&lt;div&gt;- status: TaskStatus&lt;/div&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;div&gt;+ assign(worker): void&lt;/div&gt;&lt;div&gt;+ updateStatus(status): void&lt;/div&gt;&lt;div&gt;+ markCompleted(): void&lt;/div&gt;" vertex="1">
+          <mxGeometry height="170" width="150" x="320" y="630" as="geometry" />
+        </mxCell>
+        <mxCell id="Disease" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=6;spacingTop=4;spacingRight=4;fontSize=11;fillColor=none;strokeColor=light-dark(#B85450,#FFFFFF);" value="&lt;div style=&quot;text-align:center;font-weight:bold;&quot;&gt;Disease&lt;/div&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;div&gt;- id: int&lt;/div&gt;&lt;div&gt;- name: String&lt;/div&gt;&lt;div&gt;- description: String&lt;/div&gt;&lt;div&gt;- severityLevel: SeverityLevel&lt;/div&gt;&lt;div&gt;- detectionDate: Date&lt;/div&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;div&gt;+ register(): void&lt;/div&gt;&lt;div&gt;+ evaluateSeverity(): SeverityLevel&lt;/div&gt;" vertex="1">
+          <mxGeometry height="154" width="180" x="320" y="1040" as="geometry" />
+        </mxCell>
+        <mxCell id="InventoryItem" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=6;spacingTop=4;spacingRight=4;fontSize=11;fillColor=none;strokeColor=light-dark(#6C8EBF,#FFFFFF);" value="&lt;div style=&quot;text-align:center;font-weight:bold;&quot;&gt;InventoryItem&lt;/div&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;div&gt;- id: int&lt;/div&gt;&lt;div&gt;- name: String&lt;/div&gt;&lt;div&gt;- itemType: InputType&lt;/div&gt;&lt;div&gt;- availableQuantity: decimal&lt;/div&gt;&lt;div&gt;- unit: String&lt;/div&gt;&lt;div&gt;- minimumThreshold: decimal&lt;/div&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;div&gt;+ updateStock(qty): void&lt;/div&gt;&lt;div&gt;+ checkLowStock(): boolean&lt;/div&gt;" vertex="1">
+          <mxGeometry height="170" width="160" x="610" y="620" as="geometry" />
+        </mxCell>
+        <mxCell id="AIRecommendation" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=6;spacingTop=4;spacingRight=4;fontSize=11;fillColor=none;strokeColor=light-dark(#9673A6,#FFFFFF);" value="&lt;div style=&quot;text-align:center;font-weight:bold;&quot;&gt;AIRecommendation&lt;/div&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;div&gt;- id: int&lt;/div&gt;&lt;div&gt;- description: String&lt;/div&gt;&lt;div&gt;- date: Date&lt;/div&gt;&lt;div&gt;- priority: PriorityLevel&lt;/div&gt;&lt;div&gt;- confidence: decimal&lt;/div&gt;&lt;div&gt;- status: RecommendationStatus&lt;/div&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;div&gt;+ generate(): void&lt;/div&gt;&lt;div&gt;+ apply(): void&lt;/div&gt;&lt;div&gt;+ discard(): void&lt;/div&gt;" vertex="1">
+          <mxGeometry height="186" width="170" x="620" y="1016" as="geometry" />
+        </mxCell>
+        <mxCell id="Report" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=6;spacingTop=4;spacingRight=4;fontSize=11;fillColor=none;strokeColor=light-dark(#6C8EBF,#FFFFFF);" value="&lt;div style=&quot;text-align:center;font-weight:bold;&quot;&gt;Report&lt;/div&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;div&gt;- id: int&lt;/div&gt;&lt;div&gt;- reportType: ReportType&lt;/div&gt;&lt;div&gt;- generationDate: Date&lt;/div&gt;&lt;div&gt;- periodFrom: Date&lt;/div&gt;&lt;div&gt;- periodTo: Date&lt;/div&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;div&gt;+ generate(filters): void&lt;/div&gt;&lt;div&gt;+ export(format): File&lt;/div&gt;" vertex="1">
+          <mxGeometry height="154" width="140" x="920" y="560" as="geometry" />
+        </mxCell>
+        <mxCell id="Alert" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=6;spacingTop=4;spacingRight=4;fontSize=11;fillColor=none;strokeColor=light-dark(#9673A6,#FFFFFF);" value="&lt;div style=&quot;text-align:center;font-weight:bold;&quot;&gt;Alert&lt;/div&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;div&gt;- id: int&lt;/div&gt;&lt;div&gt;- message: String&lt;/div&gt;&lt;div&gt;- level: AlertLevel&lt;/div&gt;&lt;div&gt;- date: Date&lt;/div&gt;&lt;div&gt;- status: AlertStatus&lt;/div&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;div&gt;+ trigger(): void&lt;/div&gt;&lt;div&gt;+ resolve(): void&lt;/div&gt;" vertex="1">
+          <mxGeometry height="154" width="120" x="940" y="1040" as="geometry" />
+        </mxCell>
+        <mxCell id="rel0" edge="1" parent="1" source="Administrator" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;endFill=0;endSize=16;rounded=0;" target="User">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="560" y="393" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel1" edge="1" parent="1" source="Farmworker" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;endFill=0;endSize=16;rounded=0;" target="User">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="600" y="361" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel2" edge="1" parent="1" source="Plot" style="edgeStyle=orthogonalEdgeStyle;html=1;startArrow=diamondThin;startFill=1;startSize=16;endArrow=none;rounded=0;" target="Crop" value="1        *&lt;br&gt;contains">
+          <mxGeometry relative="1" x="0.0698" y="25" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel3" edge="1" parent="1" source="Crop" style="edgeStyle=orthogonalEdgeStyle;html=1;startArrow=diamondThin;startFill=1;startSize=16;endArrow=none;rounded=0;" target="Harvest" value="1        *&lt;br&gt;produces">
+          <mxGeometry relative="1" x="-0.0213" y="25" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel4" edge="1" parent="1" source="Administrator" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;rounded=0;" target="Report" value="1        *&lt;br&gt;generates">
+          <mxGeometry relative="1" x="-0.2112" y="20" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="1040" y="450.05" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel5" edge="1" parent="1" source="Administrator" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;rounded=0;" target="InventoryItem" value="1        *&lt;br&gt;manages">
+          <mxGeometry relative="1" x="0.312" y="-20" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="300" y="570.05" />
+              <mxPoint x="680" y="570.05" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel6" edge="1" parent="1" source="Plot" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;rounded=0;" target="Labor" value="1        *&lt;br&gt;location">
+          <mxGeometry relative="1" x="0.0769" y="23" as="geometry">
+            <mxPoint x="1" as="offset" />
+            <Array as="points">
+              <mxPoint x="260" y="660" />
+              <mxPoint x="260" y="660" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel7" edge="1" parent="1" source="Farmworker" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;rounded=0;" target="Labor" value="1        *&lt;br&gt;executes">
+          <mxGeometry relative="1" x="0.1022" y="-20" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="880" y="500.05" />
+              <mxPoint x="445.05" y="500.05" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel8" edge="1" parent="1" source="Administrator" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;rounded=0;" target="Labor" value="1        *&lt;br&gt;assigns">
+          <mxGeometry relative="1" x="-0.0035" y="20" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="270" y="540.05" />
+              <mxPoint x="400" y="540.05" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel9" edge="1" parent="1" source="Crop" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;rounded=0;" target="Disease" value="1        *&lt;br&gt;affected by">
+          <mxGeometry relative="1" x="-0.2257" y="-20" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="390" y="920.05" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel10" edge="1" parent="1" source="Crop" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;rounded=0;" target="AIRecommendation" value="1        *&lt;br&gt;subject of">
+          <mxGeometry relative="1" x="-0.0684" y="17" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel11" edge="1" parent="1" source="Disease" style="edgeStyle=orthogonalEdgeStyle;html=1;startArrow=diamondThin;startFill=0;startSize=16;endArrow=none;rounded=0;" target="Alert" value="1 .1&lt;br&gt;triggers">
+          <mxGeometry relative="1" x="0.1622" y="20" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="440" y="950.05" />
+              <mxPoint x="1000" y="950.05" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
