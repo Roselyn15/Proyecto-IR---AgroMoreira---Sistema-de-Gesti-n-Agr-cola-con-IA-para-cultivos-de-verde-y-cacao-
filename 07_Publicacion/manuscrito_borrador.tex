@@ -1,0 +1,258 @@
+% ============================================================================
+% MANUSCRITO BORRADOR - Entrega 3 (2A)
+% Titulo: Comparacion de la calidad de requisitos funcionales elicitados por
+%         analistas humanos frente a los generados por un modelo de lenguaje
+%         (LLM) en un sistema agricola con IA
+% Sistema AgriMoreira - Ingenieria de Requerimientos [20303] - UTEQ
+% Integrante responsable: Escudero Plaza Maria del Rosario
+% Nota: secciones producidas en la Entrega 3 (2A): introduccion, trabajo
+% relacionado y metodologia. Resultados, discusion, amenazas a la validez y
+% conclusiones se completan en la Entrega 4 (2B) con datos reales.
+% La plantilla oficial de la revista objetivo (Springer) se aplica al envio.
+% ============================================================================
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-tabla]{babel}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{xcolor}
+
+\hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue}
+
+\title{\textbf{Comparacion de la calidad de requisitos funcionales elicitados
+por analistas humanos frente a los generados por un modelo de lenguaje (LLM)
+en un sistema agricola con IA}}
+\author{Escudero Plaza Maria del Rosario\\[0.3em]
+\small Universidad Tecnica Estatal de Quevedo (UTEQ)\\
+\small Proyecto Fin de Curso - Ingenieria de Requerimientos [20303]}
+\date{Version 1.0 (borrador, Entrega 3) \textbullet\ Semestre 2026-2027}
+
+\begin{document}
+
+\maketitle
+
+% ============================================================================
+\section*{Resumen}
+% ============================================================================
+Los modelos de lenguaje de gran escala (LLM) se estan integrando cada vez mas
+en la fase de elicitacion de requisitos de la ingenieria de software
+\cite{cheng2026,arora2024}. Sin embargo, la evidencia empirica sobre la
+calidad de los requisitos funcionales (RF) generados por un LLM frente a los
+elicitados por analistas humanos a partir de un mismo material fuente es
+todavia limitada, especialmente en dominios agroindustriales de paises en
+desarrollo. En este trabajo se realiza un cuasi-experimento apareado en el
+dominio agroindustrial ecuatoriano: un equipo humano y un LLM (gpt-4o-2024-08-06,
+temperatura 0.0, top-p 1.0, semilla 42) producen sendos conjuntos de
+requisitos funcionales (minimo 25 cada uno) a partir de la misma transcripcion
+anonimizada de una entrevista de campo del sistema \textbf{AgriMoreira}. Tres o
+mas evaluadores expertos independientes puntuan a ciegas ambos conjuntos en
+cinco dimensiones de calidad (completitud, ausencia de ambiguedad,
+verificabilidad, correccion respecto de la fuente y consistencia interna). El
+acuerdo inter-evaluador se mide con kappa de Cohen \cite{cohen1960} y de
+Fleiss \cite{fleiss1971}; las medias se comparan con prueba t pareada o
+Wilcoxon segun normalidad, reportando el tamano del efecto (d de Cohen o delta
+de Cliff) y el calculo de potencia previo (alpha = 0.05, 1-beta = 0.80)
+\cite{molleri2020}. El protocolo se registra de forma previa en el OSF
+\cite{nosek2018} y el conjunto de datos anonimizado se depositara en Zenodo
+bajo licencia CC BY 4.0 \cite{wilkinson2016}.
+
+\noindent\textbf{Palabras clave:} ingenieria de requisitos, elicitacion,
+modelos de lenguaje, calidad de requisitos, experimento empirico.
+
+% ============================================================================
+\section{Introduccion}
+% ============================================================================
+
+El sistema \textbf{AgriMoreira} es una plataforma de gestion agricola con
+inteligencia artificial para cultivos de platanero verde y cacao en Manabi,
+Ecuador, desarrollada como proyecto academico de la asignatura de Ingenieria
+de Requerimientos. La finca real de la organizacion cliente (Agricola
+Moreira, seudonimo declarado en el protocolo de anonimizacion) registra hoy
+su produccion, inventario y actividades de forma manual en cuadernos, segun
+las entrevistas y encuestas de la primera y segunda ronda de campo. En este
+dominio, la calidad de los requisitos funcionales que sustentan el sistema es
+determinante: un requisito ambiguo o incompleto se traduce directamente en
+perdida de informacion y en decisiones agronomicas incorrectas. Por ello,
+estudiar la ingenieria de requerimientos en este contexto no es un ejercicio
+academico abstracto, sino una necesidad operativa real de una cadena de valor
+agropecuaria.
+
+El gap de conocimiento que este trabajo aborda es doble. Por un lado, la
+revision sistematica de Cheng et al.\ \cite{cheng2026} indica que la fase de
+gestion de requisitos recibe atencion insuficiente frente a otras actividades
+del proceso, y que las guias de uso de LLM en ingenieria de requisitos, como
+la de Vogelsang y Fischbach \cite{vogelsang2024}, aun no han sido validadas en
+contextos latinoamericanos ni en dominios agropecuarios. Por otro lado,
+Arora et al.\ \cite{arora2024} senalan que, aunque los LLM pueden acelerar la
+elicitacion, se carece de evidencia empirica controlada que compare la calidad
+resultante frente a la elicitacion humana clasica sobre una misma fuente.
+
+Las contribuciones de este trabajo son las siguientes:
+\begin{enumerate}
+    \item Una evidencia empirica adicional que complementa el mapeo
+    sistematico de Montgomery et al.\ \cite{montgomery2022} y las guias de
+    \cite{vogelsang2024} sobre el uso de LLM en la elicitacion de requisitos,
+    medida en cinco dimensiones de calidad con evaluadores a ciegas.
+    \item Un protocolo reproducible y preregistrado (OSF) para comparar RF
+    humanos frente a LLM, con instrumentos, consignas, parametros del modelo y
+    scripts de analisis publicados en el repositorio.
+    \item Un conjunto de datos anonimizado depositado en Zenodo con licencia
+    CC BY 4.0, siguiendo los principios FAIR \cite{wilkinson2016} y las
+    practicas de citacion de software \cite{smith2016,druskat2021}.
+\end{enumerate}
+
+El resto del manuscrito se organiza asi: la Seccion 2 presenta el trabajo
+relacionado; la Seccion 3 describe la metodologia del cuasi-experimento
+(Enfoque 1); las secciones de resultados, discusion y conclusiones se
+completaran en la Entrega 4 (2B) con los datos analizados.
+
+% ============================================================================
+\section{Trabajo relacionado}
+% ============================================================================
+
+Para delimitar el estado del arte se ejecuto una busqueda sistematica de
+literatura con la cadena de tres terminos: \texttt{("requirements engineering"
+OR "requisitos de software") AND ("large language model" OR "ChatGPT" OR
+"Claude") AND ("elicitation" OR "quality")}, en las bases de datos Scopus y
+Google Scholar, limitando el periodo a los ultimos tres anos. Los criterios de
+inclusion fueron: estudios revisados por pares con datos empiricos publicados
+en conferencias o revistas de ingenieria de requisitos. Los criterios de
+exclusion fueron: editoriales, presentaciones breves de menos de cuatro paginas
+y estudios sin datos.
+
+El Cuadro~\ref{tab:relacionado} resume los estudios mas relevantes.
+
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabular}{p{2.6cm} p{0.9cm} p{1.7cm} p{2.2cm} p{3.2cm} p{3.0cm}}
+\toprule
+\textbf{Referencia} & \textbf{Ano} & \textbf{Tipo de estudio} & \textbf{Poblacion} & \textbf{Intervencion} & \textbf{Diferencia con nuestro trabajo} \\
+\midrule
+Cheng et al.\ \cite{cheng2026} & 2026 & Revision sistematica & Literatura de IA generativa en RE & Analisis de estudios sobre generacion de requisitos & Es una revision; no mide calidad en un experimento controlado \\
+Arora et al.\ \cite{arora2024} & 2024 & Vision/posicion & Comunidad de RE & Evaluacion cualitativa del rol de los LLM & No aporta comparacion cuantitativa apareada \\
+Vogelsang y Fischbach \cite{vogelsang2024} & 2024 & Guia & Practicantes de RE & Directrices de uso de LLM en tareas de PLN & No valida la guia en dominio agroindustrial latinoamericano \\
+Montgomery et al.\ \cite{montgomery2022} & 2022 & Mapeo sistematico & Estudios de calidad de requisitos & Clasificacion de operacionalizaciones de calidad & No compara humanos frente a LLM sobre una misma fuente \\
+\bottomrule
+\end{tabular}
+\caption{Cuadro comparativo del trabajo relacionado.}
+\label{tab:relacionado}
+\end{table}
+
+El nicho concreto que ocupa nuestro estudio es la comparacion controlada y
+cuantitativa, sobre un unico material fuente, entre la calidad de los RF
+producidos por un equipo humano y la producida por un LLM con parametros
+fijos, en un dominio agroindustrial real de Ecuador. Los estudios previos
+documentan el potencial de los LLM o clasifican las dimensiones de calidad,
+pero no ofrecen una evidencia apareada de cinco dimensiones con evaluadores a
+ciegas y analisis estadistico preregistrado en este contexto.
+
+% ============================================================================
+\section{Metodologia}
+% ============================================================================
+
+La metodologia sigue la plantilla de reporte de experimentos de Jedlitschka
+et al.\ \cite{jedlitschka2008} y la guia de Wohlin et al.\ \cite{wohlin2012}
+para cuasi-experimentos. El detalle completo esta en el protocolo experimental
+\cite{protocolo}, registrado en el OSF con fecha anterior a la ejecucion.
+
+\subsection{Pregunta de investigacion (PICOC)}
+\label{subsec:rq}
+La pregunta principal es: \emph{?`En que dimensiones de calidad los RF
+elicitados por un equipo humano difieren de los generados por un LLM a partir
+del mismo material fuente?}
+
+\begin{center}
+\begin{tabular}{>{\raggedright\arraybackslash}p{3cm} p{12cm}}
+\toprule
+\textbf{Componente} & \textbf{Descripcion} \\
+\midrule
+Poblacion (P) & Conjuntos de RF del sistema AgriMoreira (>= 25 RF humanos del
+ERS y >= 25 RF generados por LLM). \\
+Intervencion (I) & Evaluacion a ciegas con rubrica de cinco dimensiones
+(escala 1--5). \\
+Comparacion (C) & Conjunto A (LLM) frente a Conjunto B (equipo humano). \\
+Resultado (O) & Puntuacion media de calidad por dimension, acuerdo
+inter-evaluador (kappa) y tamano del efecto. \\
+Contexto (C) & Dominio agroindustrial ecuatoriano, periodo 2026-2027. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Hipotesis}
+Para cada dimension de calidad \(j \in \{1, \ldots, 5\}\):
+\[
+H_{0j}: \mu_{B,j} = \mu_{A,j}, \qquad
+H_{1j}: \mu_{B,j} \neq \mu_{A,j},
+\]
+con \(\alpha = 0{,}05\) y potencia \(1-\beta = 0{,}80\).
+
+\subsection{Variables}
+\begin{itemize}
+    \item \textbf{Independiente:} origen del conjunto de requisitos (A = LLM,
+    B = humano).
+    \item \textbf{Dependientes:} puntuacion de calidad por dimension (1--5) y
+    acuerdo inter-evaluador (kappa de Cohen y de Fleiss).
+    \item \textbf{De control:} material fuente unico (transcripcion
+    anonimizada EV-01), rubrica identica, evaluadores ciegos e independientes,
+    y parametros del LLM fijos (modelo, temperatura, top-p y semilla).
+\end{itemize}
+
+\subsection{Diseno del estudio}
+Cuasi-experimento apareado \cite{wohlin2012}. El material fuente unico es la
+transcripcion anonimizada de la entrevista al administrador (Entr-01 = EV-01),
+disponible en \texttt{02\_Evidencias/Transcripciones/}. El LLM recibe
+exclusivamente esa transcripcion con la consigna de la guia y produce el
+Conjunto A; el Conjunto B lo conforman los RF del ERS (RF-01 a RF-16 segun la
+matriz de trazabilidad). Cada conjunto debe alcanzar un minimo de 25 requisitos
+individuales para el analisis estadistico apareado \cite{montgomery2022}.
+
+\subsection{Participantes y reclutamiento}
+Se contratan de 3 a 5 evaluadores expertos independientes (por ejemplo,
+estudiantes de otro paralelo o docentes del area de Ingenieria de
+Requerimientos) con criterios de inclusion (conocimientos de RE, no haber
+participado en la elicitacion) y exclusion (miembros del equipo). Cada
+evaluador firma consentimiento informado conforme a la Ley Organica de
+Proteccion de Datos Personales del Ecuador \cite{lopdp2021}, con autorizacion
+para el uso de datos anonimizados en publicaciones y en el deposito en Zenodo
+con CC BY 4.0.
+
+\subsection{Instrumentos}
+\begin{enumerate}
+    \item Material fuente unico: transcripcion anonimizada de la entrevista
+    EV-01.
+    \item Consigna exacta del LLM con parametros registrados en
+    \texttt{06\_Experimento/prompts\_llm/experimento\_enf1\_prompt.md}.
+    \item Rubrica de evaluacion experta (cinco dimensiones, escala 1--5) en
+    \texttt{06\_Experimento/instrumentos/}.
+    \item Hoja de evaluacion a ciegas
+    (\texttt{06\_Experimento/instrumentos/hoja\_evaluacion\_a\_ciegas.csv}).
+    \item Plantilla de consentimiento actualizado (carpeta \texttt{08\_Etica/}).
+\end{enumerate}
+
+\subsection{Plan de analisis estadistico}
+\begin{enumerate}
+    \item Normalidad de las diferencias apareadas: prueba de Shapiro-Wilk.
+    \item Comparacion de medias: t pareada (normales) o Wilcoxon (no normales).
+    \item Tamano del efecto: d de Cohen o delta de Cliff.
+    \item Correccion por comparaciones multiples (Bonferroni).
+    \item Acuerdo inter-evaluador: kappa de Cohen por pares y kappa de Fleiss.
+    \item Potencia estadistica previa: alpha 0.05, 1-beta 0.80
+    \cite{molleri2020}.
+\end{enumerate}
+Todos los calculos se ejecutan con los scripts versionados en
+\texttt{06\_Experimento/scripts\_analisis/analisis\_ef1.py} a partir de los
+datos crudos de \texttt{06\_Experimento/resultados/}.
+
+\bibliographystyle{unsrt}
+\bibliography{referencias}
+
+\end{document}
