@@ -106,6 +106,59 @@ Para el Jornalero, ubicado hacia el cuadrante de monitorear, la estrategia es de
 
 Para el Docente de la asignatura, ubicado en el cruce de los dos ejes, la estrategia es de mantenerlo informado mediante los entregables periódicos del proyecto: su interés declarado en la Tabla A.1 corresponde a una supervisión académica periódica, no a una participación operativa diaria.
 
+% Subseccion 2.3: Modelado organizacional i estrella
+\subsection{Modelado organizacional en el lenguaje distribuido intencional (i*)}
+\label{sec:modelado-istar}
+
+El modelado organizacional del SGA utiliza la notación i* de Eric Yu para representar los actores del dominio, sus dependencias mutuas y el razonamiento interno que sostiene cada una de ellas.
+
+% Subseccion 2.3.1: Actores y dependencias del dominio
+\subsubsection{Actores y dependencias del dominio}
+\label{sec:actores-dependencias}
+
+Los actores del modelo i* coinciden exactamente con los identificados en la Sección~\ref{sec:mapa-stakeholders}: Administrador de la finca, Jornalero, Equipo de desarrollo y Docente de la asignatura. La Sección 5 del material fuente no registra ninguna mención al Equipo de desarrollo ni al Docente, por lo que ambos se representan como actores sin dependencias evidenciadas hacia o desde el dominio operativo de la finca.
+
+Entre el Administrador y el Jornalero se identifican cuatro dependencias, todas ancladas a la evidencia de campo:
+
+\begin{itemize}
+\item El Jornalero depende del Administrador para la asignación de la tarea diaria (EV-02 [01:01]).
+\item El Jornalero depende del Administrador para la entrega de insumos agrícolas (EV-02 [02:25]).
+\item El Administrador depende del Jornalero para el reporte de incidencias fitosanitarias (EV-02 [01:34]).
+\item El Administrador depende del Jornalero para el registro de la producción cosechada (EV-01 [05:18]).
+\end{itemize}
+
+% Subseccion 2.3.2: Diagrama de Dependencia Estrategica
+\subsubsection{Diagrama de Dependencia Estratégica (SD)}
+\label{sec:istar-sd-texto}
+
+La Figura~\ref{fig:istar-sd} representa las cuatro dependencias identificadas entre el Administrador y el Jornalero. El Equipo de desarrollo y el Docente de la asignatura se muestran como actores sin enlaces de dependencia, conforme a lo señalado en la Sección~\ref{sec:actores-dependencias}.
+
+\clearpage
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.9\textwidth,height=0.4\textheight,keepaspectratio]{istar_sd.png}
+\caption{Diagrama de Dependencia Estratégica (SD) del SGA}
+\label{fig:istar-sd}
+\end{figure}
+
+% Subseccion 2.3.3: Diagrama de Razon Estrategica
+\subsubsection{Diagrama de Razón Estratégica (SR)}
+\label{sec:istar-sr-texto}
+
+La Figura~\ref{fig:istar-sr} abre el razonamiento interno de cada actor. El Administrador persigue el objetivo duro de gestionar eficientemente la producción de la finca, que se descompone en las tareas de planificar actividades semanalmente (EV-01 [06:51]), asignar tareas a los trabajadores (EV-01 [06:58]) y consultar reportes de producción (EV-01 [08:10]). Declara además dos objetivos blandos: confiar en las recomendaciones de la Inteligencia Artificial (EV-01 [09:02], [09:10]), sostenido por la tarea de verificar manualmente la alerta antes de actuar, y reducir el tiempo dedicado a labores manuales de control (EV-01 [01:36]), para el cual la Sección 5 no evidencia una tarea que contribuya directamente.
+
+El Jornalero persigue el objetivo duro de cumplir las tareas asignadas, descompuesto en ejecutar la labor correspondiente (EV-02 [00:54]) y reportar novedades al administrador (EV-02 [01:34]). Declara el objetivo blando de minimizar el uso de dispositivos nuevos (EV-02 [02:33], [02:43]), sin una tarea evidenciada que contribuya a él de forma específica.
+
+El Equipo de desarrollo persigue el objetivo duro de entregar el SGA conforme a los requisitos definidos, mediante la tarea de analizar, diseñar e implementar el sistema. El Docente de la asignatura persigue el objetivo duro de verificar el cumplimiento de la metodología y los objetivos de la asignatura, mediante la tarea de evaluar los entregables del proyecto.
+
+\clearpage
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.7\textwidth,height=0.55\textheight,keepaspectratio]{istar_sr.png}
+\caption{Diagrama de Razón Estratégica (SR) del SGA}
+\label{fig:istar-sr}
+\end{figure}
+
 % Seccion 3: Requisitos especificos completos
 \section{Requisitos específicos completos}
 \label{sec:requisitos-especificos}
