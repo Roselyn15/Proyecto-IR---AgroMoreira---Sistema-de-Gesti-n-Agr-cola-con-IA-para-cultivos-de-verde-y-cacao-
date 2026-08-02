@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>MU-06 · Inventory &mdash; Input inventory</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green-900:#12281e; --green-800:#1F4D3A; --green-700:#2c6349; --green-600:#3d7d5c;
+  --bronze:#A6631B; --bronze-light:#c98a3f;
+  --cream:#F7F4EE; --surface:#FFFFFF; --ink:#23291F; --ink-soft:#5b6155; --ink-faint:#8a8f80;
+  --line:#E4DFD2; --danger:#B4472A; --danger-bg:#FBEDE7; --danger-line:#f0c9ba;
+  --warn:#B08A2E; --warn-bg:#FBF3DE; --warn-line:#eddca4;
+  --ok:#3c5237; --ok-bg:#EFF4EC; --ok-line:#d9e5d2;
+  --info:#2c5f8a; --info-bg:#e9f1f8; --info-line:#c7dcec;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{font-family:'Inter',sans-serif; background:var(--cream); color:var(--ink); min-height:100vh;}
+h1,h2,h3{font-family:'Fraunces',serif; margin:0;}
+code.mono{font-family:'IBM Plex Mono',monospace;}
+
+.app{display:flex; min-height:100vh;}
+
+/* ---------- Sidebar ---------- */
+.sidebar{
+  width:248px; flex:none; min-height:100vh;
+  background:linear-gradient(180deg,var(--green-900) 0%, var(--green-800) 60%, var(--green-700) 100%);
+  color:#EFE9D9; display:flex; flex-direction:column; padding:22px 16px;
+  position:sticky; top:0; height:100vh;
+}
+.side-wordmark{display:flex; align-items:center; gap:9px; font-family:'Fraunces',serif; font-weight:600; font-size:17px; padding:4px 8px 22px;}
+.side-wordmark svg{flex:none;}
+.side-nav{list-style:none; margin:0; padding:0; flex:1; display:flex; flex-direction:column; gap:2px;}
+.side-nav a{
+  display:flex; align-items:center; gap:11px; padding:10px 12px; border-radius:8px;
+  color:#cdd8c8; text-decoration:none; font-size:13.5px; font-weight:500;
+  border-left:3px solid transparent;
+}
+.side-nav a svg{flex:none; opacity:.85;}
+.side-nav a.active{background:rgba(255,255,255,.09); color:#fff; border-left-color:var(--bronze-light);}
+.side-nav a.active svg{opacity:1;}
+.side-nav a .badge-dot{margin-left:auto; width:7px; height:7px; border-radius:50%; background:var(--bronze-light);}
+.side-user{
+  display:flex; align-items:center; gap:10px; padding:12px; margin-top:10px;
+  border-top:1px solid rgba(255,255,255,.14); padding-top:16px;
+}
+.side-avatar{
+  width:34px; height:34px; border-radius:50%; background:var(--bronze); color:#fff;
+  display:flex; align-items:center; justify-content:center; font-weight:700; font-size:13px; flex:none;
+}
+.side-user div b{display:block; font-size:13px; color:#fff;}
+.side-user div span{font-size:11.5px; color:#a9b7a3;}
+
+/* ---------- Main / Topbar ---------- */
+.main{flex:1; min-width:0; display:flex; flex-direction:column;}
+.topbar{
+  display:flex; align-items:center; justify-content:space-between; gap:20px;
+  padding:20px 32px; border-bottom:1px solid var(--line); background:var(--cream);
+  position:sticky; top:0; z-index:5;
+}
+.topbar .eyebrow{font-size:11.5px; letter-spacing:.09em; text-transform:uppercase; color:var(--bronze); font-weight:700; margin-bottom:5px;}
+.topbar h1{font-size:24px; font-weight:700;}
+.topbar .sub{font-size:13px; color:var(--ink-soft); margin-top:4px;}
+.top-actions{display:flex; align-items:center; gap:14px; flex:none;}
+.search-box{
+  display:flex; align-items:center; gap:8px; background:var(--surface); border:1.5px solid var(--line);
+  border-radius:8px; padding:8px 12px; font-size:13px; color:var(--ink-faint); min-width:220px;
+}
+.icon-btn{
+  width:36px; height:36px; border-radius:8px; border:1.5px solid var(--line); background:var(--surface);
+  display:flex; align-items:center; justify-content:center; position:relative; flex:none;
+}
+.icon-btn .dot{position:absolute; top:6px; right:6px; width:7px; height:7px; border-radius:50%; background:var(--danger); border:1.5px solid var(--surface);}
+.top-avatar{width:36px; height:36px; border-radius:50%; background:var(--green-800); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:13px; flex:none;}
+
+.content{padding:28px 32px 60px; flex:1;}
+
+/* ---------- Shared components ---------- */
+.card{background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:22px;}
+.card + .card{margin-top:20px;}
+.card-head{display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; gap:12px;}
+.card-head h2{font-size:16.5px; font-weight:600;}
+.card-head .muted{font-size:12.5px; color:var(--ink-faint);}
+
+.btn{
+  display:inline-flex; align-items:center; gap:7px; padding:9px 15px; border-radius:8px; font-size:13.5px;
+  font-weight:600; border:1.5px solid transparent; cursor:pointer; text-decoration:none; font-family:'Inter',sans-serif;
+}
+.btn-primary{background:var(--green-800); color:#fff;}
+.btn-primary:hover{background:var(--green-700);}
+.btn-outline{background:var(--surface); border-color:var(--line); color:var(--ink);}
+.btn-outline:hover{border-color:var(--green-800);}
+.btn-bronze{background:var(--bronze); color:#fff;}
+.btn-sm{padding:6px 11px; font-size:12.5px; border-radius:7px;}
+.btn-danger-outline{background:var(--surface); border-color:var(--danger-line); color:var(--danger);}
+
+.badge{display:inline-flex; align-items:center; gap:5px; font-size:11.5px; font-weight:600; padding:3px 9px; border-radius:20px; white-space:nowrap;}
+.badge-ok{background:var(--ok-bg); color:var(--ok); border:1px solid var(--ok-line);}
+.badge-warn{background:var(--warn-bg); color:var(--warn); border:1px solid var(--warn-line);}
+.badge-danger{background:var(--danger-bg); color:var(--danger); border:1px solid var(--danger-line);}
+.badge-info{background:var(--info-bg); color:var(--info); border:1px solid var(--info-line);}
+.badge-neutral{background:#efece2; color:var(--ink-soft); border:1px solid var(--line);}
+
+table{width:100%; border-collapse:collapse; font-size:13.5px;}
+thead th{
+  text-align:left; font-size:11px; letter-spacing:.05em; text-transform:uppercase; color:var(--ink-faint);
+  font-weight:700; padding:0 12px 10px; border-bottom:1.5px solid var(--line);
+}
+tbody td{padding:13px 12px; border-bottom:1px solid var(--line); vertical-align:middle;}
+tbody tr:last-child td{border-bottom:none;}
+tbody tr:hover{background:#faf9f4;}
+
+.field{margin-bottom:16px;}
+.field label{display:block; font-size:12.5px; font-weight:600; color:var(--ink); margin-bottom:6px;}
+.field .hint{font-size:11px; color:var(--ink-faint); margin-top:5px;}
+.field input, .field select, .field textarea{
+  width:100%; padding:10px 12px; border-radius:8px; border:1.5px solid var(--line);
+  background:var(--surface); font-family:'Inter',sans-serif; font-size:13.5px; color:var(--ink); outline:none;
+}
+.field input:focus, .field select:focus, .field textarea:focus{border-color:var(--green-800); box-shadow:0 0 0 3px rgba(31,77,58,.12);}
+.field-row{display:flex; gap:14px;}
+.field-row .field{flex:1;}
+.seg{display:flex; gap:8px; flex-wrap:wrap;}
+.seg button{
+  padding:8px 14px; border-radius:8px; border:1.5px solid var(--line); background:var(--surface);
+  font-size:13px; font-weight:600; color:var(--ink-soft); cursor:pointer;
+}
+.seg button.active{background:var(--green-800); border-color:var(--green-800); color:#fff;}
+
+.avatar-sm{width:26px; height:26px; border-radius:50%; background:var(--green-700); color:#fff; display:inline-flex; align-items:center; justify-content:center; font-size:10.5px; font-weight:700;}
+
+.progress{height:7px; border-radius:5px; background:#eee9db; overflow:hidden;}
+.progress > div{height:100%; border-radius:5px;}
+
+.foot-note{margin-top:26px; font-size:11.5px; color:var(--ink-faint); text-align:left;}
+.foot-note code{font-family:'IBM Plex Mono',monospace; font-size:10.5px; background:#efe9da; color:#6b6656; padding:2px 6px; border-radius:4px;}
+</style>
+</head>
+<body>
+<div class="app">
+  
+  <div class="sidebar">
+    <div class="side-wordmark">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2C7 4 3 8 3 14c0 3.5 2.5 7 9 8 0-7 1-13 6-18-6 1-10 5-11 11" stroke="#F4EFDE" stroke-width="1.4" fill="none"/></svg>
+      AgroMoreira &middot; SGA
+    </div>
+    <ul class="side-nav"><li><a class="" href="#"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13h7V4H4v9zm0 7h7v-5H4v5zm9 0h7V11h-7v9zm0-16v5h7V4h-7z"/></svg><span>Dashboard</span></a></li><li><a class="" href="#"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l9-9 9 9M5 10v10h14V10"/></svg><span>Plots</span></a></li><li><a class="" href="#"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c-3 3-5 6-5 10a5 5 0 0010 0c0-4-2-7-5-10zM12 22v-6"/></svg><span>Crops</span></a></li><li><a class="" href="#"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 012-2h2a2 2 0 012 2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 12h6M9 16h6"/></svg><span>Activities</span></a></li><li><a class="" href="#"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l7.07 7.07M12 21a9 9 0 100-18 9 9 0 000 18zM12 7v5l3 3"/></svg><span>Harvest</span></a></li><li><a class="active" href="#"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg><span>Inventory</span><span class="badge-dot"></span></a></li><li><a class="" href="#"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg><span>Tasks</span></a></li><li><a class="" href="#"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10M12 20V4M6 20v-6"/></svg><span>Reports</span></a></li><li><a class="" href="#"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg><span>Users</span></a></li><li><a class="" href="#"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l1.5 4.5L18 8l-4.5 1.5L12 14l-1.5-4.5L6 8l4.5-1.5L12 2zM19 15l.75 2.25L22 18l-2.25.75L19 21l-.75-2.25L16 18l2.25-.75L19 15z"/></svg><span>AI Module</span></a></li></ul>
+    <div class="side-user">
+      <div class="side-avatar">RM</div>
+      <div><b>Raúl Moreira</b><span>Administrator</span></div>
+    </div>
+  </div>
+  <div class="main">
+    
+  <div class="topbar">
+    <div>
+      <div class="eyebrow">MU-06 · Inventory</div>
+      <h1>Input inventory</h1>
+      <div class="sub">Track fertilizers, fungicides, herbicides and tools.</div>
+    </div>
+    <div class="top-actions">
+      
+      <div class="search-box"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M11 19a8 8 0 100-16 8 8 0 000 16zM21 21l-4.35-4.35"/></svg> Search&hellip;</div>
+      <div class="icon-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 00-12 0c0 7-3 9-3 9h18s-3-2-3-9zM13.73 21a2 2 0 01-3.46 0"/></svg><span class="dot"></span></div>
+      <div class="top-avatar">RM</div>
+    </div>
+  </div>
+    <div class="content">
+      
+<div style="display:flex; gap:20px; align-items:flex-start;">
+  <div class="card" style="flex:1;">
+    <div class="card-head">
+      <div><h2>Current stock</h2><div class="muted">5 items &middot; 2 below threshold</div></div>
+      <a class="btn btn-primary btn-sm" href="#"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg> New item</a>
+    </div>
+    <table>
+      <thead><tr><th>Item</th><th>Available</th><th>Status</th><th></th></tr></thead>
+      <tbody><tr>
+      <td><b>Systemic fungicide</b><div class="muted" style="font-size:11.5px;">Fungicide</div></td>
+      <td style="width:220px;">
+        <div style="display:flex; justify-content:space-between; font-size:12px; margin-bottom:5px;"><span>4/30 sacks</span><span>13%</span></div>
+        <div class="progress"><div style="width:13%; background:var(--danger);"></div></div>
+      </td>
+      <td><span class="badge badge-danger">Critical</span></td>
+      <td><a class="btn btn-outline btn-sm" href="#">Restock</a></td>
+    </tr><tr>
+      <td><b>NPK fertilizer</b><div class="muted" style="font-size:11.5px;">Fertilizer</div></td>
+      <td style="width:220px;">
+        <div style="display:flex; justify-content:space-between; font-size:12px; margin-bottom:5px;"><span>7/25 sacks</span><span>28%</span></div>
+        <div class="progress"><div style="width:28%; background:var(--warn);"></div></div>
+      </td>
+      <td><span class="badge badge-warn">Low</span></td>
+      <td><a class="btn btn-outline btn-sm" href="#">Restock</a></td>
+    </tr><tr>
+      <td><b>Selective herbicide</b><div class="muted" style="font-size:11.5px;">Herbicide</div></td>
+      <td style="width:220px;">
+        <div style="display:flex; justify-content:space-between; font-size:12px; margin-bottom:5px;"><span>18/20 liters</span><span>90%</span></div>
+        <div class="progress"><div style="width:90%; background:var(--ok);"></div></div>
+      </td>
+      <td><span class="badge badge-ok">Sufficient</span></td>
+      <td><a class="btn btn-outline btn-sm" href="#">Restock</a></td>
+    </tr><tr>
+      <td><b>Agricultural lime</b><div class="muted" style="font-size:11.5px;">Soil corrector</div></td>
+      <td style="width:220px;">
+        <div style="display:flex; justify-content:space-between; font-size:12px; margin-bottom:5px;"><span>30/30 sacks</span><span>100%</span></div>
+        <div class="progress"><div style="width:100%; background:var(--ok);"></div></div>
+      </td>
+      <td><span class="badge badge-ok">Sufficient</span></td>
+      <td><a class="btn btn-outline btn-sm" href="#">Restock</a></td>
+    </tr><tr>
+      <td><b>Machetes</b><div class="muted" style="font-size:11.5px;">Tool</div></td>
+      <td style="width:220px;">
+        <div style="display:flex; justify-content:space-between; font-size:12px; margin-bottom:5px;"><span>9/10 units</span><span>90%</span></div>
+        <div class="progress"><div style="width:90%; background:var(--ok);"></div></div>
+      </td>
+      <td><span class="badge badge-ok">Sufficient</span></td>
+      <td><a class="btn btn-outline btn-sm" href="#">Restock</a></td>
+    </tr></tbody>
+    </table>
+  </div>
+  <div class="card" style="width:320px; flex:none;">
+    <div class="card-head"><h2>Restock item</h2></div>
+    <div class="field"><label>Item</label><select><option>Systemic fungicide</option><option>NPK fertilizer</option><option>Selective herbicide</option></select></div>
+    <div class="field-row">
+      <div class="field"><label>Quantity to add</label><input value="10"></div>
+      <div class="field"><label>Unit</label><input value="sacks" disabled></div>
+    </div>
+    <div class="field"><label>Minimum threshold</label><input value="10"><div class="hint">Triggers a low-stock alert (RF-16) when available quantity drops below this.</div></div>
+    <a class="btn btn-primary" style="width:100%; justify-content:center;" href="#">Update stock</a>
+    <div style="margin-top:18px; display:flex; gap:10px; align-items:flex-start; background:var(--danger-bg); border:1px solid var(--danger-line); border-radius:8px; padding:11px 12px;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--danger)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
+      <div style="font-size:12px; color:var(--danger); line-height:1.5;"><b>Systemic fungicide is critically low.</b> An alert was sent to the administrator.</div>
+    </div>
+  </div>
+</div>
+<p class="foot-note">Traced to <code>RF-06</code> &middot; Use case <code>UC-06</code> &middot; Actor: Administrator</p>
+
+    </div>
+  </div>
+</div>
+</body>
+</html>
