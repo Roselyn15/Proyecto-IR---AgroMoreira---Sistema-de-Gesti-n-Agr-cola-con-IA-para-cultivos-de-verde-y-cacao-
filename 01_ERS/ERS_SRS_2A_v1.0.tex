@@ -46,6 +46,66 @@ La Figura~\ref{fig:diagrama-contexto} muestra el diagrama de contexto del SGA. H
 \label{fig:diagrama-contexto}
 \end{figure}
 
+% Subseccion 2.2: Mapa de partes interesadas con matriz poder/interes
+\subsection{Mapa de partes interesadas con matriz poder/interés}
+\label{sec:mapa-stakeholders}
+
+La identificación de partes interesadas del SGA parte de la Tabla A.1 del Anexo A del ERS de la Entrega 1B, que reconoce cuatro actores: el administrador de la finca, el jornalero, el equipo de desarrollo y el docente de la asignatura.
+
+% Subseccion 2.2.1: Identificacion de partes interesadas
+\subsubsection{Identificación de partes interesadas}
+\label{sec:identificacion-stakeholders}
+
+\begin{center}
+\begin{longtable}{|p{1.1cm}|p{2.7cm}|p{2.8cm}|p{1.3cm}|p{1.3cm}|p{2.1cm}|p{1.1cm}|}
+\hline
+\textbf{ID} & \textbf{Actor} & \textbf{Rol} & \textbf{Poder} & \textbf{Interés} & \textbf{Cuadrante} & \textbf{ID-EV} \\
+\hline
+\endfirsthead
+\hline
+\textbf{ID} & \textbf{Actor} & \textbf{Rol} & \textbf{Poder} & \textbf{Interés} & \textbf{Cuadrante} & \textbf{ID-EV} \\
+\hline
+\endhead
+\hline
+\endfoot
+\hline
+\endlastfoot
+PI-01 & Administrador de la finca & Cliente principal & Alto & Alto & Gestionar de cerca & EV-01 \\
+\hline
+PI-02 & Jornalero & Usuario final & Medio-bajo & Bajo & Monitorear & EV-02 \\
+\hline
+PI-03 & Equipo de desarrollo & Desarrolladores & Alto & Alto & Gestionar de cerca & --- \\
+\hline
+PI-04 & Docente de la asignatura & Supervisor académico & Medio & Medio & Cruce, sin inclinación & --- \\
+\hline
+\end{longtable}
+\label{tab:identificacion-stakeholders}
+\end{center}
+
+% Subseccion 2.2.2: Matriz poder/interes
+\subsubsection{Matriz poder/interés}
+\label{sec:matriz-poder-interes-texto}
+
+La Figura~\ref{fig:matriz-poder-interes} ubica a los cuatro actores en la matriz poder/interés. El Docente de la asignatura se representa con un marcador distinto (rombo) exactamente en el cruce de los dos ejes, ya que la Tabla A.1 declara su poder e interés como medios, sin evidencia en la Sección 5 que lo incline hacia un cuadrante específico.
+
+\clearpage
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.6\textwidth,height=0.4\textheight,keepaspectratio]{mapa_stakeholders_poder_interes.png}
+\caption{Matriz poder/interés de las partes interesadas del SGA}
+\label{fig:matriz-poder-interes}
+\end{figure}
+
+% Subseccion 2.2.3: Estrategia de gestion por cuadrante
+\subsubsection{Estrategia de gestión por cuadrante}
+\label{sec:estrategia-cuadrante}
+
+Para el Administrador de la finca y el Equipo de desarrollo, ubicados en el cuadrante de gestionar de cerca, la estrategia es de comunicación directa y frecuente, con participación en la priorización de requisitos: el administrador es la única parte interesada con entrevista extensa (EV-01, 640,88 s) y el equipo de desarrollo tiene la responsabilidad operativa directa sobre el sistema, declarada en la Tabla A.1.
+
+Para el Jornalero, ubicado hacia el cuadrante de monitorear, la estrategia es de comunicación periódica y de baja carga, limitada a la información mínima necesaria para ejecutar sus tareas: su propia declaración (EV-02 [02:43]) describe una disposición pragmática, no proactiva, hacia el uso de herramientas digitales.
+
+Para el Docente de la asignatura, ubicado en el cruce de los dos ejes, la estrategia es de mantenerlo informado mediante los entregables periódicos del proyecto: su interés declarado en la Tabla A.1 corresponde a una supervisión académica periódica, no a una participación operativa diaria.
+
 % Seccion 3: Requisitos especificos completos
 \section{Requisitos específicos completos}
 \label{sec:requisitos-especificos}
