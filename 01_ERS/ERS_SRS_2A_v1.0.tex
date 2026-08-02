@@ -585,4 +585,292 @@ Postcondiciones & La enfermedad queda registrada y disponible para su consulta. 
 \end{longtable}
 \end{center}
 
+A continuación se incorporan los once requisitos funcionales adicionales (RF-17 a RF-27), derivados de las capacidades identificadas en la evidencia de campo que no quedaban cubiertas por los dieciséis requisitos migrados. Cada uno sigue estrictamente la plantilla de ocho atributos, sin campos adicionales.
+
+\bigskip
+\noindent\textbf{RF-17. Registro de peso y comprobante de acopio}
+\label{tab:RF-17}
+
+\begin{center}
+\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\hline
+Identificador & RF-17 \\
+\hline
+Nombre & Registro de peso y comprobante de acopio \\
+\hline
+Descripción & El sistema deberá permitir registrar el peso entregado y el número de comprobante emitido por el centro de acopio para cada cosecha, como respaldo de la producción declarada. \\
+\hline
+Actor / origen & Trabajador agrícola, Administrador --- EV-01 [04:32], [04:47]. \\
+\hline
+Entradas & Peso entregado (numérico, kg o toneladas, obligatorio); número de comprobante (texto, obligatorio). \\
+\hline
+Salidas & Registro de cosecha (RF-05) con peso y comprobante asociados. \\
+\hline
+Prioridad (MoSCoW) & Debería tener. \\
+\hline
+Criterio de verificación & El 100~\% de los registros de cosecha con comprobante de acopio permiten recuperar el peso y el número de comprobante en una consulta posterior, verificado sobre una muestra de 30 registros. \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RF-18. Comparación de producción entre periodos}
+\label{tab:RF-18}
+
+\begin{center}
+\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\hline
+Identificador & RF-18 \\
+\hline
+Nombre & Comparación de producción entre periodos \\
+\hline
+Descripción & El sistema deberá permitir comparar la producción registrada entre dos periodos seleccionados por el administrador, para un mismo cultivo o parcela. \\
+\hline
+Actor / origen & Administrador --- EV-01 [04:47], [04:54]. \\
+\hline
+Entradas & Periodo 1, periodo 2, cultivo o parcela (selección, obligatorio). \\
+\hline
+Salidas & Diferencia porcentual y absoluta de producción entre los dos periodos seleccionados. \\
+\hline
+Prioridad (MoSCoW) & Debería tener. \\
+\hline
+Criterio de verificación & La comparación entre dos periodos con 500 registros de producción se presenta en $\leq$ 3,0 s, verificado en el percentil 95 de 30 ejecuciones. \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RF-19. Reporte de pérdidas por plagas}
+\label{tab:RF-19}
+
+\begin{center}
+\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\hline
+Identificador & RF-19 \\
+\hline
+Nombre & Reporte de pérdidas por plagas \\
+\hline
+Descripción & El sistema deberá generar un reporte de pérdidas de producción estimadas asociadas a plagas y enfermedades, por cultivo y por parcela. \\
+\hline
+Actor / origen & Administrador --- EV-01 [08:17], [08:22], [08:29] (reporte señalado como el más importante por el administrador). \\
+\hline
+Entradas & Periodo (fecha, obligatorio); cultivo o parcela (selección, opcional). \\
+\hline
+Salidas & Reporte con pérdida estimada por plaga o enfermedad, cultivo y parcela. \\
+\hline
+Prioridad (MoSCoW) & Debe tener. \\
+\hline
+Criterio de verificación & El reporte de pérdidas por plagas se genera en $\leq$ 3,0 s con 500 registros de enfermedad cargados, verificado en el percentil 95 de 30 ejecuciones. \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RF-20. Catálogo de plagas y enfermedades por cultivo}
+\label{tab:RF-20}
+
+\begin{center}
+\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\hline
+Identificador & RF-20 \\
+\hline
+Nombre & Catálogo de plagas y enfermedades por cultivo \\
+\hline
+Descripción & El sistema deberá mantener un catálogo de plagas y enfermedades asociadas a cada tipo de cultivo, con nombre normalizado, para estandarizar el registro de incidencias fitosanitarias. \\
+\hline
+Actor / origen & Administrador --- EV-02 [01:42]; EV-01 [01:16], [01:25]. \\
+\hline
+Entradas & Nombre de la plaga o enfermedad (texto, obligatorio); cultivo asociado (selección, obligatorio). \\
+\hline
+Salidas & Lista de plagas y enfermedades disponible para selección en el registro de enfermedades (RF-16). \\
+\hline
+Prioridad (MoSCoW) & Debería tener. \\
+\hline
+Criterio de verificación & El 100~\% de los registros de enfermedad (RF-16) permiten seleccionar el nombre desde el catálogo sin ingreso de texto libre, verificado sobre una muestra de 30 registros. \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RF-21. Planificación de compra de insumos por calendario}
+\label{tab:RF-21}
+
+\begin{center}
+\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\hline
+Identificador & RF-21 \\
+\hline
+Nombre & Planificación de compra de insumos por calendario \\
+\hline
+Descripción & El sistema deberá permitir planificar la compra de insumos agrícolas asignando cantidades estimadas por cultivo a meses específicos del año. \\
+\hline
+Actor / origen & Administrador --- EV-01 [05:36], [05:44]. \\
+\hline
+Entradas & Insumo (selección, obligatorio); cultivo (selección, obligatorio); mes (selección, obligatorio); cantidad estimada (numérico, obligatorio). \\
+\hline
+Salidas & Calendario de compras planificadas por insumo y mes. \\
+\hline
+Prioridad (MoSCoW) & Debería tener. \\
+\hline
+Criterio de verificación & El sistema muestra el calendario de compras planificadas de los 12 meses en $\leq$ 2,0 s, verificado en el percentil 95 de 20 ejecuciones. \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RF-22. Registro de entrega de insumos a trabajadores}
+\label{tab:RF-22}
+
+\begin{center}
+\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\hline
+Identificador & RF-22 \\
+\hline
+Nombre & Registro de entrega de insumos a trabajadores \\
+\hline
+Descripción & El sistema deberá permitir registrar la entrega de insumos agrícolas del administrador a un trabajador, actualizando la disponibilidad del inventario. \\
+\hline
+Actor / origen & Administrador --- EV-02 [02:25]. \\
+\hline
+Entradas & Insumo (selección, obligatorio); cantidad entregada (numérico, obligatorio); trabajador receptor (selección, obligatorio); fecha (fecha, obligatorio). \\
+\hline
+Salidas & Actualización del inventario (RF-06) y registro de entrega asociado al trabajador. \\
+\hline
+Prioridad (MoSCoW) & Podría tener. \\
+\hline
+Criterio de verificación & El 100~\% de las entregas registradas descuentan correctamente la cantidad del inventario disponible, verificado sobre una muestra de 30 entregas. \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RF-23. Registro de ingresos}
+\label{tab:RF-23}
+
+\begin{center}
+\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\hline
+Identificador & RF-23 \\
+\hline
+Nombre & Registro de ingresos \\
+\hline
+Descripción & El sistema deberá permitir registrar los ingresos generados por la venta de la producción agrícola, asociados a cultivo y periodo. \\
+\hline
+Actor / origen & Administrador --- EV-01 [06:23], [06:28], [06:37]. \\
+\hline
+Entradas & Monto (numérico, obligatorio); cultivo (selección, obligatorio); periodo (fecha, obligatorio); fecha (fecha, obligatorio). \\
+\hline
+Salidas & Registro de ingreso disponible para consulta por periodo. \\
+\hline
+Prioridad (MoSCoW) & Podría tener (necesidad secundaria frente a las prioridades explícitas del administrador). \\
+\hline
+Criterio de verificación & El registro de un ingreso queda disponible para consulta en $\leq$ 2,0 s tras su ingreso, verificado sobre 20 registros consecutivos. \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RF-24. Consulta de historial de registros por trabajador y fecha}
+\label{tab:RF-24}
+
+\begin{center}
+\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\hline
+Identificador & RF-24 \\
+\hline
+Nombre & Consulta de historial de registros por trabajador y fecha \\
+\hline
+Descripción & El sistema deberá permitir consultar el historial de labores y cosechas registradas, filtrado por trabajador y por rango de fechas, para permitir la reconciliación de la información y evitar la desviación de datos identificada en el registro en papel. \\
+\hline
+Actor / origen & Administrador --- EV-01 [02:04], [02:17]. \\
+\hline
+Entradas & Trabajador (selección, opcional); rango de fechas (obligatorio). \\
+\hline
+Salidas & Listado de labores y cosechas registradas en el rango filtrado. \\
+\hline
+Prioridad (MoSCoW) & Debe tener. \\
+\hline
+Criterio de verificación & La consulta del historial filtrado por trabajador y fecha con 500 registros se presenta en $\leq$ 2,0 s, verificado en el percentil 95 de 30 ejecuciones. \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RF-25. Generación de alertas automáticas de atención inmediata}
+\label{tab:RF-25}
+
+\begin{center}
+\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\hline
+Identificador & RF-25 \\
+\hline
+Nombre & Generación de alertas automáticas de atención inmediata \\
+\hline
+Descripción & El sistema deberá generar alertas automáticas visibles al administrador cuando se registre una condición que requiera atención inmediata, incluyendo enfermedades de gravedad alta e insumos con disponibilidad crítica. \\
+\hline
+Actor / origen & Administrador --- EV-01 [10:33]. \\
+\hline
+Entradas & Ninguna directa; se genera a partir de los registros de RF-16 y RF-06. \\
+\hline
+Salidas & Alerta con tipo, origen (parcela o insumo) y momento de generación. \\
+\hline
+Prioridad (MoSCoW) & Debe tener. \\
+\hline
+Criterio de verificación & El 100~\% de los registros de enfermedad con gravedad alta generan una alerta visible en $\leq$ 5,0 s desde su registro, verificado sobre una muestra de 30 casos. \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RF-26. Detección temprana de señales de enfermedad en parcelas mediante IA}
+\label{tab:RF-26}
+
+\begin{center}
+\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\hline
+Identificador & RF-26 \\
+\hline
+Nombre & Detección temprana de señales de enfermedad en parcelas mediante IA \\
+\hline
+Descripción & El sistema deberá analizar mediante IA la información histórica registrada de una parcela para generar una alerta temprana cuando se identifiquen patrones asociados a una posible enfermedad, antes de su confirmación visual por el usuario. \\
+\hline
+Actor / origen & Administrador --- EV-01 [09:02]. \\
+\hline
+Entradas & Registros históricos de la parcela (labores, cosechas, enfermedades previas). \\
+\hline
+Salidas & Alerta temprana de posible enfermedad, con parcela y nivel de confianza del modelo. \\
+\hline
+Prioridad (MoSCoW) & Debe tener. \\
+\hline
+Criterio de verificación & El módulo de IA genera la alerta temprana con una exactitud (accuracy) mínima del 70~\% sobre un conjunto de validación de al menos 30 casos etiquetados. \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RF-27. Consulta de producción agregada por cultivo}
+\label{tab:RF-27}
+
+\begin{center}
+\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\hline
+Identificador & RF-27 \\
+\hline
+Nombre & Consulta de producción agregada por cultivo \\
+\hline
+Descripción & El sistema deberá permitir consultar la producción total registrada agrupada por cultivo, sin necesidad de discriminar por parcela individual. \\
+\hline
+Actor / origen & Administrador --- EV-01 [09:57]. \\
+\hline
+Entradas & Cultivo (selección); periodo (opcional). \\
+\hline
+Salidas & Producción total agregada del cultivo seleccionado. \\
+\hline
+Prioridad (MoSCoW) & Debería tener. \\
+\hline
+Criterio de verificación & La consulta de producción agregada por cultivo con 500 registros se presenta en $\leq$ 2,0 s, verificado en el percentil 95 de 30 ejecuciones. \\
+\hline
+\end{longtable}
+\end{center}
+
 \end{document}
