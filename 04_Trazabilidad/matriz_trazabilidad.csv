@@ -1,0 +1,43 @@
+﻿ID;Ley;Articulo;Objetivo;Stakeholder;ID-EV;ID-RF_RNF_RD;Tipo;ID-CU;ID-HU;ID-CA;ID-Componente;ID-Mockup
+TR-01;LOPDP;Art. 9 - Seguridad de los datos;Transversal (control de acceso para todas las FP);Administrador;EV-01;RF-01;RF;UC-01;HU-01;CA-01;AuthModule;MU-01
+TR-02;LOPDP;Art. 5 - Principios de tratamiento;FP-03 Gestion de trabajadores;Administrador;EV-01;RF-14;RF;UC-14;HU-12;CA-12;AuthModule + UserModule;MU-09
+TR-03;N-A;N-A;FP-02 Gestion de parcelas;Administrador;EV-01;RF-02;RF;UC-02;HU-02;CA-02;PlotCropModule;MU-02
+TR-04;N-A;N-A;FP-01 Gestion de cultivos;Administrador;EV-01;RF-03;RF;UC-03;HU-03;CA-03;PlotCropModule;MU-03
+TR-05;N-A;N-A;FP-04 Registro de actividades;Jornalero;EV-04;RF-04;RF;UC-04;HU-04;CA-04;TaskModule;MU-04
+TR-06;N-A;N-A;FP-04 Registro de actividades;Jornalero;EV-06;RF-04;RF;UC-04;HU-04;CA-04;TaskModule;MU-04
+TR-07;N-A;N-A;FP-06 Control de produccion;Administrador;EV-01;RF-05;RF;UC-05;HU-05;CA-05;ReportModule;MU-05
+TR-08;N-A;N-A;FP-06 Control de produccion;Jornalero;EV-04;RF-05;RF;UC-05;HU-05;CA-05;ReportModule;MU-05
+TR-09;N-A;N-A;FP-05 Gestion de inventario;Administrador;EV-03;RF-06;RF;UC-06;HU-06;CA-06;InventoryModule;MU-06
+TR-10;N-A;N-A;FP-05 Gestion de inventario;Administrador;EV-07;RF-06;RF;UC-06;HU-06;CA-06;InventoryModule;MU-06
+TR-11;N-A;N-A;FP-06 Control de produccion;Administrador;EV-01;RF-07;RF;UC-07;HU-07;CA-07;ReportModule;MU-05
+TR-12;N-A;N-A;FP-04 Registro de actividades;Administrador;EV-01;RF-08;RF;UC-08;HU-08;CA-08;TaskModule;MU-07
+TR-13;N-A;N-A;FP-03 Gestion de trabajadores;Administrador;EV-01;RF-09;RF;UC-09;HU-09;CA-09;TaskModule;MU-07
+TR-14;N-A;N-A;FP-04 Registro de actividades;Jornalero;EV-04;RF-10;RF;UC-10;HU-10;CA-10;TaskModule;MU-07
+TR-15;N-A;N-A;FP-04 Registro de actividades;Administrador;EV-01;RF-10;RF;UC-10;HU-10;CA-10;TaskModule;MU-07
+TR-16;N-A;N-A;FP-07 Generacion de reportes;Administrador;EV-03;RF-11;RF;UC-11;HU-11;CA-11;ReportModule;MU-08
+TR-17;N-A;N-A;FP-07 Generacion de reportes;Administrador;EV-01;RF-12;RF;UC-12;N-A;N-A;ReportModule;MU-08
+TR-18;N-A;N-A;FP-07 Generacion de reportes;Administrador;EV-01;RF-13;RF;UC-13;N-A;N-A;ReportModule;MU-08
+TR-19;N-A;N-A;FP-08 Alertas inteligentes;Administrador;EV-01;RF-15;RF;UC-15;N-A;N-A;AIIntegrationModule;N-A (pendiente - Could Have)
+TR-20;LOPDP;Art. 7 - Consentimiento (datos del reportante);FP-08 Alertas inteligentes;Jornalero;EV-07;RF-16;RF;UC-16;N-A;N-A;AIIntegrationModule;MU-06
+TR-21;LOPDP;Art. 7 - Consentimiento (datos del reportante);FP-08 Alertas inteligentes;Administrador;EV-01;RF-16;RF;UC-16;N-A;N-A;AIIntegrationModule;MU-06
+TR-22;LOPDP;Art. 7 - Consentimiento (datos del reportante);FP-08 Alertas inteligentes;Jornalero;EV-04;RF-16;RF;UC-16;N-A;N-A;AIIntegrationModule;MU-06
+TR-23;N-A;N-A;Transversal - calidad;Administrador;EV-02;RNF-01;RNF;N-A;N-A;N-A;ReportModule;N-A
+TR-24;N-A;N-A;Transversal - calidad;Administrador;EV-01;RNF-02;RNF;N-A;N-A;N-A;Backend API (todos);N-A
+TR-25;LOPDP;Art. 9 - Seguridad de los datos;Transversal - calidad;Administrador;EV-01;RNF-03;RNF;N-A;N-A;N-A;AuthModule;N-A
+TR-26;N-A;N-A;Transversal - calidad;Jornalero;EV-04;RNF-04;RNF;N-A;N-A;N-A;Web Client (SPA);N-A
+TR-27;N-A;N-A;Transversal - calidad;Administrador;EV-01;RNF-05;RNF;N-A;N-A;N-A;Web Client (SPA);N-A
+TR-28;N-A;N-A;Transversal - calidad;Equipo de desarrollo;EV-01;RNF-06;RNF;N-A;N-A;N-A;Backend API (todos);N-A
+TR-29;N-A;N-A;Transversal - calidad;Administrador;EV-01;RD-01;RD;N-A;N-A;N-A;Web Client (SPA);N-A
+TR-30;N-A;N-A;Transversal - calidad;Equipo de desarrollo;EV-03;RD-02;RD;N-A;N-A;N-A;Database Server;N-A
+TR-31;N-A;N-A;Transversal - calidad;Jornalero;EV-04;RD-03;RD;N-A;N-A;N-A;Web Client (SPA);N-A
+TR-32;N-A;N-A;Transversal - calidad;Administrador;EV-01;RD-04;RD;N-A;N-A;N-A;AuthModule;N-A
+TR-33;N-A;N-A;Transversal - calidad;Equipo de desarrollo;EV-01;RD-05;RD;N-A;N-A;N-A;Backend API (todos);N-A
+TR-34;N-A;N-A;Transversal - calidad;Administrador;EV-01;RD-06;RD;N-A;N-A;N-A;AIIntegrationModule;N-A
+TR-35;LOPDP;Art. 7 - Consentimiento (datos del reportante);FP-08 Alertas inteligentes;Administrador;EV-06;RF-16;RF;UC-16;N-A;N-A;AIIntegrationModule;MU-06
+TR-36;N-A;N-A;FP-07 Generacion de reportes;Administrador;EV-03;RF-13;RF;UC-13;N-A;N-A;ReportModule;MU-08
+TR-37;N-A;N-A;FP-05 Gestion de inventario;Administrador;EV-06;RF-06;RF;UC-06;HU-06;CA-06;InventoryModule;MU-06
+TR-38;N-A;N-A;FP-03 Gestion de trabajadores;Jornalero;EV-04;RF-09;RF;UC-09;HU-09;CA-09;TaskModule;MU-07
+TR-39;N-A;N-A;FP-04 Registro de actividades;Jornalero;EV-04;RF-08;RF;UC-08;HU-08;CA-08;TaskModule;MU-07
+TR-40;N-A;N-A;FP-04 Registro de actividades;Jornalero;EV-07;RF-04;RF;UC-04;HU-04;CA-04;TaskModule;MU-04
+TR-41;N-A;N-A;Transversal - calidad;Administrador;EV-02;RNF-02;RNF;N-A;N-A;N-A;Backend API (todos);N-A
+TR-42;N-A;N-A;Transversal - calidad;Equipo de desarrollo;EV-06;RD-02;RD;N-A;N-A;N-A;Database Server;N-A

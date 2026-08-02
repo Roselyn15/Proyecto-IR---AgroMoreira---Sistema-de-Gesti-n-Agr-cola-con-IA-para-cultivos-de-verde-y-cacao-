@@ -1,0 +1,17 @@
+﻿ID-RF;Nombre_RF;MoSCoW;Kano;VN_ValorNegocio;CT_CriticidadTiempo;RR_ReduccionRiesgo;CoD_CostoDemora;TamanoTarea;WSJF;Justificacion_Breve
+RF-01;Gestionar inicio de sesion;Must Have;Basica;8;8;5;21;3;7.0;Sin un login seguro el sistema no puede aplicar control de acceso por rol - dependencia bloqueante para el resto de los RF.
+RF-02;Gestionar parcelas;Must Have;Basica;8;6;8;22;3;7.33;Las parcelas son la entidad raiz de la que dependen cultivos, actividades y reportes - tamano pequeno, desbloquea el resto del modelo.
+RF-03;Gestionar cultivos;Must Have;Basica;8;6;8;22;3;7.33;Los cultivos deben existir antes de poder registrar cosechas, enfermedades o recomendaciones de IA.
+RF-04;Registrar actividad agricola;Must Have;Basica;7;5;5;17;3;5.67;Solicitado directamente por el jornalero (hallazgo de entrevista: el registro manual y desordenado genera perdida de datos).
+RF-05;Registrar cosecha;Must Have;Basica;9;7;6;22;3;7.33;Mayor valor de negocio: la produccion es la metrica central que el administrador quiere controlar (entrevista: perdio el control de fundas semanales de platano).
+RF-06;Gestionar inventario de insumos;Must Have;Basica;7;6;8;21;5;4.2;Alta reduccion de riesgo (evita desabastecimiento de fungicida/fertilizante) pero mayor tamano por la logica de umbral de stock.
+RF-07;Consultar produccion por periodo;Must Have;Desempeno;6;4;3;13;2;6.5;Ganancia rapida una vez que existe RF-05 - la satisfaccion escala linealmente con lo facil que sea filtrar.
+RF-08;Planificar actividad agricola;Must Have;Desempeno;6;5;4;15;3;5.0;Necesario antes de que RF-09 pueda asignar algo - urgencia moderada.
+RF-09;Asignar tarea;Must Have;Desempeno;6;5;4;15;3;5.0;Coordina al equipo de campo de 7 personas - la satisfaccion crece con que tan bien se ajuste al tamano real del equipo.
+RF-10;Dar seguimiento al cumplimiento de tareas;Must Have;Desempeno;5;4;3;12;2;6.0;Economico de construir sobre el campo de estado de RF-09 - mantiene informado al administrador.
+RF-11;Generar reportes de produccion;Must Have;Desempeno;7;5;4;16;5;3.2;Alto valor pero mayor tamano (filtros, exportacion) - depende de que ya existan datos de RF-05/07.
+RF-12;Identificar productividad por parcela;Should Have;Desempeno;5;3;4;12;3;4.0;Agrega profundidad analitica pero el administrador puede operar sin esto en el corto plazo.
+RF-13;Generar estadisticas agricolas;Should Have;Desempeno;5;3;3;11;3;3.67;Paneles deseables pero de menor urgencia que los RF de registro central.
+RF-14;Gestionar usuarios;Must Have;Basica;6;7;6;19;3;6.33;Necesario para dar de alta a los 7 trabajadores de campo y controlar el acceso definido en RF-01 - urgente pero pequeno.
+RF-15;Consultar recomendaciones de IA;Could Have;Deleite;6;2;6;14;8;1.75;Funcionalidad de deleite recibida con entusiasmo explicito por el administrador en la entrevista, pero el mayor tamano de trabajo (requiere datos historicos + integracion del modelo) - WSJF mas bajo.
+RF-16;Registrar enfermedad del cultivo;Should Have;Deleite;8;6;7;21;5;4.2;Alto valor de negocio (moniliasis/sigatoka fueron la principal preocupacion del administrador) y dispara la Alerta - es deleite porque la deteccion temprana supera la expectativa base de un simple registro.
