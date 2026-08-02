@@ -1,0 +1,138 @@
+<mxfile host="Electron" agent="Claude">
+  <diagram name="Main Operational Activity Diagram" id="act-main">
+    <mxGraphModel dx="1144" dy="696" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="920" pageHeight="1480" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="lane1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fontStyle=1;fontSize=13;fillColor=none;strokeColor=#666666;align=center;" value="Administrator" vertex="1">
+          <mxGeometry height="1440" width="380" x="40" as="geometry" />
+        </mxCell>
+        <mxCell id="lane2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fontStyle=1;fontSize=13;fillColor=none;strokeColor=#666666;align=center;" value="Farmworker" vertex="1">
+          <mxGeometry height="1440" width="380" x="460" as="geometry" />
+        </mxCell>
+        <mxCell id="start" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#000000;" vertex="1">
+          <mxGeometry height="20" width="20" x="220" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="plan" parent="1" style="rounded=1;arcSize=30;whiteSpace=wrap;html=1;fillColor=none;strokeColor=light-dark(#6C8EBF,#FFFFFF);fontSize=11;" value="Plan agricultural activity (RF-08)" vertex="1">
+          <mxGeometry height="50" width="230" x="115" y="125" as="geometry" />
+        </mxCell>
+        <mxCell id="dec1" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=none;strokeColor=light-dark(#D6B656,#FFFFFF);fontSize=10;" value="Scheduling conflict?" vertex="1">
+          <mxGeometry height="80" width="140" x="160" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="confirm" parent="1" style="rounded=1;arcSize=30;whiteSpace=wrap;html=1;fillColor=none;strokeColor=light-dark(#6C8EBF,#FFFFFF);fontSize=11;" value="Confirm scheduling anyway" vertex="1">
+          <mxGeometry height="50" width="200" x="280" y="355" as="geometry" />
+        </mxCell>
+        <mxCell id="assign" parent="1" style="rounded=1;arcSize=30;whiteSpace=wrap;html=1;fillColor=none;strokeColor=light-dark(#6C8EBF,#FFFFFF);fontSize=11;" value="Assign task to worker (RF-09)" vertex="1">
+          <mxGeometry height="50" width="230" x="115" y="455" as="geometry" />
+        </mxCell>
+        <mxCell id="receive" parent="1" style="rounded=1;arcSize=30;whiteSpace=wrap;html=1;fillColor=none;strokeColor=light-dark(#6C8EBF,#FFFFFF);fontSize=11;" value="Receive assigned task" vertex="1">
+          <mxGeometry height="50" width="230" x="535" y="555" as="geometry" />
+        </mxCell>
+        <mxCell id="execute" parent="1" style="rounded=1;arcSize=30;whiteSpace=wrap;html=1;fillColor=none;strokeColor=light-dark(#6C8EBF,#FFFFFF);fontSize=11;" value="Execute activity in the field and register it (RF-04)" vertex="1">
+          <mxGeometry height="50" width="230" x="535" y="635" as="geometry" />
+        </mxCell>
+        <mxCell id="markdone" parent="1" style="rounded=1;arcSize=30;whiteSpace=wrap;html=1;fillColor=none;strokeColor=light-dark(#6C8EBF,#FFFFFF);fontSize=11;" value="Mark task as completed" vertex="1">
+          <mxGeometry height="50" width="230" x="535" y="715" as="geometry" />
+        </mxCell>
+        <mxCell id="dec2" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=none;strokeColor=light-dark(#D6B656,#FFFFFF);fontSize=10;" value="Activity type = Harvest?" vertex="1">
+          <mxGeometry height="80" width="140" x="580" y="810" as="geometry" />
+        </mxCell>
+        <mxCell id="harvest" parent="1" style="rounded=1;arcSize=30;whiteSpace=wrap;html=1;fillColor=none;strokeColor=light-dark(#6C8EBF,#FFFFFF);fontSize=11;" value="Register harvest (quantity, unit) (RF-05)" vertex="1">
+          <mxGeometry height="50" width="210" x="725" y="925" as="geometry" />
+        </mxCell>
+        <mxCell id="dec3" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=none;strokeColor=light-dark(#D6B656,#FFFFFF);fontSize=10;" value="Disease observed?" vertex="1">
+          <mxGeometry height="80" width="140" x="580" y="990" as="geometry" />
+        </mxCell>
+        <mxCell id="disease" parent="1" style="rounded=1;arcSize=30;whiteSpace=wrap;html=1;fillColor=none;strokeColor=light-dark(#6C8EBF,#FFFFFF);fontSize=11;" value="Report crop disease (RF-16)" vertex="1">
+          <mxGeometry height="50" width="210" x="725" y="1105" as="geometry" />
+        </mxCell>
+        <mxCell id="track" parent="1" style="rounded=1;arcSize=30;whiteSpace=wrap;html=1;fillColor=none;strokeColor=light-dark(#6C8EBF,#FFFFFF);fontSize=11;" value="Track task completion (RF-10)" vertex="1">
+          <mxGeometry height="50" width="230" x="115" y="1205" as="geometry" />
+        </mxCell>
+        <mxCell id="report" parent="1" style="rounded=1;arcSize=30;whiteSpace=wrap;html=1;fillColor=none;strokeColor=light-dark(#6C8EBF,#FFFFFF);fontSize=11;" value="Generate production report (RF-11) — on demand" vertex="1">
+          <mxGeometry height="50" width="230" x="115" y="1295" as="geometry" />
+        </mxCell>
+        <mxCell id="end" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#000000;" vertex="1">
+          <mxGeometry height="28" width="28" x="216" y="1386" as="geometry" />
+        </mxCell>
+        <mxCell id="end_ring" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#000000;" vertex="1">
+          <mxGeometry height="36" width="36" x="212" y="1382" as="geometry" />
+        </mxCell>
+        <mxCell id="n1" edge="1" parent="1" source="start" style="html=1;endArrow=block;endFill=1;fontSize=10;" target="plan">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n2" edge="1" parent="1" source="plan" style="html=1;endArrow=block;endFill=1;fontSize=10;" target="dec1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n3" edge="1" parent="1" source="dec1" style="html=1;endArrow=block;endFill=1;fontSize=10;" target="confirm" value="yes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n4" edge="1" parent="1" source="dec1" style="html=1;endArrow=block;endFill=1;fontSize=10;" target="assign" value="no">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n5" edge="1" parent="1" source="confirm" style="html=1;endArrow=block;endFill=1;fontSize=10;" target="assign">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="380" y="480" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="n6" edge="1" parent="1" source="assign" style="html=1;endArrow=block;endFill=1;fontSize=10;" target="receive">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="230" y="580" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="n7" edge="1" parent="1" source="receive" style="html=1;endArrow=block;endFill=1;fontSize=10;" target="execute">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n8" edge="1" parent="1" source="execute" style="html=1;endArrow=block;endFill=1;fontSize=10;" target="markdone">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n9" edge="1" parent="1" source="markdone" style="html=1;endArrow=block;endFill=1;fontSize=10;" target="dec2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n10" edge="1" parent="1" source="dec2" style="html=1;endArrow=block;endFill=1;fontSize=10;" target="harvest" value="yes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n11" edge="1" parent="1" source="dec2" style="html=1;endArrow=block;endFill=1;fontSize=10;" target="dec3" value="no">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n12" edge="1" parent="1" source="harvest" style="html=1;endArrow=block;endFill=1;fontSize=10;" target="dec3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="830" y="1030" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="n13" edge="1" parent="1" source="dec3" style="html=1;endArrow=block;endFill=1;fontSize=10;" target="disease" value="yes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n14" edge="1" parent="1" source="dec3" style="html=1;endArrow=block;endFill=1;fontSize=10;" target="track" value="no">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="650" y="1230" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="n15" edge="1" parent="1" source="disease" style="html=1;endArrow=block;endFill=1;fontSize=10;exitX=0.5;exitY=1;exitDx=0;exitDy=0;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="830" y="1245" />
+              <mxPoint x="720" y="1245" />
+            </Array>
+            <mxPoint x="830" y="1170" as="sourcePoint" />
+            <mxPoint x="345.0000000000002" y="1245" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="n16" edge="1" parent="1" source="track" style="html=1;endArrow=block;endFill=1;fontSize=10;" target="report">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n17" edge="1" parent="1" source="report" style="html=1;endArrow=block;endFill=1;fontSize=10;" target="end">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
