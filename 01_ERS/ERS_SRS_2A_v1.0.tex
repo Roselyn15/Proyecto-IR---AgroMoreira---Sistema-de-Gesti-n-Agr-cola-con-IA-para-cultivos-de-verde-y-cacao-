@@ -1,0 +1,588 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{hyperref}
+
+\graphicspath{{../03_Modelado/Diagramas_UML/}}
+
+\title{Especificación de Requisitos de Software\\Secciones 2 y 3 --- Bloque individual}
+\author{Calle Delgado Kamila Annabella}
+\date{}
+
+\begin{document}
+\maketitle
+\setcounter{section}{1}
+
+% Seccion 3: Requisitos especificos completos
+\section{Requisitos específicos completos}
+\label{sec:requisitos-especificos}
+
+\subsection{Requisitos funcionales}
+\label{sec:requisitos-funcionales}
+
+% Subseccion 3.1.1: Plantilla de especificacion
+\subsubsection{Plantilla de especificación}
+\label{sec:plantilla-rf}
+
+Los requisitos funcionales del Sistema de Gestión Agrícola con Inteligencia Artificial para Cultivos de Verde y Cacao (SGA) se documentan mediante la plantilla de ocho atributos que se describe en la Tabla~\ref{tab:plantilla-rf}. Esta plantilla amplía la utilizada en la Entrega 2 (1B), que incluía Identificador, Nombre, Descripción, Actor(es), Prioridad, Precondiciones, Flujo principal y Postcondiciones, incorporando un origen verificable por evidencia de campo, la especificación de entradas y salidas, y un criterio de verificación cuantificable.
+
+\begin{center}
+\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\hline
+\textbf{Atributo} & \textbf{Contenido} \\
+\hline
+\endfirsthead
+\hline
+\textbf{Atributo} & \textbf{Contenido} \\
+\hline
+\endhead
+\hline
+\endfoot
+\hline
+\endlastfoot
+Identificador & Código único con el formato RF-XX. \\
+\hline
+Nombre & Frase nominal breve que identifica la capacidad especificada. \\
+\hline
+Descripción & Enunciado en la forma «El sistema deberá\ldots», limitado a una única capacidad por ficha. \\
+\hline
+Actor / origen & Actor que origina o utiliza el requisito, junto con el identificador de evidencia EV-XX y la marca de tiempo que lo respalda, o la restricción normativa aplicable cuando el requisito no se origina en una cita directa. \\
+\hline
+Entradas & Datos que el sistema recibe para ejecutar la capacidad, con su tipo y su obligatoriedad. \\
+\hline
+Salidas & Datos o efectos que el sistema produce como resultado de la capacidad. \\
+\hline
+Prioridad (MoSCoW) & Clasificación en Debe tener, Debería tener, Podría tener o No tendrá. \\
+\hline
+Criterio de verificación & Condición cuantificable, con métrica, umbral y método de comprobación, que permite determinar si el requisito se cumple. \\
+\hline
+\end{longtable}
+\label{tab:plantilla-rf}
+\end{center}
+
+% Subseccion 3.1.2: Catalogo de requisitos funcionales
+\subsubsection{Catálogo de requisitos funcionales}
+\label{sec:catalogo-rf}
+
+El catálogo siguiente incorpora los dieciséis requisitos funcionales identificados en la Entrega 2 (1B), migrados a la plantilla de ocho atributos sin alterar su contenido sustantivo, y su ampliación hasta un total de veintisiete requisitos funcionales derivados de la evidencia de campo descrita en la Sección 5. Los identificadores RF-01 a RF-16 corresponden a los requisitos migrados; los identificadores RF-17 a RF-27 corresponden a los requisitos incorporados en esta entrega. En los requisitos migrados se conservan, como campos adicionales al cierre de la ficha, las Precondiciones, el Flujo principal y las Postcondiciones ya redactados en la Entrega 2 (1B).
+
+Los requisitos RF-01 y RF-14 no derivan de una cita textual de las entrevistas, ya que ninguna pregunta del guion abordó de forma directa el mecanismo de autenticación. Su origen se declara como la restricción R-02 sobre acceso diferenciado por rol, necesaria para sostener la distinción de responsabilidades entre Administrador y Trabajador agrícola evidenciada a lo largo de ambas entrevistas.
+
+\bigskip
+\noindent\textbf{RF-01. Inicio de sesión}
+\label{tab:RF-01}
+
+\begin{center}
+\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\hline
+Identificador & RF-01 \\
+\hline
+Nombre & Inicio de sesión \\
+\hline
+Descripción & El sistema deberá permitir que el administrador y los trabajadores agrícolas inicien sesión mediante un usuario y una contraseña para acceder a las funcionalidades correspondientes a su rol. \\
+\hline
+Actor / origen & Administrador, Trabajador agrícola --- R-02 (el acceso a la información dependerá del rol asignado a cada usuario). \\
+\hline
+Entradas & Usuario (texto, obligatorio); contraseña (texto, obligatorio). \\
+\hline
+Salidas & Sesión iniciada con acceso a las funciones del rol correspondiente, o mensaje de error. \\
+\hline
+Prioridad (MoSCoW) & Debe tener. \\
+\hline
+Criterio de verificación & El sistema autentica al usuario y concede acceso según su rol en $\leq$ 2,0 s, verificado en el percentil 95 de 50 intentos de inicio de sesión. \\
+\hline
+Precondiciones & El usuario debe estar registrado en el sistema. \\
+\hline
+Flujo principal & 1. El usuario ingresa sus credenciales. 2. El sistema valida la información. 3. Si las credenciales son correctas, permite el acceso al sistema según el rol del usuario. \\
+\hline
+Postcondiciones & El usuario accede correctamente al sistema. \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RF-02. Gestión de parcelas}
+\label{tab:RF-02}
+
+\begin{center}
+\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\hline
+Identificador & RF-02 \\
+\hline
+Nombre & Gestión de parcelas \\
+\hline
+Descripción & El sistema deberá permitir registrar, consultar, actualizar y eliminar la información correspondiente a las parcelas o lotes que conforman la finca. \\
+\hline
+Actor / origen & Administrador --- EV-01 [04:02], [04:14]. \\
+\hline
+Entradas & Nombre o código de parcela (texto, obligatorio); ubicación (texto, obligatorio); área (numérico, obligatorio); estado (selección, obligatorio). \\
+\hline
+Salidas & Parcela registrada, actualizada o eliminada, disponible para su asociación con cultivos (RF-03). \\
+\hline
+Prioridad (MoSCoW) & Debe tener. \\
+\hline
+Criterio de verificación & La consulta de una parcela devuelve sus campos obligatorios en $\leq$ 2,0 s con 500 parcelas cargadas, verificado en el percentil 95 de 50 ejecuciones. \\
+\hline
+Precondiciones & El administrador debe haber iniciado sesión. \\
+\hline
+Flujo principal & 1. El administrador selecciona el módulo de parcelas. 2. Registra o modifica la información requerida. 3. El sistema valida y almacena los datos. \\
+\hline
+Postcondiciones & La información de la parcela queda registrada o actualizada correctamente. \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RF-03. Gestión de cultivos}
+\label{tab:RF-03}
+
+\begin{center}
+\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\hline
+Identificador & RF-03 \\
+\hline
+Nombre & Gestión de cultivos \\
+\hline
+Descripción & El sistema deberá permitir registrar y administrar los cultivos de verde y cacao asociados a cada parcela de la finca. \\
+\hline
+Actor / origen & Administrador --- EV-01 [03:05], [03:18]. \\
+\hline
+Entradas & Parcela asociada (selección, obligatorio); tipo de cultivo (selección: verde o cacao, obligatorio); variedad (texto, opcional); fecha de cultivo (fecha, obligatorio). \\
+\hline
+Salidas & Cultivo registrado y asociado a la parcela seleccionada. \\
+\hline
+Prioridad (MoSCoW) & Debe tener. \\
+\hline
+Criterio de verificación & El registro de un cultivo queda disponible para consulta asociado a su parcela en $\leq$ 2,0 s, verificado sobre 30 registros consecutivos. \\
+\hline
+Precondiciones & Debe existir al menos una parcela registrada. \\
+\hline
+Flujo principal & 1. El administrador selecciona una parcela. 2. Registra la información del cultivo. 3. El sistema almacena los datos asociados a la parcela seleccionada. \\
+\hline
+Postcondiciones & El cultivo queda asociado correctamente a la parcela correspondiente. \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RF-04. Registro de actividades agrícolas}
+\label{tab:RF-04}
+
+\begin{center}
+\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\hline
+Identificador & RF-04 \\
+\hline
+Nombre & Registro de actividades agrícolas \\
+\hline
+Descripción & El sistema deberá permitir registrar las actividades realizadas por los trabajadores agrícolas, indicando la fecha, la actividad ejecutada y la parcela donde fue desarrollada. \\
+\hline
+Actor / origen & Trabajador agrícola --- EV-02 [00:54]; EV-01 [07:11]. \\
+\hline
+Entradas & Fecha (fecha, obligatorio); tipo de actividad (selección, obligatorio); parcela (selección, obligatorio). \\
+\hline
+Salidas & Actividad registrada, disponible para consulta del administrador (RF-10) y para el historial de trabajador (RF-24). \\
+\hline
+Prioridad (MoSCoW) & Debe tener. \\
+\hline
+Criterio de verificación & El 100~\% de las actividades registradas por un trabajador quedan disponibles para consulta del administrador en un máximo de 1 minuto, verificado sobre una muestra de 30 registros. \\
+\hline
+Precondiciones & El trabajador debe haber iniciado sesión. \\
+\hline
+Flujo principal & 1. El trabajador accede al módulo de actividades. 2. Registra la información solicitada. 3. El sistema valida y almacena el registro. \\
+\hline
+Postcondiciones & La actividad queda registrada correctamente en el sistema. \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RF-05. Registro de cosechas}
+\label{tab:RF-05}
+
+\begin{center}
+\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\hline
+Identificador & RF-05 \\
+\hline
+Nombre & Registro de cosechas \\
+\hline
+Descripción & El sistema deberá permitir registrar la producción obtenida en cada cosecha, especificando el cultivo, la parcela, la cantidad recolectada, la unidad de medida y la fecha del registro. \\
+\hline
+Actor / origen & Trabajador agrícola --- EV-01 [04:32], [04:47]; EV-02 [02:08]. \\
+\hline
+Entradas & Cultivo (selección, obligatorio); parcela (selección, obligatorio); cantidad (numérico, obligatorio); unidad de medida (selección, obligatorio); fecha (fecha, obligatorio). \\
+\hline
+Salidas & Producción registrada e incorporada al historial de producción. \\
+\hline
+Prioridad (MoSCoW) & Debe tener. \\
+\hline
+Criterio de verificación & El registro de una cosecha se incorpora al historial de producción en $\leq$ 2,0 s, verificado en el percentil 95 de 30 ejecuciones. \\
+\hline
+Precondiciones & Debe existir un cultivo previamente registrado en el sistema. \\
+\hline
+Flujo principal & 1. El trabajador selecciona el cultivo correspondiente. 2. Ingresa la información de la cosecha. 3. El sistema valida y almacena el registro. \\
+\hline
+Postcondiciones & La producción queda registrada y disponible para consultas y reportes. \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RF-06. Gestión de inventario de insumos}
+\label{tab:RF-06}
+
+\begin{center}
+\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\hline
+Identificador & RF-06 \\
+\hline
+Nombre & Gestión de inventario de insumos \\
+\hline
+Descripción & El sistema deberá permitir registrar, consultar, actualizar y eliminar la información correspondiente a los insumos agrícolas y herramientas utilizadas en la finca, incluyendo fertilizantes, fungicidas, herbicidas y herramientas de trabajo. \\
+\hline
+Actor / origen & Administrador --- EV-01 [05:36], [05:44], [05:58], [06:14]. \\
+\hline
+Entradas & Nombre del insumo (texto, obligatorio); tipo (selección: fertilizante, fungicida, herbicida o herramienta, obligatorio); cantidad disponible (numérico, obligatorio); unidad de medida (selección, obligatorio). \\
+\hline
+Salidas & Inventario actualizado, disponible para consulta y para el descuento por entregas (RF-22). \\
+\hline
+Prioridad (MoSCoW) & Debe tener. \\
+\hline
+Criterio de verificación & El inventario refleja una actualización de cantidad disponible en $\leq$ 2,0 s tras el registro, verificado sobre 30 actualizaciones consecutivas. \\
+\hline
+Precondiciones & El administrador debe haber iniciado sesión. \\
+\hline
+Flujo principal & 1. El administrador accede al módulo de inventario. 2. Registra o actualiza la información del insumo. 3. El sistema valida y almacena los cambios realizados. \\
+\hline
+Postcondiciones & El inventario queda actualizado con la información registrada. \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RF-07. Consulta de producción por período}
+\label{tab:RF-07}
+
+\begin{center}
+\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\hline
+Identificador & RF-07 \\
+\hline
+Nombre & Consulta de producción por período \\
+\hline
+Descripción & El sistema deberá permitir consultar la producción agrícola registrada durante un período específico, facilitando el seguimiento del rendimiento de los cultivos. \\
+\hline
+Actor / origen & Administrador --- EV-01 [04:47], [04:54]. \\
+\hline
+Entradas & Fecha de inicio y fecha de fin del período (fecha, obligatorio). \\
+\hline
+Salidas & Listado de producción registrada dentro del período seleccionado. \\
+\hline
+Prioridad (MoSCoW) & Debe tener. \\
+\hline
+Criterio de verificación & La consulta de producción por período con 500 registros cargados responde en $\leq$ 2,0 s, verificado en el percentil 95 de 50 ejecuciones, y presenta únicamente los registros del período seleccionado. \\
+\hline
+Precondiciones & Deben existir registros de producción almacenados en el sistema. \\
+\hline
+Flujo principal & 1. El administrador selecciona el período de consulta. 2. El sistema procesa la información registrada. 3. Se presenta el resultado de la consulta. \\
+\hline
+Postcondiciones & La información solicitada se muestra correctamente al usuario. \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RF-08. Planificación de actividades agrícolas}
+\label{tab:RF-08}
+
+\begin{center}
+\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\hline
+Identificador & RF-08 \\
+\hline
+Nombre & Planificación de actividades agrícolas \\
+\hline
+Descripción & El sistema deberá permitir planificar las actividades agrícolas indicando la tarea, la fecha programada y la parcela donde será ejecutada. \\
+\hline
+Actor / origen & Administrador --- EV-01 [06:51], [06:58]. \\
+\hline
+Entradas & Tarea (texto, obligatorio); fecha programada (fecha, obligatorio); parcela (selección, obligatorio). \\
+\hline
+Salidas & Actividad planificada, disponible para su posterior asignación (RF-09). \\
+\hline
+Prioridad (MoSCoW) & Debe tener. \\
+\hline
+Criterio de verificación & Una actividad planificada queda disponible para su asignación en $\leq$ 2,0 s desde su registro, verificado sobre 30 registros consecutivos. \\
+\hline
+Precondiciones & Deben existir parcelas registradas en el sistema. \\
+\hline
+Flujo principal & 1. El administrador accede al módulo de planificación. 2. Registra la actividad programada. 3. El sistema almacena la planificación. \\
+\hline
+Postcondiciones & La actividad queda programada para su posterior ejecución. \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RF-09. Asignación de tareas}
+\label{tab:RF-09}
+
+\begin{center}
+\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\hline
+Identificador & RF-09 \\
+\hline
+Nombre & Asignación de tareas \\
+\hline
+Descripción & El sistema deberá permitir asignar actividades específicas a los trabajadores agrícolas, indicando la tarea, la parcela y la fecha de ejecución. \\
+\hline
+Actor / origen & Administrador --- EV-01 [06:58]; EV-02 [01:01], [01:18]. \\
+\hline
+Entradas & Trabajador (selección, obligatorio); actividad (selección, obligatorio); parcela (selección, obligatorio); fecha de ejecución (fecha, obligatorio). \\
+\hline
+Salidas & Tarea asignada al trabajador seleccionado. \\
+\hline
+Prioridad (MoSCoW) & Debe tener. \\
+\hline
+Criterio de verificación & El 100~\% de las tareas asignadas quedan disponibles para consulta del trabajador correspondiente en $\leq$ 2,0 s, verificado sobre una muestra de 30 asignaciones. \\
+\hline
+Precondiciones & Deben existir trabajadores y actividades registrados en el sistema. \\
+\hline
+Flujo principal & 1. El administrador selecciona al trabajador. 2. Asigna la actividad correspondiente. 3. El sistema registra la asignación realizada. \\
+\hline
+Postcondiciones & La tarea queda asignada al trabajador seleccionado. \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RF-10. Seguimiento del cumplimiento de tareas}
+\label{tab:RF-10}
+
+\begin{center}
+\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\hline
+Identificador & RF-10 \\
+\hline
+Nombre & Seguimiento del cumplimiento de tareas \\
+\hline
+Descripción & El sistema deberá permitir consultar el estado de las actividades asignadas a los trabajadores, identificando aquellas pendientes, en proceso o finalizadas. \\
+\hline
+Actor / origen & Administrador --- EV-01 [07:11], [07:18]. \\
+\hline
+Entradas & Ninguna directa; opera sobre tareas previamente asignadas (RF-09). \\
+\hline
+Salidas & Estado de cada tarea asignada (pendiente, en proceso o finalizada). \\
+\hline
+Prioridad (MoSCoW) & Debe tener. \\
+\hline
+Criterio de verificación & El estado de una tarea asignada se actualiza y refleja correctamente en $\leq$ 2,0 s desde el cambio registrado, verificado sobre 30 tareas de prueba. \\
+\hline
+Precondiciones & Deben existir tareas previamente asignadas. \\
+\hline
+Flujo principal & 1. El administrador accede al módulo de seguimiento. 2. El sistema consulta el estado de las tareas. 3. Se presenta la información correspondiente. \\
+\hline
+Postcondiciones & El administrador conoce el avance de las actividades programadas. \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RF-11. Generación de reportes de producción}
+\label{tab:RF-11}
+
+\begin{center}
+\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\hline
+Identificador & RF-11 \\
+\hline
+Nombre & Generación de reportes de producción \\
+\hline
+Descripción & El sistema deberá permitir generar reportes de producción por cultivo, parcela o período, facilitando el análisis de la información registrada. \\
+\hline
+Actor / origen & Administrador --- EV-01 [08:10]. \\
+\hline
+Entradas & Filtros de consulta: cultivo, parcela o período (selección, al menos uno obligatorio). \\
+\hline
+Salidas & Reporte de producción según los filtros seleccionados, disponible para consulta o descarga. \\
+\hline
+Prioridad (MoSCoW) & Debe tener. \\
+\hline
+Criterio de verificación & El sistema genera el reporte de producción solicitado en $\leq$ 3,0 s con 500 registros cargados, verificado en el percentil 95 de 30 ejecuciones. \\
+\hline
+Precondiciones & Deben existir registros de producción almacenados en el sistema. \\
+\hline
+Flujo principal & 1. El administrador accede al módulo de reportes. 2. Selecciona los filtros de consulta. 3. El sistema procesa la información y genera el reporte solicitado. \\
+\hline
+Postcondiciones & El reporte queda disponible para su consulta o descarga. \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RF-12. Identificación de productividad por parcela}
+\label{tab:RF-12}
+
+\begin{center}
+\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\hline
+Identificador & RF-12 \\
+\hline
+Nombre & Identificación de productividad por parcela \\
+\hline
+Descripción & El sistema deberá permitir identificar las parcelas con mayor y menor productividad mediante el análisis de la producción registrada. \\
+\hline
+Actor / origen & Administrador --- EV-01 [07:54], [08:02]. \\
+\hline
+Entradas & Período de análisis (fecha, obligatorio). \\
+\hline
+Salidas & Listado de parcelas ordenado por producción, identificando la de mayor y la de menor productividad. \\
+\hline
+Prioridad (MoSCoW) & Debería tener. \\
+\hline
+Criterio de verificación & El sistema identifica correctamente la parcela de mayor y la de menor producción del período en el 100~\% de los casos, verificado sobre un conjunto de prueba de 20 parcelas con producción conocida. \\
+\hline
+Precondiciones & Deben existir registros históricos de producción por parcela. \\
+\hline
+Flujo principal & 1. El administrador accede al módulo de análisis. 2. El sistema procesa la información histórica. 3. Se presentan los resultados de productividad por parcela. \\
+\hline
+Postcondiciones & El administrador dispone de información para evaluar el rendimiento de las parcelas. \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RF-13. Generación de estadísticas agrícolas}
+\label{tab:RF-13}
+
+\begin{center}
+\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\hline
+Identificador & RF-13 \\
+\hline
+Nombre & Generación de estadísticas agrícolas \\
+\hline
+Descripción & El sistema deberá generar estadísticas basadas en la información registrada, permitiendo visualizar indicadores relacionados con la producción, las actividades realizadas y el rendimiento de los cultivos. \\
+\hline
+Actor / origen & Administrador --- EV-01 [07:28], [07:36], [07:43]. \\
+\hline
+Entradas & Ninguna directa; procesa la información ya registrada en el sistema. \\
+\hline
+Salidas & Gráficos e indicadores de producción, actividades y rendimiento. \\
+\hline
+Prioridad (MoSCoW) & Debería tener. \\
+\hline
+Criterio de verificación & El sistema presenta las estadísticas agrícolas en $\leq$ 3,0 s con la información de un período de 12 meses cargada, verificado en el percentil 95 de 20 ejecuciones. \\
+\hline
+Precondiciones & Debe existir información registrada en la base de datos. \\
+\hline
+Flujo principal & 1. El administrador accede al módulo de estadísticas. 2. El sistema procesa los datos disponibles. 3. Se muestran gráficos e indicadores estadísticos. \\
+\hline
+Postcondiciones & Las estadísticas quedan disponibles para apoyar la toma de decisiones. \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RF-14. Gestión de usuarios}
+\label{tab:RF-14}
+
+\begin{center}
+\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\hline
+Identificador & RF-14 \\
+\hline
+Nombre & Gestión de usuarios \\
+\hline
+Descripción & El sistema deberá permitir registrar, modificar, consultar y desactivar las cuentas de los usuarios autorizados, asignando el rol correspondiente a cada uno. \\
+\hline
+Actor / origen & Administrador --- R-02 (el acceso a la información dependerá del rol asignado a cada usuario); EV-01 [02:35]. \\
+\hline
+Entradas & Nombre de usuario (texto, obligatorio); rol (selección, obligatorio); estado (selección: activo o inactivo, obligatorio). \\
+\hline
+Salidas & Cuenta de usuario registrada, modificada o desactivada, con el rol correspondiente. \\
+\hline
+Prioridad (MoSCoW) & Debe tener. \\
+\hline
+Criterio de verificación & El 100~\% de los cambios de rol o estado de un usuario se reflejan en sus permisos de acceso en $\leq$ 2,0 s, verificado sobre una muestra de 20 cuentas de prueba. \\
+\hline
+Precondiciones & El administrador debe haber iniciado sesión. \\
+\hline
+Flujo principal & 1. El administrador accede al módulo de usuarios. 2. Registra o modifica la información del usuario. 3. El sistema valida los datos y guarda los cambios. \\
+\hline
+Postcondiciones & La información del usuario queda actualizada en el sistema. \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RF-15. Consultar recomendaciones de IA}
+\label{tab:RF-15}
+
+\begin{center}
+\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\hline
+Identificador & RF-15 \\
+\hline
+Nombre & Consultar recomendaciones de IA \\
+\hline
+Descripción & El sistema deberá analizar la información registrada sobre los cultivos de verde y cacao para generar recomendaciones que apoyen la planificación de actividades y la toma de decisiones por parte del administrador. \\
+\hline
+Actor / origen & Administrador --- EV-01 [09:26], [09:36]. \\
+\hline
+Entradas & Ninguna directa; el módulo de IA procesa los registros históricos existentes de producción, actividades e inventario. \\
+\hline
+Salidas & Recomendaciones relacionadas con la gestión de los cultivos, sujetas a la restricción R-05. \\
+\hline
+Prioridad (MoSCoW) & Podría tener. \\
+\hline
+Criterio de verificación & El sistema presenta recomendaciones fundamentadas en la información registrada en $\leq$ 5,0 s, sin modificar automáticamente los datos almacenados, verificado sobre 20 solicitudes de recomendación. \\
+\hline
+Precondiciones & Deben existir registros históricos suficientes de producción, actividades e inventario. \\
+\hline
+Flujo principal & 1. El administrador accede al módulo de Inteligencia Artificial. 2. El sistema analiza la información disponible. 3. Se generan recomendaciones relacionadas con la gestión de los cultivos. \\
+\hline
+Postcondiciones & Las recomendaciones quedan disponibles para su consulta por parte del administrador. \\
+\hline
+\end{longtable}
+\end{center}
+
+\bigskip
+\noindent\textbf{RF-16. Registro de enfermedades del cultivo}
+\label{tab:RF-16}
+
+\begin{center}
+\begin{longtable}{|p{3.5cm}|p{10.7cm}|}
+\hline
+Identificador & RF-16 \\
+\hline
+Nombre & Registro de enfermedades del cultivo \\
+\hline
+Descripción & El sistema deberá permitir registrar las enfermedades detectadas en los cultivos de verde y cacao, indicando el cultivo afectado, el nombre de la enfermedad, el nivel de gravedad y observaciones, con el fin de llevar un control fitosanitario y facilitar la generación de alertas cuando sea necesario. \\
+\hline
+Actor / origen & Administrador, Trabajador agrícola --- EV-02 [01:42]; EV-01 [01:16], [01:25]. \\
+\hline
+Entradas & Cultivo afectado (selección, obligatorio); nombre de la enfermedad (selección desde catálogo, RF-20, obligatorio); nivel de gravedad (selección, obligatorio); observaciones (texto, opcional). \\
+\hline
+Salidas & Enfermedad registrada y, si la gravedad es alta, alerta generada (RF-25). \\
+\hline
+Prioridad (MoSCoW) & Debería tener. \\
+\hline
+Criterio de verificación & El 100~\% de los registros de enfermedad con nivel de gravedad alto generan una alerta en $\leq$ 5,0 s desde su registro, verificado sobre una muestra de 30 casos. \\
+\hline
+Precondiciones & Debe existir un cultivo previamente registrado en el sistema. \\
+\hline
+Flujo principal & 1. El usuario selecciona el cultivo afectado. 2. Registra la enfermedad detectada. 3. Ingresa el nivel de gravedad y observaciones. 4. El sistema valida y almacena la información. 5. Si la gravedad es alta, el sistema genera una alerta. \\
+\hline
+Postcondiciones & La enfermedad queda registrada y disponible para su consulta. \\
+\hline
+\end{longtable}
+\end{center}
+
+\end{document}
