@@ -1,0 +1,50 @@
+Entrevista al Administrador Entr-01
+¿Cuántos años lleva trabajando en agricultura, específicamente en verde o cacao?  
+Llevo 10 años trabajando en lo que es el cultivo de plátano y 7 años en lo que es cultivo de cacao.  
+¿Cuál es su nivel de estudios o formación relacionada con la actividad agrícola?  
+Mi nivel de educación es de cuarto nivel, soy máster en biotecnología agropecuaria y estamos implementando nuevos enfoques biotecnológicos para producir plantaciones y productos fuera del ámbito inorgánico. 
+¿Cuál es el mayor problema que enfrenta actualmente en su trabajo dentro de la finca? 
+ No sería un problema en sí, son enfermedades y plagas con las que hemos venido trabajando y conviviendo diariamente. Como se conocen normalmente, los problemas más particulares que existen en el cacao son la moniliasis y en el plátano la sigatoka, que serían uno de los principales problemas que tenemos dentro de la producción. 
+ ¿Qué tarea le consume más tiempo y considera que podría hacerse de mejor manera? 
+ Existen labores culturales que aplicamos aquí en la finca y las que más nos llevan tiempo serían las que son a machete, como una limpieza de corona en las plantaciones. 
+¿Alguna vez ha perdido información importante por no tenerla registrada y qué consecuencias tuvo?  
+Sí, en algún momento al iniciar con el cultivo de plátano no se llevaba una bitácora de las fundas que se metían semanalmente y por lo cual había desvarianza de datos, en lo que no se podía cuadrar un número de cajas para fin de mes.  
+¿Cuántas personas trabajan actualmente en la finca y cuáles son sus responsabilidades? 
+ Actualmente tenemos, contamos con siete personas y que nos abastecemos para mantener labores al día y la responsabilidad y el compromiso de cada uno de ellos es aumentar la productividad y llevarnos a un siguiente nivel, siguiente nivel que es mejor para todos y el bienestar de todos. 
+ ¿Cuántas hectáreas tiene la finca en total y cuántas están dedicadas al verde y cuántas al cacao?  
+Tenemos 16 hectáreas y tenemos policultivos, no es una finca, no es un monocultivo solamente, nos dedicamos, las 16 están distribuidas entre palma, verde y cacao. 
+ 
+¿Cómo llena actualmente el registro de sus cultivos? 
+ Un blog de datos y una bitácora, una bitácora que tenemos. 
+ ¿Qué información necesita consultar con mayor frecuencia en su trabajo diario? 
+Normalmente diariamente el registro de los trabajadores y las labores que se hacen diariamente y el avance también.  
+¿Cómo diferencia o identifica cada parcelo o lote dentro de la finca?  
+Normalmente me he criado aquí desde los 13 años y se me hace muy fácil identificar cada parte de la finca. Me guío por distintas plantas que existen, un cultivo frutal o un estero. 
+ ¿Cómo registra actualmente la producción de cada cosecha? 
+ Esa sí la llevamos según el peso y el registro que nos entregan en el acopio, porque si es palma lo entregamos por tonelada y sabemos si la diferencia entre un mes y otro puede ser más alto o más bajo por el peso.  
+¿Qué información de producción necesita seguir para detectar si algo no rinde cómo debería? ¿Qué información de producción?  
+Bueno, pues eso ya sería un extra que me lo podrían llevar los trabajadores.  
+¿Cómo gestiona el inventario de fertilizantes, fungicidas, herbicidas y herramientas?  
+Eso sí es una labor que la tenemos programada en distintos meses del año. Ya tenemos establecidos cierta cantidad de sacos para cada cultivo. Es comprado en el momento que se requiere. En cuanto a las herramientas, llevamos el inventario, sí, hasta la fecha no nos hace falta casi nada, porque contamos con todo ahí, no se ha perdido y solamente cuando se dañan debemos descartar de las cosas que tenemos, pero no contamos con un inventario como tal.  
+¿Cómo lleva el control de gastos, ventas e ingresos de la finca? 
+ De eso se encarga la parte contable. Los ingresos sí los podemos llevar nosotros porque somos los que recibimos todo, pero en cuanto al gasto, al egreso, por medio de las facturas y todo, se encarga el contador. ¿Cómo organiza y asigna las tareas al personal?  
+Normalmente se hace una planificación una semana antes en cuanto a las labores que estén atrasadas y se los ubica cada uno pensando en una semana antes a la que se está actualmente. 
+ ¿Cómo hace el seguimiento del trabajo realizado por cada trabajador?  
+Normalmente se le designa una tarea y en el transcurso del día se registra que la está haciendo de la mejor forma y que lleve la base correcta. 
+¿Cuáles tareas le gustaría que se manejaran de forma automática?  
+Podría ser la cosecha de palma africana, ya que es la que la calculamos más por volumen, bueno todas se calculan en volumen, pero esta es un poco más intensa la cantidad y nos vendría muy bien llevarla de una forma un poco más puntual para saber exactamente qué mes estaría más alto o qué mes estaría más bajo. Incluso podría ser en qué zona existe más productividad y en qué zona existe menos productividad. Eso sería una ayuda. 
+¿Qué reportes considera más importantes para analizar la producción? 
+ Ya sea reporte por parcela, costos, pérdidas por plagas o rendimiento por periodo. El más importante actualmente sería pérdidas por plagas, porque estamos siendo atacados por una enfermedad que no le encontramos aún, bueno nadie en general en el Ecuador le ha encontrado una cura y sería muy bueno una pérdida por plagas. 
+¿Desde qué dispositivo preferiría consultar la información de su finca?  
+Desde mi teléfono, más rápido. 
+Si el sistema pudiera avisarle automáticamente que una parcela muestra señales de enfermedad antes de notarlo a usted, ¿le parecería útil? ¿Confiaría usted en esta información? 
+Claro, claro que confiaría siempre y cuando yo la registre y me dé cuenta de que es cierta. Yo tengo que verificar la información, porque la inteligencia artificial también sí tiene cierta margen de error. 
+ ¿Qué tan cómodo se sentiría usando una herramienta que dé recomendaciones automáticas sobre el manejo de sus cultivos?  
+Actualmente debemos familiarizarnos bastante con lo que es la IA y podríamos llevar las cosas de mejor manera. Es una ayuda bastante buena, bastante grande. 
+Bueno, ahora vamos con preguntas cerradas. Yo le voy a hacer una pregunta y las opciones. ¿Cómo prefiere llevar el registro de su cultivo? ¿Por parcela o lote individualmente? ¿Por cultivo en general o ambas formas según la necesidad?  
+Por cultivo en general. 
+¿Cómo prefiere gestionar el inventario de insumos agrícolas? ¿Recibir alertas automáticas cuando un insumo esté por agotarse, revisar reportes periódicos alimentarios o controlarlo manualmente cuando lo necesite? 
+ No, recibir alertas automáticas. 
+ ¿Cómo desearía recibir apoyo para tomar decisiones sobre el manejo de sus cultivos? 
+ Alertas automáticas cuando algo requiere atención inmediata, reportes y resúmenes periódicos para revisar con calma o recomendaciones automáticas basadas en los datos registrados. Alertas automáticas. 
+Eso sería todo. Gracias. 
