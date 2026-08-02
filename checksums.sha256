@@ -1,81 +1,54 @@
-#!/usr/bin/env bash
-#
-# generar_checksums.sh
-#
-# Genera el archivo checksums.sha256 con las huellas SHA-256 de todos los
-# archivos multimedia y documentos ubicados en:
-#   - 02_Evidencias/
-#   - 03_Modelado/
-#   - 05_MVP/
-#   - 06_Experimento/
-#
-# Debe ejecutarse desde la raíz del repositorio.
-#
-# Uso:
-#   chmod +x generar_checksums.sh
-#   ./generar_checksums.sh
-#
-# Para verificar posteriormente la integridad:
-#   sha256sum -c checksums.sha256
-#
-
-set -euo pipefail
-
-OUTPUT_FILE="checksums.sha256"
-
-DIRECTORIOS=(
-    "02_Evidencias"
-    "03_Modelado"
-    "05_MVP"
-    "06_Experimento"
-)
-
-EXTENSIONES=(
-    "*.pdf"
-    "*.png"
-    "*.jpg"
-    "*.jpeg"
-    "*.mp4"
-    "*.mp3"
-    "*.wav"
-)
-
-# Verificar que sha256sum esté disponible
-if ! command -v sha256sum >/dev/null 2>&1; then
-    echo "Error: 'sha256sum' no está instalado o no se encuentra en el PATH."
-    exit 1
-fi
-
-echo "Generando huellas SHA-256..."
-
-> "$OUTPUT_FILE"
-
-# Construir la expresión de búsqueda
-FIND_EXPR=()
-
-for ext in "${EXTENSIONES[@]}"; do
-    FIND_EXPR+=( -iname "$ext" -o )
-done
-
-# Eliminar el último -o
-unset 'FIND_EXPR[${#FIND_EXPR[@]}-1]'
-
-# Buscar archivos únicamente en los directorios existentes
-find "${DIRECTORIOS[@]}" \
-    -type f \
-    \( "${FIND_EXPR[@]}" \) \
-    -print0 2>/dev/null \
-| sort -z \
-| xargs -0 sha256sum > "$OUTPUT_FILE"
-
-TOTAL=$(wc -l < "$OUTPUT_FILE")
-
-echo
-echo "=========================================="
-echo "Checksums generados correctamente."
-echo "Archivo : $OUTPUT_FILE"
-echo "Total   : $TOTAL archivos"
-echo "=========================================="
-echo
-echo "Para verificar la integridad del repositorio:"
-echo "sha256sum -c $OUTPUT_FILE"
+0158af4561169aa4478f9587cdccf2c1b8abd3b76dec16a9affca11ea7ffc63e  02_Evidencias/Fotos_Entorno/2026-06-29_area_cultivos.jpg
+306988a5bd7c536cff9ee0aab664e6ddfd10f72f44038d7d5eb51d8753bf5bb8  02_Evidencias/Fotos_Entorno/2026-07-01_cultivos_de_verde_y_cacao.jpg
+f44e9fe1e438cae2122e66fa35b41df367fbd2112d7e3d59bb06086491d9834f  02_Evidencias/Fotos_Entorno/2026-07-01_cultivos_de_verde_y_cacao2.jpg
+de60bb6b273b1063e04b4d6eb0f72d602d028b8ddd35242daef1e9d0543aa31f  02_Evidencias/Fotos_Entorno/2026-07-03_cosecha_de_cacao.jpg
+cdefc85d47fa92d73d5bdb2b43c49279ba9a16a47b10524daadfc6a90671439e  02_Evidencias/Fotos_Entorno/2026-07-09_fumigacion_de_area.jpg
+06001fc24a0b89db7bb467f8615f88002b5e4747de4e8317622fb2d90e37ef3d  02_Evidencias/Fotos_Entorno/2026-07-10_parcela_cacao_01.png
+453a099698cb9fd73b0069dd3320881736ef086a9f2d81f1cc0cc57bbf86c781  02_Evidencias/Fotos_Entorno/2026-07-10_parcela_verde_01.jpg
+ba189138c58554f2cb96476f1d6073c92e5cdec85eeba1627f08f4ba8e2a80f2  02_Evidencias/Fotos_Entorno/2026-07-11_aplicacion_fertilizante.png
+7868e6e8c57f21e3fbb492855bca2d640891b7423d926d2fffb00fc84b7dc098  02_Evidencias/Fotos_Entorno/2026-07-11_plantas_de_cacao_en_crecimiento.jpg
+119c69829f3d74b515cdb71ea9a06dfa52b4cbaf6fa46fbecde519a208d52715  02_Evidencias/Fotos_Entorno/2026-07-11_revision_cultivos.png
+382efecae2763d238ffe3d95711dfbad3765def1b6d75c4a0ed48e666e142964  02_Evidencias/Fotos_Entorno/2026-07-12_control_plagas.png
+8dd5ff72f2c6b165246af7f39d643f9667ca4b2c2b8513169c822b45bde21dae  02_Evidencias/Fotos_Entorno/2026-07-13_elaboracion_de_coronas.jpg
+c96b33467f8533612aea502e79c2b3a0c694d91b31bb39d186c02f8355c9ac05  02_Evidencias/Fotos_Entorno/2026-07-13_parcela_cacao_02.png
+fbe5421870baf486a5779cebbe4029fc93fd6fbdef3180c2a67b839dbd8a0def  02_Evidencias/Fotos_Entorno/2026-07-15_crecimiento_del_verde.jpg
+978fff5952fedc31e0a7268cd68b3e1ac5daee721dbbf09eeaab1759499883e2  02_Evidencias/Fotos_Entorno/2026-07-15_proceso_de_siembra_de_verde.jpg
+b743729b96e9d26bc2eeb804aac49b193215d924b78aeca92ab5992a3f68b8e5  02_Evidencias/Fotos_Entorno/2026-07-16_fumigacion.jpg
+32bcca64b58c8bd14000813ed69be602da932400aaf6c5ea19b5c490ee540ecd  02_Evidencias/Fotos_Entorno/2026-07-25_plantas_de_cacao.jpg
+714e976addd2f44c204725b7e69b659eeeb70a645a6f36cf4f97568c880952eb  03_Modelado/Diagramas_UML/AD-01_Main_Operational_Activity_Diagram.drawio.png
+20077250e38fdae788c0da0249d70a49d76565a97c5f65c8c5e43e48b3e52586  03_Modelado/Diagramas_UML/AD-02_Inventory_Alert_Activity_Diagram.drawio.png
+c3513358d0389d0435aa83be07bdad425fd218f390a592f65f611a3a8dd76264  03_Modelado/Diagramas_UML/AD-03_AI_Recommendations_Activity_Diagram.drawio.png
+6faf87c7a3cd1e823746c5cab7e074b75132692d09402e564297260126c3c78f  03_Modelado/Diagramas_UML/CD-01_Refined_Class_Diagram.drawio.png
+ddcb14e44f7971256d0cb5354dd0ad31c5d4232acf9f31979970a8f09de4569a  03_Modelado/Diagramas_UML/COMP-01_Component_Diagram.drawio.png
+9b12be4afd0991c3031c924845f3fd13794865d761c4a4f34ebbbf76d979c7af  03_Modelado/Diagramas_UML/SD-01_Labor_Task_State_Diagram.drawio.png
+102f774292b4e94ffe2dbe64dbd23a05d4104d914af32241eb88fa072a0a6b20  03_Modelado/Diagramas_UML/SEQ-01_Log_In_.drawio.png
+26711d96b5717a209a1581db9f653fa823ed32ecbe28aa29c1f4520ffd4775fa  03_Modelado/Diagramas_UML/SEQ-02_Manage_Plots.drawio.png
+2b297fd0376dc074c89c314c6a2689e4651a0cd275f6ba751314e1b25b416fce  03_Modelado/Diagramas_UML/SEQ-03_Manage_Crops.drawio.png
+747a39bed9e0b8ce3ae1da2774badaadb50aa6728c6be9026c979a309310181a  03_Modelado/Diagramas_UML/SEQ-04_Register_Agricultural_Activity.drawio.png
+93f5861bf949a3b936b2d9f8df560d71e4714b91b3954d61d327742738d1ab88  03_Modelado/Diagramas_UML/SEQ-05_Register_Harvest.drawio.png
+36adfca68124150528330c8e99b7783450c2042df3d731f5e13f2312f28e3f69  03_Modelado/Diagramas_UML/SEQ-06_Manage_Input_Inventory.drawio.png
+03e5e50639d02f0315a1585766e038ce21c87754a48d0d7f6c6033d08b6aebce  03_Modelado/Diagramas_UML/SEQ-07_Consult_Production_by_Period.drawio.png
+e7042b08cbbd1fe81df0152784bf92643c8ad57c707b81278e3e7135b04b3100  03_Modelado/Diagramas_UML/SEQ-08_Plan_Agricultural_Activity.drawio.png
+bc79f65cbcd1487b38de012ee08eff1f5c9b12a8bbc7074af1fbd3c341987433  03_Modelado/Diagramas_UML/SEQ-09_Assign_Task.drawio.png
+7c1fddb70e78cc1f0c3181aa0dd33a3541b9b5511538664e8a298b673289f59c  03_Modelado/Diagramas_UML/SEQ-10_Track_Task_Completion.drawio.png
+bb8bff741f856327cf62748b5b77d8c22ac98a27249b94966411ed1e501b0f2c  03_Modelado/Diagramas_UML/SEQ-11_Generate_Production_Reports.drawio.png
+c8ed6e27aa21a84f332809c5012246580a130aec6697da2ae5607366cec53c27  03_Modelado/Diagramas_UML/SEQ-12_Manage_Users.drawio.png
+3e576473b5b6dc16c5589ff90978e058c7e1904e7d7f537c75768293b74a608a  03_Modelado/Diagramas_UML/UC-01_General_Use_Case_Diagram.drawio.png
+15d9bc4590a1bca1f2119f6139622d1078d73be1b45163383ffb1d1f2acc482b  03_Modelado/Mockups/MU-01_Login.png
+306f587c5761da4ed3ab03ae5264f2cb7d53a0cf45787719b603fc7fff036f1d  03_Modelado/Mockups/MU-02_Manage_Plots.png
+4e134d346322ca614e7d30345f82b503ce46f44be4a5d9b9cddef217fcd004c7  03_Modelado/Mockups/MU-03_Manage_Crops.png
+367e1c124a7978a23760683e587322fb049c5dc167cb39f0a21598026a43badd  03_Modelado/Mockups/MU-04_Register_Agricultural_Activity.png
+8ab6963f2707a8b85263cbf1362a3890078aa5bf9ce87fd9f42992ce1f6fbddf  03_Modelado/Mockups/MU-05_Register_Harvest.png
+963bc8478c760a6acef716a5dc961ea8aa4cff385f45805b668509b29d45a5e3  03_Modelado/Mockups/MU-06_Manage_Inventory.png
+19b655124d42189e9c4e5a1697bf1099f253cc751cef9daec81caaa29627510d  03_Modelado/Mockups/MU-07_Task_Planning_Assignment.png
+02cd5be56abb28d270abc0dff9f617abc88c3fb9cbe2e11f6728160512d34bd2  03_Modelado/Mockups/MU-08_Production_Reports.png
+fb683e42f80da30a0b2aadb98494ff27f236651f4c7a6510cde53a0985782018  03_Modelado/Mockups/MU-09_User_Management.png
+cf36521fcdcfd079a322a968753d23c73f1f3c33742df06c834d658b579e19cf  05_MVP/video_demo01.mp4
+73cc6e30d02dd4b3ca6e7aad927c875b6f8dcf916ef009f53cbc713f490b0554  05_MVP/video_demo02.mp4
+d37056f29f0692f290dbbc400b8b1e5068301709573080f26857c1cd11e9c47a  05_MVP/video_demo03.mp4
+c7bede7067d944f30754c5f94c936b7f9f1b08497d4749413c6f95b19ba6729b  05_MVP/video_demo04.mp4
+e874fa3092e0bc131faa3fc09c942ff178e8d019366bae2b1d4a867df729f4a9  05_MVP/video_demo05.mp4
+2baa4ddb9380f1e7a5148232359895cd11516cf77f22b7ebec44fe6f74433b41  05_MVP/video_demo06.mp4
+6d2ae6ad66e5aff9c5665de99c3745f90cacdfd70deb51ee96c47ace886d1495  05_MVP/video_demo07.mp4
+3cfed8932f5c6ddae4664dae910e0dba1a67507275207df3cfb777ef8fe063f1  05_MVP/video_demo08.mp4
+23efa8ccd94b9550ae1abb806a1a969703b3018394f9da87943ad097eadc6648  06_Experimento/protocolo.pdf
